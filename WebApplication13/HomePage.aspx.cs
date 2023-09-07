@@ -98,7 +98,7 @@ namespace WebApplication13
 
             Console.WriteLine("start to send email ...");
 
-            EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
+            EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient(); 
             oSmtp.SendMail(oServer, oMail);
 
             //////////////////////////////////////////
