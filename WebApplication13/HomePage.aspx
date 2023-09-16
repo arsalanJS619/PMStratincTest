@@ -440,7 +440,7 @@ Check Our Serives
                             <div class="tab-content card">
                                 <!--Login-->
                                 <div class="tab-pane fade in show active" id="login" role="tabpanel">
-                                    <form action="#">
+<%--                                    <form action="#">--%>
                                         <div class="row">
                                             <div class="col-12 col-lg-12 col-md-12 col-lg-12">
                                                 <div class="form-group">
@@ -471,23 +471,23 @@ Check Our Serives
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+<%--                                    </form>--%>
                                 </div>
                                 <!--/.Panel 1-->
                                 <!--Panel 2-->
                                 <div class="tab-pane fade" id="panel2" role="tabpanel">
-                                    <form action="#" class="register">
+<%--                                    <form action="#" class="register">--%>
                                         <div class="row">
                                             <div class="col-12 col-lg-12 col-md-12 col-lg-12">
                                                 <div class="form-group">
                                                     <label class="control-label">Name</label>
-                                                    <input type="text" class="form-control" placeholder="Username" />
+                                                    <input type="text" id="RegUserName" runat="server" class="form-control" placeholder="Username" />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-12 col-md-12 col-lg-12">
                                                 <div class="form-group">
                                                     <label class="control-label">Email</label>
-                                                    <input type="email" class="form-control" placeholder="Email" />
+                                                    <input type="email" id="RegEmail" runat="server" class="form-control" placeholder="Email" />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-12 col-md-12 col-lg-12">
@@ -510,7 +510,7 @@ Check Our Serives
                                             </div>
 
 
-                                            <input type="checkbox" class="defaultCheckbox"
+                                            <input type="checkbox" class="defaultCheckbox" runat="server"
                                                 id="ChkEdu" name="ChkEdu" style="width: 25px; height: 25px;float:right">
 
                                                <div class="row">
@@ -526,7 +526,7 @@ Check Our Serives
                                             </div>
 
 
-                                            <input type="checkbox" class="defaultCheckbox"  
+                                            <input type="checkbox" class="defaultCheckbox" runat="server"
                                                 id="ChkImg" name="ChkImg" style="width: 25px; height: 25px">
 
 
@@ -544,22 +544,28 @@ Check Our Serives
                                             </div>
 
 
-                                            <input type="checkbox" class="defaultCheckbox" 
-                                                id="ChkSettl" name="ChkSettl"" style="width: 25px; height: 25px;scroll-padding-right:auto">
+                                            <input type="checkbox" class="defaultCheckbox" runat="server"
+                                                id="ChkSett" name="ChkSett" style="width: 25px; height: 25px;scroll-padding-right:auto">
 
 
 <%--                                             <input type="checkbox" class="defaultCheckbox"
             name="checkBox1" style="width: 25px; height: 25px" checked>--%>
 
                                         </div>
-                                        <div class="row" runat="server">
-                                         <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Back" class="col-md-6 btnLeftMargin btn btn-block btn-success" />
 
-                                            <div class="col-12 col-lg-12 col-md-12 col-lg-12 d-flex justify-content-between login_option">
-                                                <button  type="submit" causesvalidation="false" name="register" onserverclick="TestMe" runat="server">Register</button>
-                                            </div>
+                                        <div class="row" runat="server">
+
+                                             <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Back" CssClass="col-md-6 btnLeftMargin btn btn-block btn-success" />
+                                            
                                         </div>
-                                    </form>
+                                            
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12 d-flex justify-content-between login_option">
+                                        
+                                            <asp:Button ID="btnRegister" Text="Register" OnClick="RegisterUser" runat="server" CssClass="col-md-6 btnLeftMargin btn btn-block btn-success"/>
+                                            
+                                        </div>
+<%--                                        </div>--%>
+<%--                                    </form>--%>
                                 </div>
                                 
                                 <!--/.Panel 2-->

@@ -53,17 +53,19 @@ namespace  BusinessLogic
             return result;
         }
 
-        public long  InsertUserData(string Email, string strPassword)
+        public long  InsertUserData(string UserName,string Email, string strPassword, string IsStu, string IsImig, string IsSett)
         {
             long lrt = 0;
             string pas = string.Empty;
             clsDataAccessLayer DB = new clsDataAccessLayer();
 
-            string _strPassword =  EncodePasswordToBase64(strPassword);
+            string dates = "2023-09-10";
+       //     string _strPassword =  EncodePasswordToBase64(strPassword);
 
 
-            string str = "insert into User_Info (Email,Passwrd)" +//,DOB,IsMigration,IsStudent,IsSettlement,AdminUser,,CreateDate,UpdateDate,UserStatus)" +
-                " values( " + Email + "," + _strPassword + ")";
+            string str = "insert into User_Info (Name,FName,Email,DOB,IsStudent,IsMigration,IsSettlement,AdminUser,Passwrd,CreateDate,UpdateDate,UserStatus)" +
+                //,DOB,IsMigration,IsStudent,IsSettlement,AdminUser,,CreateDate,UpdateDate,UserStatus)" +
+                " values( "+"'"+UserName+"'"+",'Test'," +"'"+ Email +"'"+ ",'2023-09-10'," +IsStu+","+IsImig+","+IsSett+",0,"+"'"+strPassword+"'"+",'2023-09-10','2023-09-10'," + 0+")";
             DB.OpenDataBase();
             lrt = DB.ExecuteNonQuery(str);
             //foreach (DataRow row in dt.Rows)
