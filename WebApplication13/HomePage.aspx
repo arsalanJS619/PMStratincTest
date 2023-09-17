@@ -4,9 +4,7 @@
 <!DOCTYPE html>
 
 <html>
-    <script>
-        __doPostBack("btnBack_Click", "");
-    </script>
+   
 <head runat="server">
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -94,7 +92,7 @@
                         <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
                             <ul class="navbar-nav nav lavalamp ml-auto menu">
                               
-                                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                                <li id="AboutMenu" runat="server" class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                                
                              
 
@@ -444,23 +442,23 @@ Check Our Serives
                                         <div class="row">
                                             <div class="col-12 col-lg-12 col-md-12 col-lg-12">
                                                 <div class="form-group">
-                                                    <label class="control-label">Email</label>
-                                                    <input id="txtEmail" runat="server" type="email" class="form-control" placeholder="Username">
+<%--                                                    <label class="control-label">Email</label>--%>
+                                                    <input id="LoginEmail" runat="server" type="email" class="form-control" placeholder="Username">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-12 col-md-12 col-lg-12">
                                                 <div class="form-group">
-                                                    <label class="control-label">Password</label>
-                                                    <input id="txtPassword" runat="server" type="password" class="form-control" placeholder="Password">
+<%--                                                    <label class="control-label">Password</label>--%>
+                                                    <input id="LoginPassword" runat="server" type="password" class="form-control" placeholder="Password">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-12 col-lg-12 col-md-12 col-lg-12 d-flex justify-content-between login_option">
+                                            <div>
                                                 <a href="forgot-password.html" title="" class="forget_pass">Forget Password ?</a>
-                                                <button type="submit" id="btnLogin" onclick="UserLogin_Submit" class="btn btn-default login_btn">Login</button>
+                                                <asp:Button ID="btnLogin" Text="Login" OnClick="LoginUser" runat="server" />
                                             </div>
-                                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <%--<div class="col-12 col-lg-12 col-md-12 col-lg-12">
                                                 <div class="social_login">
                                                     <div class="social_items">
                                                         <button class="google_login google">Login Google</button>
@@ -469,7 +467,7 @@ Check Our Serives
                                                         <button class="google_login linkdin">Login Linkdin</button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>--%>
                                         </div>
 <%--                                    </form>--%>
                                 </div>
@@ -480,19 +478,21 @@ Check Our Serives
                                         <div class="row">
                                             <div class="col-12 col-lg-12 col-md-12 col-lg-12">
                                                 <div class="form-group">
-                                                    <label class="control-label">Name</label>
+<%--                                                    <label class="control-label">Name</label>--%>
                                                     <input type="text" id="RegUserName" runat="server" class="form-control" placeholder="Username" />
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-12 col-md-12 col-lg-12">
                                                 <div class="form-group">
-                                                    <label class="control-label">Email</label>
+<%--                                                    <label class="control-label">Email</label>--%>
                                                     <input type="email" id="RegEmail" runat="server" class="form-control" placeholder="Email" />
+<%--                                                    <asp:RegularExpressionValidator ID="RegExpEmail" runat="server" ControlToValidate="RegEmail" ValidationExpression="^\S+@\S+$" Text="incorrect format" />--%>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-12 col-md-12 col-lg-12">
                                                 <div class="form-group">
-                                                    <label class="control-label">Password</label>
+<%--                                                    <label class="control-label">Password</label>--%>
                                                     <input type="password" id="RegPassword" runat="server" class="form-control" placeholder="Password" />
                                                 </div>
                                             </div>
@@ -559,11 +559,18 @@ Check Our Serives
                                             
                                         </div>
                                             
-                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12 d-flex justify-content-between login_option">
-                                        
-                                            <asp:Button ID="btnRegister" Text="Register" OnClick="RegisterUser" runat="server" CssClass="col-md-6 btnLeftMargin btn btn-block btn-success"/>
+<%--                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12 d-flex justify-content-between login_option">--%>
+                                        <div>
+                                            <asp:Button ID="btnRegister" Text="Register" OnClick="RegisterUser"  runat="server"/>
+
+                                        </div>
+
+                                    <div>
+                                            <asp:Button ID="Button1" Text="RegisterMe" OnClick="RegisterUser" runat="server"/>
                                             
                                         </div>
+
+                                    <asp:Label ID="RegLabel" runat="server"></asp:Label>
 <%--                                        </div>--%>
 <%--                                    </form>--%>
                                 </div>

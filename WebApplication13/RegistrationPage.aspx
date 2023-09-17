@@ -72,13 +72,13 @@
                                     </ul>
                                 </div>
 
-                                <div class="login_info">
+                                <%--<div class="login_info">
                                     <ul class="d-flex">
                                         <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i>Sign Up</a></li>
                                         <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Log In</a></li>
                                     </ul>
 <%--                                    <a href="#" title="" class="apply_btn">Apply Now</a>--%>
-                                </div>
+                                </div>--%>
                             </div>
                         </div>
                     </div>
@@ -185,7 +185,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-8 col-lg-8">
                             <div id="dv1" runat="server" class="intro_text">
-                                <h1>Settlement Services</h1>
+                                <h1 id="RegHeading" runat="server"></h1>
 
                                 <%--     ArrivalDate:	Cannot be less than today's date.
 Airline:	
@@ -211,210 +211,7 @@ Number of children under 4-years:	Range 1-10--%>
         <!-- End Login Signup Option -->
 
         <section class="contact_info_wrapper">
-     <div class="container">  
-        <div class="row">  
-           
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="contact_form_wrapper">
-<%--                    <h2 class="title">Fill Details</h2>--%>
-                    <div class="leave_comment">
-                        <div class="contact_form">
-                            <form action="#">
-                                <div class="row">
-                                    <span style="font-weight:bold" class="title">Travel Info </span>
-                                   <div class="col-12"></div>
-
-                                    <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Arrival Date" runat="server"></asp:Label>
-                                        </div>
-                                    <div class="col-12 col-sm-12 col-md-6 form-group">
-                                         <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                                <div class="input-group my-colorpicker2 colorpicker-element" style="width: 75px;padding-right:unset">
-                                                                    <asp:TextBox class="form-control" ID="BirthDate11"  Width="275px" Style="z-index: auto" runat="server" MaxLength="11"></asp:TextBox>
-                                                                    <%-- <div class="input-group-addon">
-                                                                &nbsp;<asp:Image ID="ImgBirthDate" runat="server" ImageUrl="images/Calendar_scheduleHS.png" />
-                                                            </div>--%>
-                                                                </div>
-                                            
-                                                                <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="BirthDate11" Format="dd-MMM-yyyy"></ajaxToolkit:CalendarExtender>
-
-                                                            </div>            
-
-                                    </div>  
-
-
-                                                                       <div class="col-12"></div>
-
-                                    <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Airline" runat="server"></asp:Label>
-                                        </div>
-                                    <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <asp:TextBox runat="server" ID="TxtAirlineID"></asp:TextBox>
-                                    </div>  
-                                    
-                                    
-                                    <div class="col-12"></div>
-
-                                      <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Flight" runat="server"></asp:Label>
-                                        </div>
-                                    <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <asp:TextBox runat="server" ID="TextBox1"></asp:TextBox>
-<%--                                           runat="server" class="form-control" id="TotalPersID" />--%>
-                                    </div>  
-
-                                      <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Airport" runat="server"></asp:Label>
-                                        </div>
-                                    <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <asp:TextBox runat="server" ID="TextBox2"></asp:TextBox>
-<%--                                           runat="server" class="form-control" id="TotalPersID" />--%>
-                                    </div>  
-
-                                      <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Total Person" runat="server"></asp:Label>
-                                        </div>
-                                    <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <asp:TextBox runat="server" ID="TextBox3"></asp:TextBox>
-<%--                                           runat="server" class="form-control" id="TotalPersID" />--%>
-                                    </div>  
-
-                                      <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Number Person" runat="server"></asp:Label>
-                                        </div>
-                                    <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <asp:TextBox runat="server" ID="TextBox4"></asp:TextBox>
-<%--                                           runat="server" class="form-control" id="TotalPersID" />--%>
-                                    </div>  
-
-
-                                     <div class="col-12"></div>
-
-
-                                    <h3 class="title">Services Required</h3>
-
-                                                                       <div class="col-12"></div>
-
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <label for="ChkBox1" style="font-size: x-large; font-weight: bold">Hotel PickUp</label>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <input type="checkbox" style="width: 35px; height: 35px" id="ChkBox1" />
-                </div>
-
-                                     <div class="col-12"></div>
-
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <label for="ChkBox2" style="font-size: x-large; font-weight: bold">Visit To Office</label>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <input type="checkbox" style="width: 35px; height: 35px" id="ChkBox2" />
-                </div>
-
-                                                         <div class="col-12"></div>
-
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <label for="ChkBox3" style="font-size: x-large; font-weight: bold">Hotel Stay</label>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <input type="checkbox" style="width: 35px; height: 35px" id="ChkBox3" />
-                </div>
-
-                                     <div class="col-12"></div>
-
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <label for="ChkBox4" style="font-size: x-large; font-weight: bold">Visit To Bank</label>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <input type="checkbox" style="width: 35px; height: 35px" id="ChkBox4" />
-                </div>
-
-                                                         <div class="col-12"></div>
-
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <label for="ChkBox5" style="font-size: x-large; font-weight: bold">House Leasing</label>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <input type="checkbox" style="width: 35px; height: 35px" id="ChkBox5" />
-                </div>
-
-                                     <div class="col-12"></div>
-
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <label for="ChkBox6" style="font-size: x-large; font-weight: bold">Visit To School</label>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <input type="checkbox" style="width: 35px; height: 35px" id="ChkBox6" />
-                </div>
-
-                                                         <div class="col-12"></div>
-
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <label for="ChkBox7" style="font-size: x-large; font-weight: bold">Shopping</label>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <input type="checkbox" style="width: 35px; height: 35px" id="ChkBox7" />
-                </div>
-
-                                     <div class="col-12"></div>
-
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <label for="ChkBox8" style="font-size: x-large; font-weight: bold">Any Additional</label>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <input type="checkbox" style="width: 35px; height: 35px" id="ChkBox8" />
-                </div>
-
-
-
-
-
-
-
-
-
-                                     <div class="col-12"></div>
-
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <label for="VisitOffice" style="font-size: x-large; font-weight: bold">Visit To Office</label>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 form-group">
-                    <input type="checkbox" style="width: 35px; height: 35px" id="VisitOffice" name="NVisitOffice" />
-                </div>
-
-
-
-                                     <div class="col-12"></div>
-
-
-
-                                     <div class="col-12"></div>
-
-                                       <div class="col-12 col-sm-12 col-md-6 form-group">
-                                           <br />
-                                        <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Notes" runat="server"></asp:Label>
-                                        </div>
-                                    <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <input type="text" runat="server" class="form-control" id="Notes" style="width:500px;height:200px" />
-                                    </div>  
-
-
-                                      <div class="col-12 col-sm-12 col-md-12 submit-btn">
-                                        <button runat="server" type="submit" class="text-center" onclick="CallMe" >Submit</button>
-                                    </div>
-
-                                </div>
-                            </form>   
-                        </div>                     
-                      
-
-                        <div class="row">
-                        </div>
-                    </div> 
-                </div>
-           </div>
-        </div>
-    </div>
+     
 </section>
 
 

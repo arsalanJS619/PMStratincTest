@@ -14,12 +14,32 @@ using System.Text.RegularExpressions;
 using System.Net.Mail;
 using EASendMail;
 using AuthorizeNet;
+using System.Globalization;
 using Stripe;
 
 namespace WebApplication13
 {
     public partial class HomePage : System.Web.UI.Page
     {
+        const string CryptoKey = "pkn12byheni090eraszx2ea2315a1916";
+
+        public static List<string> GetCountryList()
+        {
+            List<string> cultureList = new List<string>();
+
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
+
+            foreach (CultureInfo culture in cultures)
+            {
+                RegionInfo region = new RegionInfo(culture.LCID);
+
+                if (!(cultureList.Contains(region.EnglishName)))
+                {
+                    cultureList.Add(region.EnglishName);
+                }
+            }
+            return cultureList;
+        }
         public class AesOperation
         {
             public static string EncryptString(string key, string plainText)
@@ -89,64 +109,108 @@ namespace WebApplication13
        
         protected void btnBack_Click(object sender, EventArgs e)
         {         
-            if(txtEmail.Value != "" && txtPassword.Value != "")
+            
+        }
+
+        protected void LoginUser(object sender, EventArgs e)
+        {
+            BusinessLogic.UserInfo UI = new UserInfo();
+
+            string _Paswd = AesOperation.EncryptString(CryptoKey, LoginPassword.Value);
+            DataTable dt = UI.AuthenticateLoginUser(LoginEmail.Value, _Paswd);
+
+            if (dt.Rows.Count>0)
             {
-                if(IsValidEmail(txtEmail.Value))
-                {
-                    
-                }
+                Session["User"] = "";
             }
         }
 
         protected void RegisterUser(object sender, EventArgs e)
         {
-            
+            var Url_string = HttpContext.Current.Request.Url.AbsoluteUri.Split('/');
 
-            string Password = AesOperation.EncryptString("0c6da1977tc590eraszx2ea2315a1916", RegPassword.Value);
             BusinessLogic.UserInfo UI = new UserInfo();
-            long val = UI.InsertUserData(RegUserName.Value, RegEmail.Value, Password, ChkEdu.Checked?"1":"0",ChkImg.Checked?"1":"0",ChkSett.Checked?"1":"0");
+            bool UserExists = UI.CheckForDuplicateEmail(RegEmail.Value);
 
-            if (val > 0)
+            if (UserExists == true)
             {
-                //  string DEC = AesOperation.DecryptString("GFTSFDGHHSABJAN",ENC);
-                #region send mail
-                SmtpMail oMail = new SmtpMail("TryIt");
+                // RegLabel.Text = "User Already Exists";
+                Session["Message"] = "UserExist";
+                Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
 
-                // Set sender email address, please change it to yours
-                oMail.From = "admin1_user@pmstratinc.com";
 
-                // Set recipient email address, please change it to yours
-                oMail.To = "arsalanjawed619@gmail.com";
+                //    return false;
+            }
 
-                // Set email subject
-                oMail.Subject = " test email from c#, ssl, 465 port";
+            else
+            {
 
-                // Set email body
-                oMail.TextBody = "this is a test email sent from c# project, do not reply";
+               
+                //   string RedirectRegPage = Url_string + "RegistrationPage?";
 
-                // Your SMTP server address
-                SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
+                Random rs = new Random();
+                string _RegCode = rs.Next().ToString() + rs.Next().ToString();
 
-                // User and password for ESMTP authentication, if your server doesn't require
-                // User authentication, please remove the following codes.
+                string RedirectRegPage = Url_string[0] + "//" + Url_string[2] + "/RegistrationPage?" + _RegCode;
 
-                //mail.From = new MailAddress("admin1_user@pmstratinc.com", "Arsalan Site");
-                oServer.User = "admin1_user@pmstratinc.com";
-                oServer.Password = "USer@1600";
+                string Password = AesOperation.EncryptString(CryptoKey, RegPassword.Value);
 
-                // Set 465 SMTP port
-                oServer.Port = 465;
+                long val = UI.InsertUserData(RegUserName.Value, RegEmail.Value, Password, ChkEdu.Checked ? "1" : "0", ChkImg.Checked ? "1" : "0", ChkSett.Checked ? "1" : "0", _RegCode);
 
-                // Enable SSL connection
-                oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
+                if (val > 0)
+                {
+                    //  string DEC = AesOperation.DecryptString("GFTSFDGHHSABJAN",ENC);
+                    #region send mail
+                    SmtpMail oMail = new SmtpMail("TryIt");
 
-                Console.WriteLine("start to send email ...");
+                    // Set sender email address, please change it to yours
+                    oMail.From = "admin1_user@pmstratinc.com";
 
-                EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
-                oSmtp.SendMail(oServer, oMail);
+                    // Set recipient email address, please change it to yours
+                    oMail.To = RegEmail.Value;// "arsalanjawed619@gmail.com";
+
+                    // Set email subject
+                    oMail.Subject = "Registration Email";// test email from c#, ssl, 465 port";
+
+                    // Set email body
+                    string body = "Hello " + ",";
+                    body += "<br /><br />Please click the following link to register";
+                    body += "<br /><a href = '" + RedirectRegPage + "'>Click here for Sign up</a>.";
+                    body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
+                    oMail.HtmlBody = body;
+                    
+                    SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
+
+                    oServer.User = "admin1_user@pmstratinc.com";
+                    oServer.Password = "USer@1600";
+                    oServer.Port = 465;
+                    oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
+                    EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
+                    oSmtp.SendMail(oServer, oMail);
+                    Session["Message"] = "MailSent";
+                  //  Response.Redirect("RegistrationPage.aspx", true);
+
+
+                    Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
+
+                    //RegLabel.Text = "Email sent with Registration Link";
+
+                 //   return false;
+                }
             }
             #endregion
 
+            //////////////////////////////////
+
+
+
+
+          //  return false;
+
+
+
+           
+          
         }
 
         //protected void TestMe(object sender, EventArgs e)
@@ -173,39 +237,49 @@ namespace WebApplication13
         //}
         protected void Page_Load(object sender, EventArgs ce)
         {
-            //    ClientScript.GetPostBackEventReference(this, "");
-            string Password = AesOperation.EncryptString("0c6da1977tc590eraszx2ea2315a1916", RegPassword.Value);
+            if (!IsPostBack)
+            {
+              //  AboutMenu.Visible = false;
+                string host = HttpContext.Current.Request.Url.Host;
 
-          //  string DEC = AesOperation.DecryptString("0c6da1977tc590eraszx2ea2315a1916", ENC);
-            string test = "";
-            ////////////////////////////////////////
-            ///
+             //   string AbsPath = HttpContext.Current.Request.Url.AbsolutePath;
 
-
-            //////////////////////////////////////////
-
-            //string str = "arsalanjawed619@gmail.com";
+           //     string AbsUri = HttpContext.Current.Request.Url.AbsoluteUri;
 
 
-            //SmtpClient smtpClient = new SmtpClient("mail.pmstratinc.com", 465);
+             //   List<string> countries = GetCountryList();
+           //     countries.Sort();
+                //    ClientScript.GetPostBackEventReference(this, "");
+           //     string Password = AesOperation.EncryptString("0c6da1977tc590eraszx2ea2315a1916", RegPassword.Value);
+            }
+           
 
-            //smtpClient.Credentials = new System.Net.NetworkCredential("admin1_user@pmstratinc.com", "USer@1600");
-            //smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-            //smtpClient.UseDefaultCredentials = false;
-            //smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-            //smtpClient.Timeout = 100;// 0000000;
-            //smtpClient.EnableSsl = true;
-            //MailMessage mail = new MailMessage();
+          }
 
-            ////Setting From , To and CC
-            //mail.From = new MailAddress("admin1_user@pmstratinc.com", "Arsalan Site");
-            //mail.To.Add(new MailAddress(str));
-            //smtpClient.Send(mail);
-            //string trst = "";
+        //////////////////////////////////////////
 
-            //   BusinessLogic.UserInfo BU = new UserInfo();
-            //   string data = BU.GetData();//.UserInfo();
+        //string str = "arsalanjawed619@gmail.com";
 
-        }
+
+        //SmtpClient smtpClient = new SmtpClient("mail.pmstratinc.com", 465);
+
+        //smtpClient.Credentials = new System.Net.NetworkCredential("admin1_user@pmstratinc.com", "USer@1600");
+        //smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //smtpClient.UseDefaultCredentials = false;
+        //smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //smtpClient.Timeout = 100;// 0000000;
+        //smtpClient.EnableSsl = true;
+        //MailMessage mail = new MailMessage();
+
+        ////Setting From , To and CC
+        //mail.From = new MailAddress("admin1_user@pmstratinc.com", "Arsalan Site");
+        //mail.To.Add(new MailAddress(str));
+        //smtpClient.Send(mail);
+        //string trst = "";
+
+        //   BusinessLogic.UserInfo BU = new UserInfo();
+        //   string data = BU.GetData();//.UserInfo();
+
     }
+    
 }
