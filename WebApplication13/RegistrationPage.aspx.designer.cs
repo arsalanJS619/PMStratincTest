@@ -33,13 +33,58 @@ namespace WebApplication13
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// UserMang control.
+        /// UserLogged control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserMang;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserLogged;
+
+        /// <summary>
+        /// LogoutHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor LogoutHeader;
+
+        /// <summary>
+        /// UsrAbout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UsrAbout;
+
+        /// <summary>
+        /// UsrStuInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UsrStuInfo;
+
+        /// <summary>
+        /// UsrProgress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UsrProgress;
+
+        /// <summary>
+        /// UsrContact control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UsrContact;
 
         /// <summary>
         /// dv1 control.

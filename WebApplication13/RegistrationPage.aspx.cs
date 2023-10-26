@@ -10,20 +10,38 @@ namespace WebApplication13
 {
     public partial class RegistrationPage : System.Web.UI.Page
     {
+        protected void LogoutUser(object sender, EventArgs e)
+        {
+            Session["User"] = null;
+
+            //   UserLogged.Visible = false;
+            //   LogoutHeader.Visible = false;
+            ////   LoginHeader.Visible = true;
+            //   UserLogged.InnerText = "";// DR["Email"].ToString();
+
+            //   UsrSettlement.Visible = true;
+            //   UsrStudent.Visible = true;
+            //   UsrImmigration.Visible = true;
+            //   UsrContact.Visible = true;
+            //   UsrAbout.Visible = true;
+
+            //   AdmAdmin.Visible = false;
+            //   AdmProgress.Visible = false;
+            //   AdmQueries.Visible = false;
+            //   AdmReports.Visible = false;
+
+            Response.Redirect("HomePage.aspx");
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Session["Message"] == "UserExist")
+            if (Session["User"] == null)
             {
-                RegHeading.InnerText = "User Already Exist";
-                Session["Message"] = null;
-                //  Session["RegMailMsg"] = "false";
-            }
+                //      LoginHeader.Visible = true;
+                UserLogged.Visible = false;
+                LogoutHeader.Visible = false;
+                //     UsrStuInfo.Visible = false;
 
-            if (Session["Message"] == "MailSent")
-            {
-                RegHeading.InnerText = "Mail Sent with Registration URL";
-                Session["Message"] = null;
             }
 
             if (HttpContext.Current.Request.Url.AbsoluteUri.Contains('?'))
@@ -37,7 +55,7 @@ namespace WebApplication13
                 if (dt.Rows.Count == 1)
                 {
                     long val = UI.ActivateUser(Value[1].ToString());
-                    if (val == 1)
+                    if (val.ToString() == "1")
                     {
                         RegHeading.InnerText = "Registration Successful. Please Login";
                     }
@@ -49,6 +67,30 @@ namespace WebApplication13
 
 
                 }
+            }
+
+            else
+            {
+
+                if (Session["Message"].ToString() == "InvalidUser")
+                {
+                    RegHeading.InnerText = "User Authentication Failed";
+                   // Session["Message"] = null;
+                }
+
+                if (Session["Message"].ToString() == "UserExist")
+                {
+                    RegHeading.InnerText = "User Already Exist";
+                 //   Session["Message"] = null;
+                    //  Session["RegMailMsg"] = "false";
+                }
+
+                if (Session["Message"].ToString() == "MailSent")
+                {
+                    RegHeading.InnerText = "Mail Sent with Registration URL";
+                 //   Session["Message"] = null;
+                }
+
             }
             //    }
 

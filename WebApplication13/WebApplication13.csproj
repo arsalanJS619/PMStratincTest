@@ -47,14 +47,23 @@
     <Reference Include="AjaxControlToolkit, Version=16.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <HintPath>..\packages\AjaxControlToolkit.16.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="BusinessLogic, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\BusinessLogic\bin\Debug\BusinessLogic.dll</HintPath>
+    <Reference Include="AuthorizeNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AuthorizeNet.2.0.3\lib\AuthorizeNet.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EASendMail, Version=7.9.1.9, Culture=neutral, PublicKeyToken=88adb80ecd66540b, processorArchitecture=MSIL">
       <HintPath>..\packages\EASendMail.7.9.1.9\lib\net472\EASendMail.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Stripe.net, Version=42.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stripe.net.42.4.0\lib\net461\Stripe.net.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -63,9 +72,20 @@
     <Reference Include="System.Net.Mail.Abstractions, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Mail.Abstractions.1.1.21\lib\netstandard2.0\System.Net.Mail.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Security" />
     <Reference Include="System.Security.Cryptography.Pkcs, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Pkcs.6.0.1\lib\net461\System.Security.Cryptography.Pkcs.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -172,6 +192,12 @@
     <Content Include="admin-user-all.html" />
     <Content Include="admin-view-enquiry.html" />
     <Content Include="admin.html" />
+    <Content Include="AdminProgress.aspx" />
+    <Content Include="AdminQueries.aspx" />
+    <Content Include="AdminStage1.aspx" />
+    <Content Include="AdminStage2.aspx" />
+    <Content Include="AdminStage3.aspx" />
+    <Content Include="AdminUsrMangemnt.aspx" />
     <Content Include="admission.html" />
     <Content Include="AjaxControlToolkit.dll" />
     <Content Include="all-courses.html" />
@@ -199,6 +225,7 @@
     <Content Include="build\muteicon.png" />
     <Content Include="build\skipback.png" />
     <Content Include="build\unmuteicon.png" />
+    <Content Include="BusinessLogic.dll" />
     <Content Include="casestudy-single-post.html" />
     <Content Include="contact-us.html" />
     <Content Include="Contact.aspx" />
@@ -243,6 +270,7 @@
     <Content Include="css\color-two.css" />
     <Content Include="css\color.css" />
     <Content Include="css\demo.css" />
+    <Content Include="ErrorPage.aspx" />
     <Content Include="Extension.min.js" />
     <Content Include="css\flaticon.css" />
     <Content Include="css\font-awesome.css" />
@@ -620,6 +648,7 @@
     <Content Include="fonts\roboto\Roboto-Regular.html" />
     <Content Include="fonts\roboto\Roboto-Thin-2.html" />
     <Content Include="fonts\roboto\Roboto-Thin.html" />
+    <Content Include="ForgetPassword.aspx" />
     <Content Include="forgot-password.html" />
     <Content Include="gallery-photo.html" />
     <Content Include="gallery.html" />
@@ -995,6 +1024,9 @@
     <Content Include="js\wow.min.js" />
     <Content Include="our-professsors-detail.html" />
     <Content Include="ourprofessors.html" />
+    <Content Include="PasswordReset.aspx" />
+    <Content Include="RegistrationPage.aspx" />
+    <Content Include="AdminReports.aspx" />
     <Content Include="research.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1044,12 +1076,16 @@
     <Content Include="shop-list.html" />
     <Content Include="shop-single-product.html" />
     <Content Include="Site.Master" />
+    <Content Include="Stage1.aspx" />
+    <Content Include="Stage2.aspx" />
+    <Content Include="Stage3.aspx" />
     <Content Include="student-dashboard-favourite.html" />
     <Content Include="student-dashboard-my-courses.html" />
     <Content Include="student-dashboard-profile.html" />
     <Content Include="student-dashboard-settings.html" />
     <Content Include="student-dashboard-statement.html" />
     <Content Include="student.html" />
+    <Content Include="StudentProgressRep.aspx" />
     <Content Include="StudentReg.aspx" />
     <Content Include="StuReg.aspx" />
     <Content Include="style.css" />
@@ -1062,11 +1098,55 @@
     <Content Include="typography-elements.html" />
     <Content Include="UserManagement.aspx" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminProgress.aspx.cs">
+      <DependentUpon>AdminProgress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminProgress.aspx.designer.cs">
+      <DependentUpon>AdminProgress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminQueries.aspx.cs">
+      <DependentUpon>AdminQueries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminQueries.aspx.designer.cs">
+      <DependentUpon>AdminQueries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminStage1.aspx.cs">
+      <DependentUpon>AdminStage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminStage1.aspx.designer.cs">
+      <DependentUpon>AdminStage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminStage2.aspx.cs">
+      <DependentUpon>AdminStage2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminStage2.aspx.designer.cs">
+      <DependentUpon>AdminStage2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminStage3.aspx.cs">
+      <DependentUpon>AdminStage3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminStage3.aspx.designer.cs">
+      <DependentUpon>AdminStage3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUsrMangemnt.aspx.cs">
+      <DependentUpon>AdminUsrMangemnt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUsrMangemnt.aspx.designer.cs">
+      <DependentUpon>AdminUsrMangemnt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -1097,6 +1177,20 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForgetPassword.aspx.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgetPassword.aspx.designer.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1107,7 +1201,58 @@
     <Compile Include="HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PasswordReset.aspx.cs">
+      <DependentUpon>PasswordReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PasswordReset.aspx.designer.cs">
+      <DependentUpon>PasswordReset.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationPage.aspx.cs">
+      <DependentUpon>RegistrationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrationPage.aspx.designer.cs">
+      <DependentUpon>RegistrationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminReports.aspx.cs">
+      <DependentUpon>AdminReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminReports.aspx.designer.cs">
+      <DependentUpon>AdminReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CrystalReport11.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport11.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Stud1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stud1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Stud2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stud2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\StudentReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\StudentsReports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentsReports.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Settlement.aspx.cs">
       <DependentUpon>Settlement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1142,6 +1287,34 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stage1.aspx.cs">
+      <DependentUpon>Stage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stage1.aspx.designer.cs">
+      <DependentUpon>Stage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stage2.aspx.cs">
+      <DependentUpon>Stage2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stage2.aspx.designer.cs">
+      <DependentUpon>Stage2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stage3.aspx.cs">
+      <DependentUpon>Stage3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stage3.aspx.designer.cs">
+      <DependentUpon>Stage3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StudentProgressRep.aspx.cs">
+      <DependentUpon>StudentProgressRep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentProgressRep.aspx.designer.cs">
+      <DependentUpon>StudentProgressRep.aspx</DependentUpon>
     </Compile>
     <Compile Include="StudentReg.aspx.cs">
       <DependentUpon>StudentReg.aspx</DependentUpon>
@@ -1207,6 +1380,40 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\CrystalReport11.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport11.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Stud1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Stud1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Stud2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Stud2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\StudentReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StudentReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\StudentsReports.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StudentsReports.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{3d18d767-99db-4922-b025-6eddba00d711}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

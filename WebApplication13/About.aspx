@@ -1,7 +1,4 @@
-﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="WebApplication13.About" %>
-
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-   <!doctype html>
+﻿<%@ Page Title="About" Language="C#" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="WebApplication13.About" %>
 
 
 <head>
@@ -11,8 +8,8 @@
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
     <meta name="author" content="Ecology Theme">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eduwise - Education HTML5 Template</title>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <title>PMStrat inc - Shaping Lives</title>
+    <link rel="shortcut icon" href="images/PMStrat_inLogo.ico" type="image/x-icon" />
     <!-- Goole Font -->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"> 
@@ -55,16 +52,22 @@
                     <div class="info_wrapper">
                         <div class="contact_info">                   
                             <ul class="list-unstyled">
-                                <li><i class="flaticon-phone-receiver"></i>+000-2356-222</li>
-                                <li><i class="flaticon-mail-black-envelope-symbol"></i>contact@yourdomain.com</li>
+                                <li><i >+1 (647) 232-8196</i></li>
+                                        <li><i class="flaticon-mail-black-envelope-symbol"></i>admin1_user@pmstratinc.com</li>
                             </ul>                    
                         </div>
                         <div class="login_info">
-                             <ul class="d-flex">
+                             <%--<ul class="d-flex">
                                 <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i>Sign Up</a></li>
                                 <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Lon In</a></li>
-                            </ul>
-                            <a href="#" title="" class="apply_btn">Apply Now</a>
+                            </ul>--%>
+                             <ul id="UserLogged" visible="false" runat="server" class="d-flex" style="color: black">
+                                        <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i></a></li>
+                                        <%--                                        <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Log In</a></li>--%>
+                                    </ul>
+
+                                    <a href="HomePage.aspx" visible="false" id="LogoutHeader" onserverclick="LogoutUser" runat="server" title="">Logout</a>
+                       
                         </div>
                     </div>
                 </div>
@@ -75,73 +78,54 @@
     <div class="edu_nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light bg-faded">
-                <h1><span style="color:red">We are Pmstratinc</span></h1>
-                <!--<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt="logo"></a>-->
+ <img src="images/PMStrat_inLogo.png"  alt="" class="f_logo" style="image-resolution:unset;height:50px;width:60px">
+
+                        <h1><a href="HomePage.aspx" class="nav-link" style="color: red">PMStrat Inc</a></h1>                <!--<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt="logo"></a>-->
                 <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav nav lavalamp ml-auto menu">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Home</a>
-                            <ul class="navbar-nav nav mx-auto">
-                                <li class="nav-item"><a href="index-2.html" class="nav-link">Home Version 01</a></li>
-                                <li class="nav-item"><a href="index-3.html" class="nav-link">Home Version 02</a></li>
-                                <li class="nav-item"><a href="index-4.html" class="nav-link">Home Version 03</a></li>
-                                <li class="nav-item"><a href="index-5.html" class="nav-link">Home Version 04</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
-                        <li class="nav-item">
-                            <a href="course.html" class="nav-link">Courses</a>
-                            <ul class="navbar-nav nav mx-auto">
-                                <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
-                                <li class="nav-item"><a href="course-details.html" class="nav-link">Courses Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="blog.html" class="nav-link">Blog</a>
-                            <ul class="navbar-nav nav mx-auto">
-                                <li class="nav-item"><a href="blog.html" class="nav-link">Blog List</a></li>
-                                <li class="nav-item"><a href="blog-2.html" class="nav-link">Blog Grid One</a></li>
-                                <li class="nav-item"><a href="blog-3.html" class="nav-link">Blog Grid Two</a></li>
-                                <li class="nav-item"><a href="blog-details.html" class="nav-link">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Pages</a>
-                            <ul class="navbar-nav nav mx-auto">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link dropdown_icon">Courses</a>
-                                    <ul class="navbar-nav nav mx-auto">
-                                        <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
-                                        <li class="nav-item"><a href="course-details.html" class="nav-link">Courses Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link dropdown_icon">Events</a>
-                                    <ul class="navbar-nav nav mx-auto">
-                                        <li class="nav-item"><a href="event.html" class="nav-link">Event</a></li>
-                                        <li class="nav-item"><a href="event-details.html" class="nav-link">Event Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link dropdown_icon">Blog</a>
-                                    <ul class="navbar-nav nav mx-auto">
-                                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog List</a></li>
-                                        <li class="nav-item"><a href="blog-2.html" class="nav-link">Blog Grid One</a></li>
-                                        <li class="nav-item"><a href="blog-3.html" class="nav-link">Blog Grid Two</a></li>
-                                        <li class="nav-item"><a href="blog-details.html" class="nav-link">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a href="become-a-teacher.html" class="nav-link">Become A Teacher</a></li>
-                                <li class="nav-item"><a href="teacher-profile.html" class="nav-link">Teachers Profile</a></li>
-                                <li class="nav-item"><a href="team.html" class="nav-link">Teachers Page</a></li>
-                                <li class="nav-item"><a href="forgot-password.html" class="nav-link">Forgot Password</a></li>
-                            </ul>
-                        </li>
+                            <li id="UsrAbout" runat="server" class="nav-item"><a href="About.aspx" class="nav-link">About</a></li>
 
-                        <li class="nav-item"><a href="student.html" class="nav-link">Student</a></li>
+                                                         <li id="UsrStuInfo" runat="server" class="nav-item"><a href="StuReg.aspx" class="nav-link" >Student Info</a></li>
 
-                        <li class="nav-item"><a href="immigration.html" class="nav-link">Immigration</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                                         <li id="UsrProgress" visible="false" runat="server"><a class="nav-link">Progress</a>
+                                     <ul style="background-color:white">
+
+                                        <li class="dropdown-item" style="display:contents"><a href="Stage1.aspx" > Stage 1</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a>&nbsp&nbsp</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a href="Stage2.aspx" > Stage 2</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a>&nbsp&nbsp</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a href="Stage3.aspx" > Stage 3</a></li>
+                                    </ul>
+                                </li>        
+
+                             <%--   <li id="AdmProgress" visible="false" runat="server" class="nav-item"><a class="nav-link">progress</a>
+                                    <ul>
+                                        <li><a href="Stage1.aspx">Stage 1</a></li>
+                                        <li><a href="Stage2.aspx">Stage 2</a></li>
+                                        <li><a href="Stage3.aspx">Stage 3</a></li>
+                                    </ul>
+                                </li>--%>
+
+                                                        <li id="UsrContact" runat="server" class="nav-item"><a href="Contact.aspx" class="nav-link">Contact</a></li>
+
+
+                            <%--    <li id="AdmReports" visible="false" runat="server" class="nav-item"><a class="nav-link">Reports</a></li>
+
+                                <li id="AdmQueries" visible="false" runat="server" class="nav-item"><a class="nav-link">Queries</a></li>
+
+                                <li id="AdminUsrMng" visible="false" runat="server" class="nav-item"><a class="nav-link">Admin</a></li>--%>
+
+
+
+<%--                                <li id="UsrStudent" runat="server" class="nav-item"><a href="StudentReg.aspx" class="nav-link">Academics</a></li>--%>
+
+                                <%--<li id="UsrImmigration" runat="server" class="nav-item"><a href="immigration.html" class="nav-link">Immigration</a></li>
+
+                                <li id="UsrSettlement" runat="server" class="nav-item"><a href="Settlement.aspx" class="nav-link">Settlement</a></li>--%>
+
+                                <%--                                <li id="UsrStudent" id="UserMang" class="nav-item" runat="server" ><a href="UserManagement.aspx" class="nav-link">User Management</a></li>--%>
+
+
                     </ul>
                 </div>
                 <div class="mr-auto search_area ">
@@ -169,7 +153,7 @@
                         <h1>About Page</h1>
                         <div class="pages_links">
                             <a href="#" title="">Home</a>
-                            <a href="#" title="" class="active">About Page</a>
+                            <a href="#" title="" id="Message" class="active">About Page</a>
                         </div>
                     </div>
                 </div>              
@@ -281,24 +265,24 @@
             <div class="col-12 col-sm-12 col-md-7 col-lg-7">
                 <div class="about_title">
                     <span>About Us</span>
-                    <h2>The most gorgeous online schools are built Eduwise.</h2>
+                    <h2>PM Strat Inc, shaping lives by providing great career opportunities in Canada.</h2>
                  </div>
             </div>
             <div class="col-12 col-sm-12 col-md-5 col-lg-5 p-0">
                 <div class="banner_about">
-                    <img src="images/banner/about_thinking.jpg" alt="" class="img-fluid">
+                    <img src="images/banner/about_thinking.jpg" alt="">
                  </div>
             </div>
         </div>        
         <div class="row about_content_wrapper">
             <div class="col-12 col-sm-12 col-md-5 col-lg-5 p-0">
                 <div class="about_banner_down">
-                    <img src="images/blog/blog_3.jpg" alt="" class="img-fluid">
+                    <img src="images/blog/blog_3.jpg" alt="" >
                  </div>
             </div>
             <div class="col-12 col-sm-12 col-md-7 col-lg-7">
                 <div class="about_content">
-                    <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget. Etiam maecenas vel vici quis dictum rutrum nec nisi et.Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget. Etiam maecenas vel vici quis dictum rutrum nec nisi et.Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget. Etiam maecenas vel vici quis dictum rutrum nec nisi et.</p>
+                    <p>The students will be provided with state of the art universities and colleges to choose from, which will provide the platform for their upcoming future lives that depends upon an excellent career. All queries/blockers will be answered byn our transparent admission procedure.</p>
                     <a href="#" title="">Read More About Us <i class="fas fa-angle-right"></i></a>
                  </div>
             </div>
@@ -308,448 +292,80 @@
 
 
 <!--========={ Popular Courses }========-->
-<section class="unlimited_possibilities" id="about_unlimited_possibilities">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="sub_title">
-                    <h2>Unlimited Possibilities</h2>
-                    <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget. Etiam maecenas vel vici quis dictum rutrum nec nisi et.</p>  
-                </div><!-- ends: .section-header -->
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-                 <div class="single_item single_item_first">
-                    <div class="icon_wrapper">
-                        <i class="flaticon-student"></i>
-                    </div>
-                    <div class="blog_title">
-                        <h3><a href="#" title="">Learn anywhere</a></h3> 
-                        <p>Lorem ipsum dolor consectetur sed do tempor incididunt ut laboris ut aliquip ex commodo nt ut laboris ut aliquip ex commodo conquat.</p>                    
-                    </div>   
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="single_item single_item_center">
-                    <div class="icon_wrapper">
-                        <i class="flaticon-university"></i>
-                    </div>
-                    <div class="blog_title">
-                        <h3><a href="#" title="">Our Mission</a></h3> 
-                        <p>Lorem ipsum dolor consectetur sed do tempor incididunt ut laboris ut aliquip ex commodo nt ut laboris ut aliquip ex commodo conquat.</p>                    
-                    </div>   
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-               <div class="single_item single_item_last">
-                <div class="icon_wrapper">
-                        <i class="flaticon-diploma"></i>
-                    </div>
-                    <div class="blog_title">
-                        <h3><a href="#" title="">Diploma Course</a></h3> 
-                        <p>Lorem ipsum dolor consectetur sed do tempor incididunt ut laboris ut aliquip ex commodo nt ut laboris ut aliquip ex commodo conquat.</p>
-                    </div>   
-                </div>
-            </div>            
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-                 <div class="single_item single_item_center">
-                    <div class="icon_wrapper">
-                        <i class="flaticon-atom"></i>
-                    </div>
-                    <div class="blog_title">
-                        <h3><a href="#" title="">Physical Activity</a></h3> 
-                        <p>Lorem ipsum dolor consectetur sed do tempor incididunt ut laboris ut aliquip ex commodo nt ut laboris ut aliquip ex commodo conquat.</p>                    
-                    </div>   
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="single_item single_item_last">
-                    <div class="icon_wrapper">
-                        <i class="flaticon-open-book"></i>
-                    </div>
-                    <div class="blog_title">
-                        <h3><a href="#" title="">Book Library</a></h3> 
-                        <p>Lorem ipsum dolor consectetur sed do tempor incididunt ut laboris ut aliquip ex commodo nt ut laboris ut aliquip ex commodo conquat.</p>                    
-                    </div>   
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-               <div class="single_item single_item_first item_6">
-                <div class="icon_wrapper">
-                        <i class="flaticon-care"></i>
-                    </div>
-                    <div class="blog_title">
-                        <h3><a href="#" title="">Love & Care</a></h3> 
-                        <p>Lorem ipsum dolor consectetur sed do tempor incididunt ut laboris ut aliquip ex commodo nt ut laboris ut aliquip ex commodo conquat.</p>
-                    </div>   
-                </div>
-            </div>             
-        </div>
-    </div>
-</section><!-- End Popular Courses -->
 
-
-<!--========={ Register Area }========-->
-<section class="register_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                <div class="row">
-                    <div class="form-full-box">
-                        <div class="form_title">
-                            <h2>Become A Membar</h2>
-                            <p>Get Instant access to <span>5000+ </span>Video courses </p>
-                        </div>
-                        <form>
-                            <div class="register-form">
-                                <div class="row">
-                                    <div class="col-12 col-xs-12 col-md-12">
-                                        <div class="form-group">
-                                            <label><i class="fas fa-user"></i></label>
-                                            <input class="form-control" name="name" placeholder="Write Your Name" required="" type="text">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-xs-12 col-md-12">
-                                        <div class="form-group">
-                                            <label><i class="flaticon-email"></i></label>
-                                            <input class="form-control" name="email" placeholder="Write Your E-mail" required="" type="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-xs-12 col-md-12">
-                                        <div class="form-group massage_text">
-                                            <label><i class="flaticon-copywriting"></i></label>
-                                            <textarea class="form-control"  placeholder="Write Something Here" required=""></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-xs-12 col-md-12 register-btn-box">
-                                        <button class="register-btn" type="submit">Send Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-7 col-lg-7 form-content">
-                <h2>All study opportunities<br>in one single place</h2>
-                <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus<br> eget.felis dapibus arcu donec viverra. Pede phasellus eget. Etiam maecenas vel<br> vici quis dictum rutrum nec nisi et.</p>
-                <div class="count_student">
-                    <div class="single_count">
-                        <span class="counter">54000</span>
-                        <span class="department_name">Students</span>
-                    </div>                    
-                    <div class="single_count">
-                        <span class="counter">1650</span>
-                        <span class="department_name">Scholarships</span>
-                    </div>                    
-                    <div class="single_count">
-                        <span class="counter">150</span>
-                        <span class="department_name">Courses</span>
-                    </div>
-                </div>  
-            </div>
-        </div>
-    </div>
-</section><!-- ./ End Register Area section -->
-
-
-<!--========={ Our Instructiors }========-->
-<section class="our_instructors" id="about_our_instructors">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="sub_title">
-                    <h2>Meet Our Professors</h2>
-                    <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget. Etiam maecenas vel vici quis dictum rutrum nec nisi et.</p>  
-                </div><!-- ends: .section-header -->
-            </div>
-            <div class="single-wrappe col-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="team-single-item">
-                    <figure>
-                        <div class="member-img">
-                            <div class="teachars_pro">
-                                <img src="images/team/team_1.jpg" alt="member img" class="img-fluid">
-                            </div>
-                        </div>
-                        <figcaption>
-                            <div class="member-name">
-                                <h4><a href="#" title="">Jonson Park</a></h4>
-                                <span>Professor</span>
-                            </div>                            
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-            
-            <div class="single-wrapper col-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="team-single-item">
-                    <figure>
-                        <div class="member-img">
-                            <div class="teachars_pro">
-                                <img src="images/team/team_2.jpg" alt="member img" class="img-fluid">
-                            </div>
-                        </div>
-                        <figcaption>
-                            <div class="member-name">
-                                <h4><a href="#" title="">Teymoni</a></h4>
-                                <span>Lecturer</span>
-                            </div>                            
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-            
-            <div class="single-wrapper  col-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="team-single-item ">
-                    <figure>
-                        <div class="member-img">
-                            <div class="teachars_pro">
-                                <img src="images/team/team_3.jpg" alt="member img" class="img-fluid">
-                            </div>
-                        </div>
-                        <figcaption>
-                            <div class="member-name">
-                                <h4><a href="#" title="">Jonathon Smith</a></h4>
-                                <span>Coordinator</span>
-                            </div>                            
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-            
-            <div class="single-wrapper col-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="team-single-item">
-                    <figure>
-                        <div class="member-img">
-                            <div class="teachars_pro">
-                                <img src="images/team/team_4.jpg" alt="member img" class="img-fluid">
-                            </div>
-                        </div>
-                        <figcaption>
-                            <div class="member-name">
-                                <h4><a href="#" title="">Monki parki</a></h4>
-                                <span>Assistant</span>
-                            </div>                            
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>                    
-            <div class="single-wrapper col-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="team-single-item">
-                    <figure>
-                        <div class="member-img">
-                            <div class="teachars_pro">
-                                <img src="images/team/team_5.jpg" alt="member img" class="img-fluid">
-                            </div>
-                        </div>
-                        <figcaption>
-                            <div class="member-name">
-                                <h4><a href="#" title="">Yakailo Mim</a></h4>
-                                <span>Teacher</span>
-                            </div>                            
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>                    
-            <div class="single-wrapper col-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="team-single-item">
-                    <figure>
-                        <div class="member-img">
-                            <div class="teachars_pro">
-                                <img src="images/team/team_6.jpg" alt="member img" class="img-fluid">
-                            </div>
-                        </div>
-                        <figcaption>
-                            <div class="member-name">
-                                <h4><a href="#" title="">Jonson Park</a></h4>
-                                <span>Asistant</span>
-                            </div>                            
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>                    
-        </div>
-    </div>
-</section><!-- ./ End Our Instructiors -->
-
-
-<section class="out_count_student">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="sub_title">
-                    <h2>Everything Is Eduwise</h2>
-                    <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget. Etiam maecenas vel vici quis dictum rutrum nec nisi et.</p>  
-                </div><!-- ends: .section-header -->
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="counter_wrapper">
-                    <div class="counter_single_wrapper">
-                        <div class="section count_single">
-                            <div class="project-count"><span class="counter">1200 </span><span class="count_icon">+</span></div>
-                            <span>Active students</span>
-                        </div>
-                    </div>
-
-                    <div class="counter_single_wrapper">
-                        <div class="section count_single">
-                            <div class="project-count"><span class="counter">1300 </span><span class="count_icon">+</span></div>
-                            <span>Online Courses</span>
-                        </div>  
-                    </div>  
-
-                    <div class="counter_single_wrapper">
-                        <div class="section count_single">
-                            <div class="project-count"><span class="counter">1050 </span><span class="count_icon">+</span></div>
-                            <span>Satisfaction</span>
-                        </div>
-                    </div>
-
-                    <div class="counter_single_wrapper">
-                        <div class="section count_single">
-                            <div class="project-count"><span class="counter">1500 </span><span class="count_icon">+</span></div>
-                            <span>Fraduates</span>
-                        </div>  
-                    </div> 
-                </div> 
-            </div>
-        </div>
-    </div>
-    <div class="bg_shapes">
-        
-    </div>
-</section><!-- End Testimonial -->
-
-
-
-<section class="faq_about">
-    <div class="container"> 
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="sub_title">
-                    <h2>Frequently asked Questions</h2>
-                    <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget. Etiam maecenas vel vici quis dictum rutrum nec nisi et.</p>  
-                </div><!-- ends: .section-header -->
-            </div>
-        </div>           
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="faq_wrapper">
-                    <div class="single_faq">
-                        <h3><span>1</span>What is the refund policy?</h3>
-                        <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget maecLorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget maecenas.</p>  
-                    </div>                    
-                    <div class="single_faq">
-                        <h3><span>2</span>What is the refund policy?</h3>
-                        <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pedsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget maecenas.</p>   
-                    </div>                   
-                     <div class="single_faq">
-                        <h3><span>3</span>What is the refund policy?</h3>
-                        <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phaselsit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget maecenas.</p>  
-                    </div>
-                    <div class="single_faq">
-                        <h3><span>4</span>What is the refund policy?</h3>
-                        <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phaseamet mollis felis dapibus arcu donec viverra. Pede phasellus eget maecenas.</p>  
-                    </div>                    
-                    <div class="single_faq">
-                        <h3><span>5</span>What is the refund policy?</h3>
-                        <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus egelis felis dapibus arcu donec viverra. Pede phasellus eget maecenas.</p>   
-                    </div>                   
-                     <div class="single_faq">
-                        <h3><span>6</span>What is the refund policy?</h3>
-                        <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget maecenas.</p>  
-                    </div>
-                 </div>
-            </div>
-        </div>
-    </div>    
-</section>
-
-
-<section class="teamgroup">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 p-0"> 
-                <div class="teamgroup_info_wrapper">
-                    <h2>Lorem ipsum dolor sit amet mollis felis dapibus arcu donect.</h2>
-                    <a href="#" title="" class="srtarte_btn">Get Started Now</a>
-                </div>   
-                <div class="teamgroup_info_banner">
-                    <img src="images/banner/teamgroup.png" alt="" class="img-fluid">
-                </div>  
-            </div>
-        </div>
-    </div>                
-</section>
 
 
 
 <!-- Footer -->  
-<footer class="footer_2">
-    <div class="container">
-        <div class="footer_top">
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="footer_single_col footer_intro">
-                        <img src="images/logo2.png" alt="" class="f_logo">
-                        <p>Ante amet vitae vulputate odio nulla vel pretium pulvinar aenean. Rhoncus eget adipiscing etiam arcu. Ultricies justo ipsum nec amet.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-2">
-                    <div class="footer_single_col">
-                        <h3>Useful Links</h3>
-                        <ul class="location_info quick_inf0">
-                            <li><a href="#">Leadereship</a></li>
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Diversity</a></li>
-                            <li><a href="#">Jobs</a></li>
-                            <li><a href="#">Press</a></li>
-                        </ul>                         
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-2">
-                    <div class="footer_single_col information">
-                        <h3>information</h3>
-                        <ul class="quick_inf0">
-                            <li><a href="#">Leadereship</a></li>
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Diversity</a></li>
-                            <li><a href="#">Jobs</a></li>
-                            <li><a href="#">Press</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="footer_single_col contact">
-                        <h3>Contact Us</h3>
-                        <p>Ante amet vitae vulputate odio nulla vel pretium aenean.</p>
-                        <div class="contact_info">
-                            <span>+000 124 325</span> 
-                            <span class="email">info@yourdomain.com</span>
+    <footer class="footer_2">
+            <div class="container">
+                <div class="footer_top">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="footer_single_col footer_intro">
+                                <div class="row">
+                              <img src="images/PMStrat_inLogo.png"  alt="" class="f_logo" style="image-resolution:unset;height:50px;width:60px">
+
+                        <h2><a href="HomePage.aspx" class="nav-link" style="color: white">PMStrat inc</a></h2>  
+                                    </div>
+                        <p>PM Strat Inc is changing lives of individuals. Be the first one to register.</p>
+                            </div>
                         </div>
-                        <ul class="social_items d-flex list-unstyled">
+                        <div class="col-12 col-md-6 col-lg-2">
+                            <div class="footer_single_col">
+                                <h3>Useful Links</h3>
+                                <ul class="location_info quick_inf0">
+                                    <li><a href="HomePage.aspx">Home</a></li>
+                                    <li><a href="About.aspx">About</a></li>
+                                    <li><a href="Contact.aspx">Contact</a></li>
+                                    <li><a href="StuReg.aspx">Student</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <%--<div class="col-12 col-md-6 col-lg-2">
+                            <div class="footer_single_col information">
+                                <h3>information</h3>
+                                <ul class="quick_inf0">
+                                    <li><a href="#">Leadereship</a></li>
+                                    <li><a href="#">Company</a></li>
+                                    <li><a href="#">Diversity</a></li>
+                                    <li><a href="#">Jobs</a></li>
+                                    <li><a href="#">Press</a></li>
+                                </ul>
+                            </div>
+                        </div>--%>
+                        <div class="col-12 col-md-12 col-lg-6">
+                            <div class="footer_single_col contact">
+                        <h3>Contact Us</h3>
+                        <p>Our experts are waiting to hear from you . For providing end to end admission workflow through a crystal clear procedure, our consultants will guide you deep down to get
+                            a good position at our Canada's top academic institutions having a reputation that will be great for your upcoming future. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
+                        </p>
+                        <div class="contact_info">
+<%--                            <span>+000 124 325</span> --%>
+                            
+                        </div>
+                        <%--<ul class="social_items d-flex list-unstyled">
                             <li><a href="#"><i class="fab fa-facebook-f fb-icon"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter twitt-icon"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in link-icon"></i></a></li>
                             <li><a href="#"><i class="fab fa-instagram ins-icon"></i></a></li>
-                        </ul>
+                        </ul>--%>
                     </div>
-                </div>
-                 <div class="col-12 col-md-12 col-lg-12">
+                        </div>
+                        <%--<div class="col-12 col-md-12 col-lg-12">
                     <div class="copyright">
                         <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
                     </div>
-                 </div>
+                 </div>--%>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="shapes_bg">
-        <img src="images/shapes/testimonial_2_shpe_1.png" alt="" class="shape_3">        
-        <img src="images/shapes/footer_2.png" alt="" class="shape_1">
-    </div>    
-</footer><!-- End Footer -->
+            <div class="shapes_bg">
+                <%--        <img src="images/shapes/testimonial_2_shpe_1.png" alt="" class="shape_3">        --%>
+                <img src="images/shapes/footer_2.png" alt="" class="shape_1">
+            </div>
+        </footer>
+<!-- End Footer -->
 
 <section id="scroll-top" class="scroll-top">
     <h2 class="disabled">Scroll to top</h2>
@@ -789,16 +405,16 @@
                 <div><a href="index-3.html" data-toggle="tooltip" data-placement="top" title="Home Style Two"><img class="main-image img-fluid" src="demo/index_2.png" alt=""/></a></div>
                 <div><a href="index-4.html" data-toggle="tooltip" data-placement="top" title="Home Style Three"><img class="main-image img-fluid" src="demo/index_3.png" alt=""/></a></div>
                 <ul class="list-unstyled clearfix">
-                    <li><a href="about.html" data-toggle="tooltip" data-placement="top" title="About Page"><img src="demo/about.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="blog.html" data-toggle="tooltip" data-placement="top" title="Blog Page"><img src="demo/blog.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="blog-details.html" data-toggle="tooltip" data-placement="top" title="Blog Details Page"><img src="demo/blog_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="event.html" data-toggle="tooltip" data-placement="top" title="Event Page"><img src="demo/event.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="event-details.html" data-toggle="tooltip" data-placement="top" title="Event Deiails"><img src="demo/event_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="teacher-profile.html" data-toggle="tooltip" data-placement="top" title="Teacher Profile"><img src="demo/teacher_pro.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="course.html" data-toggle="tooltip" data-placement="top" title="Courses Page"><img src="demo/course.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="course-details.html" data-toggle="tooltip" data-placement="top" title="Courses Details"><img src="demo/course_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="team.html" data-toggle="tooltip" data-placement="top" title="Team Page"><img src="demo/team.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="contact.html" data-toggle="tooltip" data-placement="top" title="Contact Page"><img src="demo/contact.png" alt="" class="img-fluid"></a></li>
+                    <li><a href="About.aspx" data-toggle="tooltip" data-placement="top" title="About Page"><img src="demo/about.png" alt="" class="img-fluid"></a></li>
+                    <li><a href="About.aspx" data-toggle="tooltip" data-placement="top" title="Blog Page"><img src="demo/blog.png" alt="" class="img-fluid"></a></li>
+                    <li><a href="About.aspx" data-toggle="tooltip" data-placement="top" title="Blog Details Page"><img src="demo/blog_details.png" alt="" class="img-fluid"></a></li>
+                    <li><a href="About.aspx" data-toggle="tooltip" data-placement="top" title="Event Page"><img src="demo/event.png" alt="" class="img-fluid"></a></li>
+                    <li><a href="About.aspx" data-toggle="tooltip" data-placement="top" title="Event Deiails"><img src="demo/event_details.png" alt="" class="img-fluid"></a></li>
+                    <li><a href="About.aspx" data-toggle="tooltip" data-placement="top" title="Teacher Profile"><img src="demo/teacher_pro.png" alt="" class="img-fluid"></a></li>
+                    <li><a href="About.aspx" data-toggle="tooltip" data-placement="top" title="Courses Page"><img src="demo/course.png" alt="" class="img-fluid"></a></li>
+                    <li><a href="About.aspx" data-toggle="tooltip" data-placement="top" title="Courses Details"><img src="demo/course_details.png" alt="" class="img-fluid"></a></li>
+                    <li><a href="About.aspx" data-toggle="tooltip" data-placement="top" title="Team Page"><img src="demo/team.png" alt="" class="img-fluid"></a></li>
+                    <li><a href="Contact.aspx" data-toggle="tooltip" data-placement="top" title="Contact Page"><img src="demo/contact.png" alt="" class="img-fluid"></a></li>
                 </ul>
             </div>
         </div>

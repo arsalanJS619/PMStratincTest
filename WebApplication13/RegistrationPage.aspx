@@ -14,7 +14,7 @@
     <meta name="author" content="Ecology Theme">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMStratinc - Shaping Lives</title>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/PMStrat_inLogo.ico" type="image/x-icon">
     <!-- Goole Font -->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -67,9 +67,17 @@
                             <div class="info_wrapper">
                                 <div class="contact_info">
                                     <ul class="list-unstyled">
-                                        <li><i class="flaticon-phone-receiver"></i>+000-2356-222</li>
-                                        <li><i class="flaticon-mail-black-envelope-symbol"></i>contact@yourdomain.com</li>
+                                         <li><i >+1 (647) 232-8196</i></li>
+                                        <li><i class="flaticon-mail-black-envelope-symbol"></i>admin1_user@pmstratinc.com</li>
                                     </ul>
+                                </div>
+                                <div>
+                                     <ul id="UserLogged" runat="server" class="d-flex" style="color: black">
+                                        <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i></a></li>
+                                        <%--                                        <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Log In</a></li>--%>
+                                    </ul>
+
+                                    <a href="HomePage.aspx" id="LogoutHeader" onserverclick="LogoutUser" runat="server" title="">Logout</a>
                                 </div>
 
                                 <%--<div class="login_info">
@@ -78,17 +86,19 @@
                                         <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Log In</a></li>
                                     </ul>
 <%--                                    <a href="#" title="" class="apply_btn">Apply Now</a>--%>
-                                </div>--%>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+<%--            </div>--%>
 
             <div class="edu_nav">
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light bg-faded">
-                    <h1><a href="HomePage.aspx" class="nav-link" style="color:red">PMStratinc</a></h1>
+                   <img src="images/PMStrat_inLogo.png"  alt="" class="f_logo" style="image-resolution:unset;height:50px;width:60px">
+
+                        <h1><a href="HomePage.aspx" class="nav-link" style="color: red">PMStrat Inc</a></h1>          
                         <!--<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt="logo"></a>-->
                         <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
                             <ul class="navbar-nav nav lavalamp ml-auto menu">
@@ -101,66 +111,30 @@
                                         <li class="nav-item"><a href="index-5.html" class="nav-link">Home Version 04</a></li>
                                     </ul>
                                 </li>--%>
-                                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                                <%-- <li class="nav-item">
-                                    <a href="course.html" class="nav-link">Courses</a>
-                                    <ul class="navbar-nav nav mx-auto">
-                                        <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
-                                        <li class="nav-item"><a href="course-details.html" class="nav-link">Courses Details</a></li>
+                                 <li id="UsrAbout" runat="server" class="nav-item"><a href="About.aspx" class="nav-link">About</a></li>
+
+                                                         <li id="UsrStuInfo" runat="server" class="nav-item"><a href="StuReg.aspx" class="nav-link" >Student Info</a></li>
+
+                                         <li id="UsrProgress" visible="false" runat="server"><a class="nav-link">Progress</a>
+                                     <ul style="background-color:white">
+
+                                        <li class="dropdown-item" style="display:contents"><a href="Stage1.aspx" > Stage 1</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a>&nbsp&nbsp</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a href="Stage2.aspx" > Stage 2</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a>&nbsp&nbsp</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a href="Stage3.aspx" > Stage 3</a></li>
                                     </ul>
-                                </li>--%>
-                                <%-- <li class="nav-item">
-                                    <a href="blog.html" class="nav-link">Blog</a>
-                                    <ul class="navbar-nav nav mx-auto">
-                                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog List</a></li>
-                                        <li class="nav-item"><a href="blog-2.html" class="nav-link">Blog Grid One</a></li>
-                                        <li class="nav-item"><a href="blog-3.html" class="nav-link">Blog Grid Two</a></li>
-                                        <li class="nav-item"><a href="blog-details.html" class="nav-link">Blog Details</a></li>
-                                    </ul>
-                                </li>--%>
-                                <%--<li class="nav-item">
-                                    <a href="#" class="nav-link">Pages</a>
-                                    <ul class="navbar-nav nav mx-auto">
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link dropdown_icon">Courses</a>
-                                            <ul class="navbar-nav nav mx-auto">
-                                                <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
-                                                <li class="nav-item"><a href="course-details.html" class="nav-link">Courses Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link dropdown_icon">Events</a>
-                                            <ul class="navbar-nav nav mx-auto">
-                                                <li class="nav-item"><a href="event.html" class="nav-link">Event</a></li>
-                                                <li class="nav-item"><a href="event-details.html" class="nav-link">Event Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link dropdown_icon">Blog</a>
-                                            <ul class="navbar-nav nav mx-auto">
-                                                <li class="nav-item"><a href="blog.html" class="nav-link">Blog List</a></li>
-                                                <li class="nav-item"><a href="blog-2.html" class="nav-link">Blog Grid One</a></li>
-                                                <li class="nav-item"><a href="blog-3.html" class="nav-link">Blog Grid Two</a></li>
-                                                <li class="nav-item"><a href="blog-details.html" class="nav-link">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="nav-item"><a href="become-a-teacher.html" class="nav-link">Become A Teacher</a></li>
-                                        <li class="nav-item"><a href="teacher-profile.html" class="nav-link">Teachers Profile</a></li>
-                                        <li class="nav-item"><a href="team.html" class="nav-link">Teachers Page</a></li>
-                                        <li class="nav-item"><a href="forgot-password.html" class="nav-link">Forgot Password</a></li>
+                                </li>        
+
+                             <%--   <li id="AdmProgress" visible="false" runat="server" class="nav-item"><a class="nav-link">progress</a>
+                                    <ul>
+                                        <li><a href="Stage1.aspx">Stage 1</a></li>
+                                        <li><a href="Stage2.aspx">Stage 2</a></li>
+                                        <li><a href="Stage3.aspx">Stage 3</a></li>
                                     </ul>
                                 </li>--%>
 
-                                <li class="nav-item"><a href="student.html" class="nav-link">Student</a></li>
-
-                                <li class="nav-item"><a href="immigration.html" class="nav-link">Immigration</a></li>
-
-                                <li class="nav-item"><a href="Settlement.aspx" class="nav-link">Settlement</a></li>
-
-                                <li id="UserMang" class="nav-item" runat="server" ><a href="UserManagement.aspx" class="nav-link">User Management</a></li>
-
-
-                                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                                                        <li id="UsrContact" runat="server" class="nav-item"><a href="Contact.aspx" class="nav-link">Contact</a></li>
                             </ul>
                         </div>
                         <%--<div class="mr-auto search_area ">
@@ -218,29 +192,55 @@ Number of children under 4-years:	Range 1-10--%>
 
 
         <!-- Footer -->
-        <footer class="footer_2">
+        <footer style="background-color: #ff0000">
+            <div class="container" style="background-color: #ff0000">
+                <div class="row">
+                    <div class="col-12 col-sm-3 col-md-3 col-lg-3 p-0 ">
+                        <div class="shape_wrapper">
+                            <%--                            <img src="images/shapes/bubble_shpe_1.png" alt="" class="shape_t_1">--%>
+                            <%--                            <img src="images/shapes/round_shpae_1.png" alt="" class="shape_t_2">--%>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-9 col-md-9 col-lg-9 p-0 become_techer_wrapper">
+                        <div class="become_a_teacher">
+                            <div class="title">
+                                <%--<h2>Become A Instructor</h2>
+                                <p>Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget. Etiam maecenas vel vici quis dictum rutrum nec nisi et.</p>--%>
+                            </div>
+                            <!-- ends: .section-header -->
+                            <%-- <div class="get_s_btn">
+                                <a href="#" title="">Get Started Now</a>
+                            </div>--%>
+                            <%--                            <img src="images/shapes/bubble_shpe_2.png" alt="" class="shape_t_1">--%>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer_2">
             <div class="container">
                 <div class="footer_top">
                     <div class="row">
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="footer_single_col footer_intro">
-                                <img src="images/logo2.png" alt="" class="f_logo">
-                                <p>Ante amet vitae vulputate odio nulla vel pretium pulvinar aenean. Rhoncus eget adipiscing etiam arcu. Ultricies justo ipsum nec amet.</p>
+                                <div class="row">
+                              <img src="images/PMStrat_inLogo.png"  alt="" class="f_logo" style="image-resolution:unset;height:50px;width:60px">
+
+                        <h2><a href="HomePage.aspx" class="nav-link" style="color: white">PMStrat inc</a></h2>  
+                                    </div>
+                        <p>PM Strat Inc is changing lives of individuals. Be the first one to register.</p>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-2">
                             <div class="footer_single_col">
                                 <h3>Useful Links</h3>
                                 <ul class="location_info quick_inf0">
-                                    <li><a href="#">Leadereship</a></li>
-                                    <li><a href="#">Company</a></li>
-                                    <li><a href="#">Diversity</a></li>
-                                    <li><a href="#">Jobs</a></li>
-                                    <li><a href="#">Press</a></li>
+                                    <li><a href="HomePage.aspx">Home</a></li>
+                                    <li><a href="About.aspx">About</a></li>
+                                    <li><a href="Contact.aspx">Contact</a></li>
+                                    <li><a href="StuReg.aspx">Student</a></li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-2">
+                        <%--<div class="col-12 col-md-6 col-lg-2">
                             <div class="footer_single_col information">
                                 <h3>information</h3>
                                 <ul class="quick_inf0">
@@ -251,35 +251,41 @@ Number of children under 4-years:	Range 1-10--%>
                                     <li><a href="#">Press</a></li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
+                        </div>--%>
+                        <div class="col-12 col-md-12 col-lg-6">
                             <div class="footer_single_col contact">
-                                <h3>Contact Us</h3>
-                                <p>Ante amet vitae vulputate odio nulla vel pretium aenean.</p>
-                                <div class="contact_info">
-                                    <span>+000 124 325</span>
-                                    <span class="email">info@yourdomain.com</span>
-                                </div>
-                                <ul class="social_items d-flex list-unstyled">
-                                    <li><a href="#"><i class="fab fa-facebook-f fb-icon"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter twitt-icon"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in link-icon"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram ins-icon"></i></a></li>
-                                </ul>
-                            </div>
+                        <h3>Contact Us</h3>
+                        <p>Our experts are waiting to hear from you . For providing end to end admission workflow through a crystal clear procedure, our consultants will guide you deep down to get
+                            a good position at our Canada's top academic institutions having a reputation that will be great for your upcoming future. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
+                        </p>
+                        <div class="contact_info">
+<%--                            <span>+000 124 325</span> --%>
+                            
                         </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                            <div class="copyright">
-                                <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
-                            </div>
+                        <%--<ul class="social_items d-flex list-unstyled">
+                            <li><a href="#"><i class="fab fa-facebook-f fb-icon"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter twitt-icon"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in link-icon"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram ins-icon"></i></a></li>
+                        </ul>--%>
+                    </div>
                         </div>
+                        <%--<div class="col-12 col-md-12 col-lg-12">
+                    <div class="copyright">
+                        <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
+                    </div>
+                 </div>--%>
                     </div>
                 </div>
             </div>
             <div class="shapes_bg">
-<%--                <img src="images/shapes/testimonial_2_shpe_1.png" alt="" class="shape_3">--%>
+                <%--        <img src="images/shapes/testimonial_2_shpe_1.png" alt="" class="shape_3">        --%>
                 <img src="images/shapes/footer_2.png" alt="" class="shape_1">
             </div>
+        </footer>
+            </div>
+            
+            <%--            <img src="images/shapes/footer_bg_shpe_1.png" alt="" class="shapes1_footer">--%>
         </footer>
         <!-- End Footer -->
 

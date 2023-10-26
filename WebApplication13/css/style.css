@@ -82,6 +82,49 @@ body {
   color: #6a7a83;
   overflow-x: hidden !important; }
 
+.my-menu li {
+    position: relative;
+    padding:0;
+}
+
+    .my-menu li:focus-within > ul {
+        display: block;
+    }
+
+.my-menu ul {
+    /* Hide my submenus by default */
+    display: none;
+    /* Position submenus, when open */
+    position: absolute;
+    left: 0;
+    top: 100%;
+}
+
+body {
+    background-color: white;
+    font-family: cursive;
+}
+
+.glow {
+    font-size: 50px;
+    color: blue;
+    text-align: center;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+/* Look, Ma! No onclick handler! */
+.my-menu li:hover > ul {
+    display: block;
+}
 p {
   font-weight: 400;
   line-height: 26px;
@@ -1264,7 +1307,10 @@ header {
     width: 100%;
     position: relative;
     z-index: 2;
-    min-height: 660px; }
+    min-height: 660px;
+    top: 176px;
+    left: 3px;
+}
 .about_top_wrapper .items_shape {
   margin-top: -230px;
   height: 550px;
