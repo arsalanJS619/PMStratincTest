@@ -104,7 +104,7 @@ namespace WebApplication13
 
 
             UserLogged.Visible = true;
-            UserLogged.InnerText = Session["User"].ToString();
+            UserLogged.InnerText = "Hi " +Session["User"].ToString();
             LogoutHeader.Visible=true;
             CESubmission.StartDate = System.DateTime.Now;
         }

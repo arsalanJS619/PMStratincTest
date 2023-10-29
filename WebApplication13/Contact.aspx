@@ -163,11 +163,9 @@
             <div class="row">        
                  <div class="col-sm-12 col-md-8 col-lg-8">
                     <div class="intro_text">
-                        <h1>Contact Page</h1>
-                        <div class="pages_links">
-                            <a href="#" title="">Home</a>
-                            <a href="#" title="" class="active">Contact Details</a>
-                        </div>
+                        <h1 style="color:white">Feel Free to Contact</h1>
+                        <h1 style="color:white">PMStrat Inc</h1>
+                       
                     </div>
                 </div>              
             </div>
@@ -272,15 +270,16 @@
                     <div class="event_location_info">                  
                         <ul class="list-unstyled">
                             <li>
-                                <h4 class="info_title">Address : </h4>
+                               <%-- <h4 class="info_title">Address : </h4>
                                 <ul class="list-unstyled">
                                     <li> </li>
-                                </ul>
+                                </ul>--%>
                             </li>
                             <li>
                                 <h4 class="info_title">Phone Numbers :</h4>
                                 <ul class="list-unstyled">
-                                    <li>+000 251 215 1235</li>
+                                                                            <li>+1 (647) 232-8196</li>
+
                                 </ul>
                             </li>
                             <li>
@@ -389,9 +388,9 @@
                         <p>Our experts are waiting to hear from you . For providing end to end admission workflow through a crystal clear procedure, our consultants will guide you deep down to get
                             a good position at our Canada's top academic institutions having a reputation that will be great for your upcoming future. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
                         </p>
-                        <div class="contact_info">
+                       <div class="contact_info">
 <%--                            <span>+000 124 325</span> --%>
-                            
+                              <span>+1 (647) 232-8196</span> 
                         </div>
                         <%--<ul class="social_items d-flex list-unstyled">
                             <li><a href="#"><i class="fab fa-facebook-f fb-icon"></i></a></li>

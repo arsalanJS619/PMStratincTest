@@ -13,7 +13,7 @@
     <meta name="author" content="Ecology Theme">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMStratinc - Shaping Lives</title>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/PMStrat_inLogo.ico" type="image/x-icon" />
     <!-- Goole Font -->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"> 
@@ -63,17 +63,17 @@
                     <div class="info_wrapper">
                         <div class="contact_info">                   
                             <ul class="list-unstyled">
-                               <li><i ></i></li>
+<li><i >+1 (647) 232-8196</i></li>
                                         <li><i class="flaticon-mail-black-envelope-symbol"></i>admin1_user@pmstratinc.com</li>
                             </ul>                    
                         </div>
-                         <div class="login_info">
+                          <div class="login_info">
                                     <ul id="LoginHeader" runat="server" class="d-flex">
 <%--                                        <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i>Sign Up</a></li>--%>
 <%--                                        <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Log In</a></li>--%>
                                     </ul>
-                           <ul id="UserLogged" runat="server" class="d-flex" style="color: black">
-<%--                                        <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i></a></li>--%>
+                         <ul id="UserLogged" runat="server" class="d-flex" style="color: black">
+                                        <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i></a></li>
                                         <%--                                        <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Log In</a></li>--%>
                                     </ul>
 
@@ -88,7 +88,6 @@
                             </ul>
 <%--                            <a href="#" title="" class="apply_btn">Apply Now</a>--%>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -97,26 +96,30 @@
     <div class="edu_nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light bg-faded">
-                    <h1><a href="HomePage.aspx" class="nav-link" style="color:red">PMStratinc</a></h1>
-                <!--<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt="logo"></a>-->
+<img src="images/PMStrat_inLogo.png"  alt="" class="f_logo" style="image-resolution:unset;height:50px;width:60px">
+
+                        <h1><a href="HomePage.aspx" class="nav-link" style="color: red">PMStrat inc</a></h1>                 <!--<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt="logo"></a>-->
                 <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav nav lavalamp ml-auto menu">
-                        
-                       <li id="AdmProgress" visible="false" runat="server"><a href="AdminProgress.aspx" class="nav-link">progress</a>
+                                                                                 <li id="UsrStuInfo" runat="server" class="nav-item"><a href="StuReg.aspx" class="nav-link" >Student Info</a></li>
+
+                       <li id="AdmProgress" runat="server"><a href="AdminProgress.aspx" class="nav-link">progress</a>
                                      <ul>
 
-                                        <li class="dropdown-item"><a href="AdminStage1.aspx" style="padding:unset">Stage 1</a></li>
-                                        <li class="dropdown-item"><a href="AdminStage2.aspx">Stage 2</a></li>
-                                        <li class="dropdown-item"><a href="AdminStage3.aspx">Stage 3</a></li>
+                                      <li class="dropdown-item" style="display:contents"><a href="AdminStage1.aspx">Stage 1</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a>&nbsp&nbsp</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a href="AdminStage2.aspx">Stage 2</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a>&nbsp&nbsp</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a href="AdminStage3.aspx">Stage 3</a></li>
                                     </ul>
                                 </li>
 
-                                <li id="AdmReports" visible="false" runat="server" class="nav-item"><a href="StudentProgressRep.aspx" class="nav-link">Reports</a>
+                                <li id="AdmReports"  runat="server" class="nav-item"><a href="StudentProgressRep.aspx" class="nav-link">Reports</a>
                            
                                </li>
-                                <li id="AdmQueries" visible="false" runat="server" class="nav-item"><a href="AdminQueries.aspx" class="nav-link">Queries</a></li>
+                                <li id="AdmQueries"  runat="server" class="nav-item"><a href="AdminQueries.aspx" class="nav-link">Queries</a></li>
 
-                                <li id="AdminUsrMng" visible="false" runat="server" class="nav-item"><a href="AdminUsrMangemnt.aspx" class="nav-link">UserManagement</a></li>
+                                <li id="AdminUsrMng"  runat="server" class="nav-item"><a href="AdminUsrMangemnt.aspx" class="nav-link">UserManagement</a></li>
 
                     </ul>
                 </div>
@@ -131,8 +134,8 @@
                  <div class="col-sm-12 col-md-8 col-lg-8">
                     <div class="intro_text">
                         <div class="pages_links">
-                            <a href="#" title="">Home</a>
-                            <a href="#" title="" class="active">Student Details</a>
+                            <%--<a href="#" title="">Home</a>
+                            <a href="#" title="" class="active">Student Details</a>--%>
                         </div>
                     </div>
                 </div>              
@@ -159,14 +162,14 @@
                         <div class="contact_form">
                             <form action="#">
                                 <div class="row">
-                                    <span style="font-weight:bold" class="title">STUDENT APPLICATION STATUS REPORT</span>
+                                    <span style="font-weight:bold;font-family:'Times New Roman'" class="title">STUDENT APPLICATION STATUS REPORT</span>
                                     <div class="col-12 col-sm-12 col-md-12 form-group"></div>
 
                                           <div class="col-6 col-sm-6 col-md-3 form-group">
                                         <asp:Label Font-Size="Large" Font-Bold="true" Text="Our Action" runat="server"></asp:Label>
                                         </div>
                                     <div class="col-6 col-sm-6 col-md-3 form-group">
-                                       <asp:DropDownList runat="server" class="form-control" id="OurAction" Width="200px" ForeColor="Black">
+                                       <asp:DropDownList runat="server" class="form-control" id="OurAction" Width="250px" Height="45px" ForeColor="Black">
                                            <asp:ListItem>All</asp:ListItem>
                                            <asp:ListItem>InProcess</asp:ListItem>
                                            <asp:ListItem>Accepted</asp:ListItem>
@@ -183,24 +186,61 @@
 
                                                               </div>
                                             <div class="col-6 col-sm-6 col-md-3 form-group">
-<asp:TextBox CssClass="form-control" ID="FromDate" OnTextChanged="Set_ToDate" AutoPostBack="true" Font-Size="Large"  Style="width:200px" runat="server" MaxLength="11" onfocus="checkDateEntryMode(this)" onblur="checkDate(this);" onpaste="return false" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></asp:TextBox>
-                                       
+                                                                                                                             <div class="input-group my-colorpicker2 colorpicker-element">
+
+<asp:TextBox CssClass="form-control" ID="FromDate" OnTextChanged="Set_ToDate" AutoPostBack="true" Font-Size="Large"  Style="width:150px" runat="server" MaxLength="11" onfocus="checkDateEntryMode(this)" onblur="checkDate(this);" onpaste="return false" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></asp:TextBox>
+                                                                                <div class="input-group-addon">   
+
+                                                <!--------------------------------------------------------->
+
+                                                
+                                                 <!--   -->
+
+
+
                                             <asp:Image ID="FromImgDate" Width="25px" runat="server" ImageUrl="images/Calendar_scheduleHS.png" />
+                                                                                                                                 </div>
+                                                </div>
                                     <ajaxToolkit:CalendarExtender PopupPosition="BottomRight" ID="CESubmission" runat="server" TargetControlID="FromDate" PopupButtonID="FromImgDate" Format="dd-MMM-yyyy"></ajaxToolkit:CalendarExtender>
                                                                                   </div>   
                                     
                                      <div class="col-12 col-sm-12 col-md-12 form-group"></div>
+
                                       <div class="col-6 col-sm-6 col-md-3 form-group">
  <asp:Label Font-Size="Large" Font-Bold="true" Text="To Date" runat="server"></asp:Label>   
 
                                                               </div>
 
-                                     <div class="col-12 col-sm-12 col-md-6 form-group">
-<asp:TextBox CssClass="form-control" ID="ToDates" OnTextChanged="Set_ToDate" AutoPostBack="true" Font-Size="Large"  Style="width:200px" runat="server" MaxLength="11" onfocus="checkDateEntryMode(this)" onblur="checkDate(this);" onpaste="return false" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></asp:TextBox>
+                                     <div class="col-6 col-sm-6 col-md-3 form-group">
+                                                                             <div class="input-group my-colorpicker2 colorpicker-element">
+
+<asp:TextBox CssClass="form-control" ID="ToDates" OnTextChanged="Set_ToDate" AutoPostBack="true" Font-Size="Large"  Style="width:150px" runat="server" MaxLength="11" onfocus="checkDateEntryMode(this)" onblur="checkDate(this);" onpaste="return false" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></asp:TextBox>
                                         
-                                            &nbsp;<asp:Image ID="ToImgDate" Width="25px" runat="server" ImageUrl="images/Calendar_scheduleHS.png" />
+                                         <div class="input-group-addon">   
+                                             
+                                         <asp:Image ID="ToImgDate" Width="25px" runat="server" ImageUrl="images/Calendar_scheduleHS.png" />
+                                             </div>                                    
+                                             </div>
                                     <ajaxToolkit:CalendarExtender PopupPosition="BottomRight" ID="CalendarExtender1" runat="server" TargetControlID="ToDates" PopupButtonID="ToImgDate" Format="dd-MMM-yyyy"></ajaxToolkit:CalendarExtender>
-                                                                                  </div>  
+                                                                                 
+
+                                                                         <div class="col-12 col-sm-12 col-md-12 form-group"></div>
+
+
+
+
+<%--                                        <div class="col-6 col-sm-6 col-md-3 form-group">
+                                        <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Submission Datessss" runat="server"></asp:Label>
+                                        </div>
+
+                                    <div class="col-6 col-sm-6 col-md-3 form-group">
+                                    <div class="input-group my-colorpicker2 colorpicker-element">
+                                        <asp:TextBox CssClass="form-control" ID="SubmissionDates" Width="10px" runat="server" MaxLength="11" onfocus="checkDateEntryMode(this)" onblur="checkDate(this);" onpaste="return false" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></asp:TextBox>
+                                        <div class="input-group-addon">
+                                            &nbsp;<asp:Image ID="ImgDateofRegistration" Width="25px" runat="server" ImageUrl="images/Calendar_scheduleHS.png" />
+                                        </div>
+                                    </div>
+                                    <ajaxToolkit:CalendarExtender PopupPosition="BottomRight" ID="CESubmission1" runat="server" TargetControlID="SubmissionDates" PopupButtonID="ImgDateofRegistration" Format="dd-MMM-yyyy"></ajaxToolkit:CalendarExtender>
 
 
                                     <%--<div class="col-12 col-sm-12 col-md-4 form-group">
@@ -222,7 +262,7 @@
                                     <ajaxToolkit:CalendarExtender PopupPosition="BottomRight" ID="CalendarExtender1" runat="server" TargetControlID="ToDates" PopupButtonID="ToImgDate" Format="dd-MMM-yyyy"></ajaxToolkit:CalendarExtender>
  </div>--%>
                                
-                                    </div>  
+                                    </div> 
 
                                         
 
@@ -249,7 +289,7 @@
 
 
                                      <div class="col-12 col-sm-12 col-md-12 submit-btn">
-                                              <asp:Button runat="server" CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" Text="Submit" onclick="SubmitForm"></asp:Button>
+                                              <asp:Button runat="server" CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" Font-Size="Large" Text="Submit" onclick="SubmitForm"></asp:Button>
                                             </div>
 
                             
@@ -265,87 +305,81 @@
 
 
 
-<section class="contact_map">
-    <div class="container-fluid">  
-        <div class="row">                  
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mr-auto p-0">
-                <h2 class="disabled">Google Map</h2>
-                <div class="google_map">
-                    <div class="gmap">
-                        <div id="map"></div>
-                    </div><!-- Ends: .gmap -->                    
-                </div>
-           </div>
-        </div>
-    </div>
-</section> <!-- Ends: Google Map Area -->  
+ <!-- Ends: Google Map Area -->  
 
 
 
 <!-- Footer -->  
-<footer class="footer_2">
-    <div class="container">
-        <div class="footer_top">
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="footer_single_col footer_intro">
-                        <img src="images/logo2.png" alt="" class="f_logo">
-                        <p>Ante amet vitae vulputate odio nulla vel pretium pulvinar aenean. Rhoncus eget adipiscing etiam arcu. Ultricies justo ipsum nec amet.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-2">
-                    <div class="footer_single_col">
-                        <h3>Useful Links</h3>
-                        <ul class="location_info quick_inf0">
-                            <li><a href="#">Leadereship</a></li>
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Diversity</a></li>
-                            <li><a href="#">Jobs</a></li>
-                            <li><a href="#">Press</a></li>
-                        </ul>                         
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-2">
-                    <div class="footer_single_col information">
-                        <h3>information</h3>
-                        <ul class="quick_inf0">
-                            <li><a href="#">Leadereship</a></li>
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Diversity</a></li>
-                            <li><a href="#">Jobs</a></li>
-                            <li><a href="#">Press</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="footer_single_col contact">
-                        <h3>Contact Us</h3>
-                        <p>Ante amet vitae vulputate odio nulla vel pretium aenean.</p>
-                        <div class="contact_info">
-                            <span>+000 124 325</span> 
-                            <span class="email">info@yourdomain.com</span>
+<!-- End Footer -->
+
+        <footer class="footer_2">
+            <div class="container">
+                <div class="footer_top">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="footer_single_col footer_intro">
+                                <div class="row">
+                              <img src="images/PMStrat_inLogo.png"  alt="" class="f_logo" style="image-resolution:unset;height:50px;width:60px">
+
+                        <h2><a href="HomePage.aspx" class="nav-link" style="color: white">PMStrat inc</a></h2>  
+                                    </div>
+                        <p>PM Strat Inc is changing lives of individuals. Be the first one to register.</p>
+                            </div>
                         </div>
-                        <ul class="social_items d-flex list-unstyled">
+                        <div class="col-12 col-md-6 col-lg-2">
+                            <div class="footer_single_col">
+                                <h3>Useful Links</h3>
+                                <ul class="location_info quick_inf0">
+                                    <li><a href="HomePage.aspx">Home</a></li>
+                                    <li><a href="AdminReports.aspx">Reports</a></li>
+                                    <li><a href="AdminQueries.aspx">Queries</a></li>
+                                    <li><a href="UserManagement.aspx">User Management</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <%--<div class="col-12 col-md-6 col-lg-2">
+                            <div class="footer_single_col information">
+                                <h3>information</h3>
+                                <ul class="quick_inf0">
+                                    <li><a href="#">Leadereship</a></li>
+                                    <li><a href="#">Company</a></li>
+                                    <li><a href="#">Diversity</a></li>
+                                    <li><a href="#">Jobs</a></li>
+                                    <li><a href="#">Press</a></li>
+                                </ul>
+                            </div>
+                        </div>--%>
+                        <div class="col-12 col-md-12 col-lg-6">
+                            <div class="footer_single_col contact">
+                        <h3>Contact Us</h3>
+                        <p>Our experts are waiting to hear from you . For providing end to end admission workflow through a crystal clear procedure, our consultants will guide you deep down to get
+                            a good position at our Canada's top academic institutions having a reputation that will be great for your upcoming future. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
+                        </p>
+                        <div class="contact_info">
+<span>+1 (647) 232-8196</span>
+                            
+                        </div>
+                        <%--<ul class="social_items d-flex list-unstyled">
                             <li><a href="#"><i class="fab fa-facebook-f fb-icon"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter twitt-icon"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in link-icon"></i></a></li>
                             <li><a href="#"><i class="fab fa-instagram ins-icon"></i></a></li>
-                        </ul>
+                        </ul>--%>
                     </div>
-                </div>
-                 <%--<div class="col-12 col-md-12 col-lg-12">
+                        </div>
+                        <%--<div class="col-12 col-md-12 col-lg-12">
                     <div class="copyright">
                         <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
                     </div>
                  </div>--%>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="shapes_bg">
-<%--        <img src="images/shapes/testimonial_2_shpe_1.png" alt="" class="shape_3">        --%>
-        <img src="images/shapes/footer_2.png" alt="" class="shape_1">
-    </div>    
-</footer><!-- End Footer -->
+            <div class="shapes_bg">
+                <%--        <img src="images/shapes/testimonial_2_shpe_1.png" alt="" class="shape_3">        --%>
+                <img src="images/shapes/footer_2.png" alt="" class="shape_1">
+            </div>
+        </footer>
 
 <section id="scroll-top" class="scroll-top">
     <h2 class="disabled">Scroll to top</h2>

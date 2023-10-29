@@ -99,7 +99,9 @@
                     <ul class="navbar-nav nav lavalamp ml-auto menu">
                         
                      <%--   <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>--%>
-                      
+                                                       <li id="UsrStuInfo" runat="server" class="nav-item"><a href="StuReg.aspx" class="nav-link" >Student Info</a></li>
+
+
                             <li id="AdmProgress" visible="false" runat="server"><a class="nav-link">Progress</a>
                                      <ul>
 

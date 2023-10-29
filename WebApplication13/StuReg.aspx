@@ -12,8 +12,8 @@
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
     <meta name="author" content="Ecology Theme">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PMStratinc - Shaping Lives</title>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+   <title>PMStrat inc - Shaping Lives</title>
+    <link rel="shortcut icon" href="images/PMStrat_inLogo.ico" type="image/x-icon" />
     <!-- Goole Font -->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -59,7 +59,7 @@
                             <div class="info_wrapper">
                                 <div class="contact_info">
                                     <ul class="list-unstyled">
-                                      <li><i ></i></li>
+                                        <li><i >+1 (647) 232-8196</i></li>
                                         <li><i class="flaticon-mail-black-envelope-symbol"></i>admin1_user@pmstratinc.com</li>
                                     </ul>
                                 </div>
@@ -88,10 +88,19 @@
                 <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav nav lavalamp ml-auto menu">
 
-                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li id="AboutPage" runat="server" class="nav-item"><a href="About.aspx" class="nav-link">About</a></li>
 
  <li id="UsrStuInfo" runat="server" class="nav-item"><a href="StuReg.aspx" class="nav-link" >Student Info</a></li>
+                           <li id="AdmProgress" visible="false" runat="server"><a class="nav-link">Progress</a>
+                                     <ul>
 
+                                        <li class="dropdown-item" style="display:contents"><a href="AdminStage1.aspx">Stage 1</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a>&nbsp&nbsp</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a href="AdminStage2.aspx">Stage 2</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a>&nbsp&nbsp</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a href="AdminStage3.aspx">Stage 3</a></li>
+                                    </ul>
+                                </li>
 <%--                                 <li id="UsrStuProgress" runat="server" class="nav-item"><a href="About.aspx" class="nav-link" >Student Progress</a></li>--%>
                                    <li id="UsrProgress" visible="false" runat="server"><a class="nav-link">Progress</a>
                                      <ul style="background-color:white">
@@ -104,16 +113,15 @@
                                     </ul>
                                 </li>        
 
+                          <li id="AdmReports" visible="false" runat="server" class="nav-item"><a href="StudentProgressRep.aspx" class="nav-link">Reports</a>
+                           
+                               </li>
+                                <li id="AdmQueries" visible="false" runat="server" class="nav-item"><a href="AdminQueries.aspx" class="nav-link">Queries</a></li>
+
+                                <li id="AdminUsrMng" visible="false" runat="server" class="nav-item"><a href="AdminUsrMangemnt.aspx" class="nav-link">UserManagement</a></li>
 
                             
-                                <li id="AdmProgress" visible="false" runat="server"><a href="AdminProgress.aspx" class="nav-link">Progress</a>
-                                     <ul>
-
-                                        <li class="dropdown-item"><a href="AdminStage1.aspx" style="padding:unset">Stage 1</a></li>
-                                        <li class="dropdown-item"><a href="AdminStage2.aspx">Stage 2</a></li>
-                                        <li class="dropdown-item"><a href="AdminStage3.aspx">Stage 3</a></li>
-                                    </ul>
-                                </li>
+                               
 
                        <%-- <li class="nav-item"><a href="StudentReg.aspx" class="nav-link">Student</a></li>--%>
 
@@ -124,7 +132,7 @@
 <%--                        <li id="UserMang" class="nav-item" runat="server"><a href="UserManagement.aspx" class="nav-link">User Management</a></li>--%>
 
 
-                        <li class="nav-item"><a href="Contact.aspx" class="nav-link">Contact</a></li>
+                        <li id="ContactPage" runat="server" class="nav-item"><a href="Contact.aspx" class="nav-link">Contact</a></li>
                     </ul>
                 </div>
 
@@ -139,8 +147,11 @@
                         <div class="col-sm-12 col-md-8 col-lg-8">
                             <div class="intro_text">
                                 <div class="pages_links">
-                                    <a href="#" title="">Home</a>
-                                    <a href="#" title="" class="active">Student Details</a>
+                                    <h1 style="color:white">
+                                   Fill/Update</h1>
+                                        <h1 style="color:white">
+                                        Applicant Information Below
+                                        </h1>
                                 </div>
                             </div>
                         </div>
@@ -168,16 +179,16 @@
                                 <div class="contact_form">
                                     <form action="#">
                                         <div class="row">
-                                            <span style="font-weight: bold" class="title">Basic Info </span>
+                                            <span style="font-weight: bold" class="title">Basic Information</span>
                                             <div class="col-12"></div>
 
                                               <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Visible="false" Font-Bold="true" ID="APPIDLabel" Text="Applicant ID" runat="server"></asp:Label>
+                                                <asp:Label Visible="false" Font-Size="X-Large" Font-Bold="true" ID="APPIDLabel" Text="Applicant ID" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
 <%--                                                <asp:TextBox runat="server" CssClass="form-control" Visible="false" ID="AppID" OnTextChanged="GetApplicationData" />--%>
                                                 
-                                               <asp:TextBox runat="server" CssClass="form-control" visible="false" AutoPostBack="true" type="text" OnTextChanged="GetApplicationData" id="AppID" style="width: 400px" />
+                                               <asp:TextBox runat="server" CssClass="form-control" Font-Size="Large"  visible="false" AutoPostBack="true" type="text" OnTextChanged="GetApplicationData" id="AppID" style="width: 400px" />
                                             </div>
 
 
@@ -185,14 +196,15 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Name" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input runat="server" class="form-control" type="text" id="Name" style="width: 500px" />
+                                                <input runat="server" class="form-control" type="text" id="Name" style="width: 400px;font-size:large" />
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Father Name" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input runat="server" class="form-control" type="text" id="FName" style="width: 500px" />
+                                                <asp:TextBox runat="server" CssClass="form-control" Width="400px" ID="FName" Font-Size="Large" /> 
+<%--                                                <input runat="server" class="form-control" type="text" id="FName" style="width: 200px" />--%>
                                             </div>
 
                                            <%-- <div class="col-12 col-sm-12 col-md-6 form-group">
@@ -208,38 +220,37 @@
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
                                                 <%--                                         <div class="col-12 col-sm-12 col-md-6 form-group">--%>
                                                 <%--                                       <asp:DropDownList runat="server" class="form-control" id="DropDownList2" Width="500px">--%>
-                                               <div class="row" style="padding-left:inherit">
-                                                    <div>
-                                                        <asp:HiddenField runat="server" ID="CountryC" />
-<%--                                                        <asp:HiddenField runat="server" ID="CountryC"></asp:HiddenField>--%>
-                                                    </div> 
-                                                   
-                                                    <div>
-                                                   <asp:DropDownList runat="server" class="form-control" AutoPostBack="true" ID="DDLCountry" OnSelectedIndexChanged="CallMe" style="width:330px;height:45px">
-                                                       <asp:ListItem Selected="True">Please Select Country</asp:ListItem>    
+                                              
+                                                    
+                                                   <asp:DropDownList runat="server" class="form-control" AutoPostBack="true" ID="DDLCountry" OnSelectedIndexChanged="CallMe" Width="400px" Font-Size="Large" Height="45px">
+                                                      
                                                    </asp:DropDownList>
                                                             <%--<asp:ListItem>Under Review</asp:ListItem>
                                            <asp:ListItem>Details Requested</asp:ListItem>
                                            <asp:ListItem>All Good</asp:ListItem>--%>
 <%--                                                        </dropdownlist>--%>
-                                                    </div>
-                                                </div>
+                                                    
+                                               
                                             </div>
+                                            <div>
+                                                        <asp:HiddenField runat="server" ID="CountryC" />
+<%--                                                        <asp:HiddenField runat="server" ID="CountryC"></asp:HiddenField>--%>
+                                                    </div> 
                                             <%--                                        <input runat="server" class="form-control" id="Country" style="width:500px" />--%>
                                             <%--                                    </div>  --%>
                                             
                                              <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Street Address" runat="server"></asp:Label>
+                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="House No" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input type="text" aria-multiline="true" runat="server" class="form-control" id="StreetAddress" style="width: 500px" />
+                                                <input type="text" aria-multiline="true" runat="server" class="form-control" id="StreetAddress" style="width: 500px;font-size:large" />
                                             </div>
 
                                               <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="House Address" runat="server"></asp:Label>
+                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Street Name And City" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input type="text" aria-multiline="true" runat="server" class="form-control" id="HouseAddress" style="width: 500px" />
+                                                <input type="text" aria-multiline="true" runat="server" class="form-control" id="HouseAddress" style="width: 500px;font-size:large" />
                                             </div>
 
                                             
@@ -247,7 +258,7 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Email" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input type="email" runat="server" class="form-control" id="email3" style="width: 500px" />
+                                                <input type="email" runat="server" class="form-control" id="email3" style="width: 400px;font-size:large" />
                                             </div>
 
                                             <div class="col-12"></div>
@@ -262,7 +273,7 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Highest Qualification" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="HQual_Acqrd" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="HQual_Acqrd" Width="400px" Font-Size="Large" Height="45px">
                                                     <asp:ListItem>Bachelor</asp:ListItem>
                                                     <asp:ListItem>Master</asp:ListItem>
                                                     <asp:ListItem>Other</asp:ListItem>
@@ -271,10 +282,10 @@
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Major Sub" runat="server"></asp:Label>
+                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Major Subject" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="Maj_Subj" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="Maj_Subj" Width="400px" Font-Size="Large" Height="45px">
                                                     <asp:ListItem>CompSc</asp:ListItem>
                                                     <asp:ListItem>Business</asp:ListItem>
                                                     <asp:ListItem>Other</asp:ListItem>
@@ -286,7 +297,7 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Grade" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="Grade" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="Grade" Width="150px" Font-Size="Large" Height="45px">
                                                     <asp:ListItem>A</asp:ListItem>
                                                     <asp:ListItem>B</asp:ListItem>
                                                     <asp:ListItem>Other</asp:ListItem>
@@ -298,7 +309,7 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="GPA" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:TextBox runat="server" CssClass="form-control" ID="GPA" Width="500px" MaxLength="1" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
+                                                <asp:TextBox runat="server" CssClass="form-control" ID="GPA" Width="150px" Font-Size="Large" MaxLength="1" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
 <%--                                                <input runat="server" type="number" class="form-control" id="GPA1" style="width: 500px" />--%>
                                                 
                                             </div>
@@ -307,14 +318,14 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Total Year Studied" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input runat="server" class="form-control" id="TotalYrStudy" style="width: 500px" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
+                                                <input runat="server" class="form-control" id="TotalYrStudy" style="width: 150px;font-size:large"  maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Last Institue Attended" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input runat="server" class="form-control" id="LastInstAttend" style="width: 500px" />
+                                                <input runat="server" class="form-control" id="LastInstAttend" style="width: 500px;font-size:large" />
                                             </div>
 
                                             <div class="col-12"></div>
@@ -331,20 +342,20 @@
                                             
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="   Years Studied" runat="server"></asp:Label>
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label Font-Size="X-Large" Font-Bold="true" Text="Years Studied" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input runat="server" class="form-control" id="Eng_yrs_studied" style="width: 500px" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
+                                                <input runat="server" class="form-control" id="Eng_yrs_studied" style="width: 150px;font-size:large;height:45px" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                             </div>
 
                                             
 
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="   Spoken" runat="server"></asp:Label>
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label Font-Size="X-Large" Font-Bold="true" Text="Spoken" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="Eng_spoken" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="Eng_spoken" width="150px" font-size="Large" Height="45px">
                                                     <asp:ListItem>Fluent</asp:ListItem>
                                                     <asp:ListItem>Intermediate</asp:ListItem>
                                                     <asp:ListItem>Basic</asp:ListItem>
@@ -352,10 +363,10 @@
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="   Written" runat="server"></asp:Label>
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label Font-Size="X-Large" Font-Bold="true" Text="Written" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="Eng_written" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="Eng_written" width="150px" font-size="Large" Height="45px">
                                                     <asp:ListItem>Fluent</asp:ListItem>
                                                     <asp:ListItem>Intermediate</asp:ListItem>
                                                     <asp:ListItem>Basic</asp:ListItem>
@@ -363,11 +374,11 @@
                                             </div>
 
                                                <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="   Eng Test Prep Required" runat="server"></asp:Label>
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label Font-Size="X-Large" Font-Bold="true" Text="English Test Preparation Required" runat="server"></asp:Label>
                                             </div>
                                             
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="EngTestPrepReq" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="EngTestPrepReq" width="150px" font-size="Large" Height="45px">
                                                     <asp:ListItem>Yes</asp:ListItem>
                                                     <asp:ListItem>No</asp:ListItem>
                                                 </asp:DropDownList>
@@ -382,17 +393,17 @@
 
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="   Years Studied" runat="server"></asp:Label>
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label Font-Size="X-Large" Font-Bold="true" Text="Years Studied" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input runat="server" class="form-control" id="French_yrs_studied" style="width: 500px" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
+                                                <input runat="server" class="form-control" id="French_yrs_studied" style="width: 150px;font-size:large" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="   Spoken" runat="server"></asp:Label>
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label Font-Size="X-Large" Font-Bold="true" Text="Spoken" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="FrenchSpoken" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="FrenchSpoken" Width="150px" Height="45px" Font-Size="Large">
                                                     <asp:ListItem>Fluent</asp:ListItem>
                                                     <asp:ListItem>Intermediate</asp:ListItem>
                                                     <asp:ListItem>Basic</asp:ListItem>
@@ -400,10 +411,10 @@
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="   Written" runat="server"></asp:Label>
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label Font-Size="X-Large" Font-Bold="true" Text="Written" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="FrenchWritten" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="FrenchWritten" Width="150px" Height="45px" Font-Size="Large">
                                                     <asp:ListItem>Fluent</asp:ListItem>
                                                     <asp:ListItem>Intermediate</asp:ListItem>
                                                     <asp:ListItem>Basic</asp:ListItem>
@@ -427,7 +438,7 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Field of study" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="Field_of_study" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="Field_of_study" Width="150px" Height="45px" Font-Size="Large">
                                                     <asp:ListItem>CompSc</asp:ListItem>
                                                     <asp:ListItem>Business</asp:ListItem>
                                                     <asp:ListItem>Accounts</asp:ListItem>
@@ -437,10 +448,10 @@
 
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Qualification to acquire" runat="server"></asp:Label>
+                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Qualification to Acquire" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="Qualif_to_acquire" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="Qualif_to_acquire" Width="150px" Height="45px" Font-Size="Large">
                                                     <asp:ListItem>Diploma</asp:ListItem>
                                                     <asp:ListItem>Bachelor</asp:ListItem>
                                                     <asp:ListItem>Master</asp:ListItem>
@@ -451,7 +462,7 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Start Semester" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="Start_Semester" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="Start_Semester" Width="150px" Height="45px" Font-Size="Large">
                                                     <asp:ListItem>Fall</asp:ListItem>
                                                     <asp:ListItem>Winter</asp:ListItem>
                                                     <asp:ListItem>Summer</asp:ListItem>
@@ -462,7 +473,7 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Start Semester Yr" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="Start_Semester_Yr" Width="500px">
+                                                <asp:DropDownList runat="server" class="form-control" ID="Start_Semester_Yr" Width="150px" Height="45px" Font-Size="Large">
                                                     <asp:ListItem>2023</asp:ListItem>
                                                     <asp:ListItem>2024</asp:ListItem>
                                                     <asp:ListItem>2025</asp:ListItem>
@@ -471,11 +482,11 @@
                                             </div>
 
                                              <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Progress" runat="server"></asp:Label>
+                                                <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Application Progress" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:DropDownList runat="server" class="form-control" ID="DDLProgress" Enabled="false" Width="500px">
-                                                    <asp:ListItem>InProcess</asp:ListItem>
+                                                <asp:DropDownList runat="server" class="form-control" Font-Size="Large" Height="45px"  ID="DDLProgress" Enabled="false" Width="150px">
+                                                    <asp:ListItem>In Process</asp:ListItem>
                                                     <asp:ListItem>Accepted</asp:ListItem>
                                                     <asp:ListItem>Rejected</asp:ListItem>
                                                 </asp:DropDownList>
@@ -485,7 +496,7 @@
                                         <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Remarks" runat="server"></asp:Label>
                                         </div>
                                     <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <input type="text" runat="server" class="form-control" id="StuRegRemarks" disabled="disabled"  style="width:500px;" />
+                                        <input type="text" runat="server"  class="form-control" id="StuRegRemarks" disabled="disabled"  style="width:500px;" />
                                     </div>  
 
 
@@ -528,11 +539,11 @@
                                     <asp:Button ID="btnStuReg" ForeColor="White" BackColor="Red" Width="200px" Height="50px" runat="server" OnClick="CallMe" Text="Call two" />
                                     </div>--%>
                                             <div class="col-12 col-sm-12 col-md-12 submit-btn">
-                                              <asp:Button  runat="server"  CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" ID="BtnSubmit" Text="Submit" class="text-center" onclick="SubmitForm"></asp:Button>
+                                              <asp:Button  runat="server"  CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" ID="BtnSubmit" Font-Size="Large" Height="45px" Width="250px" Text="Submit" class="text-center" onclick="SubmitForm"></asp:Button>
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-12 submit-btn">
-                                              <asp:Button  runat="server"  CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" ID="BtnUpdate" Text="Update" class="text-center" onclick="UpdateForm"></asp:Button>
+                                              <asp:Button  runat="server"  CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" ID="BtnUpdate" Text="Update" Font-Size="Large" Width="250px" Height="45px" class="text-center" onclick="UpdateForm"></asp:Button>
                                             </div>
 
                                           <%--     <div class="col-12 col-sm-12 col-md-12 submit-btn">
@@ -621,9 +632,9 @@
                         <p>Our experts are waiting to hear from you . For providing end to end admission workflow through a crystal clear procedure, our consultants will guide you deep down to get
                             a good position at our Canada's top academic institutions having a reputation that will be great for your upcoming future. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
                         </p>
-                        <div class="contact_info">
+                        <div class="contact_info">info
 <%--                            <span>+000 124 325</span> --%>
-                            
+                              <span>+1 (647) 232-8196</span> 
                         </div>
                         <%--<ul class="social_items d-flex list-unstyled">
                             <li><a href="#"><i class="fab fa-facebook-f fb-icon"></i></a></li>
@@ -680,7 +691,7 @@
             <div class="switched-options">
                 <div class="config-title">
                     <a class="navbar-brand" href="index-2.html">
-                        <img src="images/logo.png" alt="logo"></a>
+                        <img src="images/pmstratinc.png" alt="logo"></a>
                     <p>Education Template</p>
 
                 </div>

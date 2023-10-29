@@ -61,7 +61,7 @@ namespace WebApplication13
             
             SqlConnection Con = new SqlConnection(msConnectionString);
         //    SqlCommand command = new SqlCommand("Select * from UserStud_Info where FName = " + "'" + ApplicantName.Text + "'", Con);
-            SqlCommand command = new SqlCommand(("Select ROW_NUMBER() OVER(order by CreateDate desc) AS SrNo,US.SIN_No,US.Progress,CC.CountryName,US.HQual_Acqrd,US.FieldOfStudy,US.LastAcadInsAttended,US.GPA,US.QualifToAcquire,US.CreateDate from UserStud_Info US " +
+            SqlCommand command = new SqlCommand(("Select ROW_NUMBER() OVER(order by CreateDate desc) AS SrNo,US.SIN_No,US.Progress,CC.CountryName,US.HQual_Acqrd,US.FieldOfStudy,US.LastAcadInsAttended,US.GPA,US.QualifToAcquire,US.StartSemester+' '+US.StartSemesterYr as Semester from UserStud_Info US " +
 "inner join Country_Info CC on CC.CountryCode = US.Country " +
  "where 1 = 1 " + _FromDates + _ToDates + _Status), Con);
 

@@ -47,10 +47,23 @@ namespace WebApplication13
             {
                 if (Session["IsAdmin"].ToString() == "True")
                 {
-                    APPIDLabel.Visible = true;
+                        
+                        AdmReports.Visible = true;
+                        AdmQueries.Visible = true;
+                       AdminUsrMng.Visible = true;
+                        UsrStuInfo.Visible = true;
+                       AdmProgress.Visible = true;
+
+                        AboutPage.Attributes.Add("style", "display:none");
+                        ContactPage.Attributes.Add("style", "display:none");
+                        UsrProgress.Attributes.Add("style", "display:none");
+
+
+                        APPIDLabel.Visible = true;
                     DDLProgress.Enabled = true;
                     StuRegRemarks.Disabled = false;
-                    UsrProgress.Visible = false;
+
+                    
 
                     AppID.Visible = true;
                     //    BtnSubmit.Visible = false;
@@ -59,7 +72,16 @@ namespace WebApplication13
 
                 else
                 {
-                    APPIDLabel.Visible = false;
+                        AdmReports.Attributes.Add("style", "display:none");
+                            AdmQueries.Attributes.Add("style", "display:none");
+
+                           AdminUsrMng.Attributes.Add("style", "display:none");
+
+                        AdmProgress.Attributes.Add("style", "display:none");
+                        //          AboutPage.Visible = true;
+                        ContactPage.Attributes.Add("style", "display:block");
+
+                        APPIDLabel.Visible = false;
                     UsrProgress.Visible = true;
                     DDLProgress.Enabled = false;
                     StuRegRemarks.Disabled = true;
@@ -70,7 +92,7 @@ namespace WebApplication13
                 if (Session["User"] != null)
                 {
                     UserLogged.Visible = true;
-                    UserLogged.InnerText = Session["User"].ToString();
+                    UserLogged.InnerText = "Hi " +Session["User"].ToString();
                     LogoutHeader.Visible = true;
                 }
                 //  Session["User"] = DR["Name"].ToString();
@@ -96,7 +118,7 @@ namespace WebApplication13
                     
                     dt = UI.GetStuInfoByUserID(Session["UserID"].ToString());
                     Name.Value = Session["User"].ToString();
-                    FName.Value = Session["Father"].ToString();
+                    FName.Text = Session["Father"].ToString();
                     email3.Value = Session["Email"].ToString();
                 }
                 if(dt.Rows.Count>0)
@@ -197,7 +219,7 @@ namespace WebApplication13
             string addr = HouseAddress.Value;
           
                 string ENgTestPrepReq = EngTestPrepReq.SelectedValue.ToString() == "Yes" ? "1" : "0";
-                lrt = UI.UpdateStudent(Session["UserID"].ToString(), Session["UserID"].ToString() + "-" + CountryC.Value, Name.Value, FName.Value, StreetAddress.Value + HouseAddress.Value, CountryC.Value,
+                lrt = UI.UpdateStudent(Session["UserID"].ToString(), Session["UserID"].ToString() + "-" + CountryC.Value, Name.Value, FName.Text, StreetAddress.Value + HouseAddress.Value, CountryC.Value,
                     email3.Value, HQual_Acqrd.SelectedValue, Maj_Subj.SelectedValue, Grade.SelectedValue, GPA.Text, TotalYrStudy.Value, LastInstAttend.Value, Eng_yrs_studied.Value,
                     Eng_written.SelectedValue, Eng_spoken.SelectedValue, French_yrs_studied.Value, FrenchSpoken.SelectedValue.ToString(), FrenchWritten.SelectedValue.ToString(), ENgTestPrepReq,
                      Field_of_study.SelectedValue.ToString(), Qualif_to_acquire.SelectedValue.ToString(), Start_Semester.SelectedValue.ToString(), Start_Semester_Yr.SelectedValue.ToString(), LastInstAttend.Value, TotalYrStudy.Value, DDLProgress.SelectedItem.Text, DateTime.Now.ToString("dd-MMM-yyyy"), StuRegRemarks.Value, StreetAddress.Value, HouseAddress.Value);
@@ -229,7 +251,7 @@ namespace WebApplication13
                     else
                     {
                 string ENgTestPrepReq = EngTestPrepReq.SelectedValue.ToString() == "Yes" ? "1" : "0";
-                        lrt = UI.InsertStudent(Session["UserID"].ToString(), Session["UserID"].ToString() + "-" + CountryC.Value, Name.Value, FName.Value, StreetAddress.Value + HouseAddress.Value, CountryC.Value,
+                        lrt = UI.InsertStudent(Session["UserID"].ToString(), Session["UserID"].ToString() + "-" + CountryC.Value, Name.Value, FName.Text, StreetAddress.Value + HouseAddress.Value, CountryC.Value,
                             email3.Value, HQual_Acqrd.SelectedValue, Maj_Subj.SelectedValue, Grade.SelectedValue, GPA.Text, TotalYrStudy.Value, LastInstAttend.Value, Eng_yrs_studied.Value,
                             Eng_written.SelectedValue, Eng_spoken.SelectedValue, French_yrs_studied.Value, FrenchSpoken.SelectedValue.ToString(), FrenchWritten.SelectedValue.ToString(), ENgTestPrepReq,
                              Field_of_study.SelectedValue.ToString(), Qualif_to_acquire.SelectedValue.ToString(), Start_Semester.SelectedValue.ToString(), Start_Semester_Yr.SelectedValue.ToString(), LastInstAttend.Value, TotalYrStudy.Value, DDLProgress.SelectedItem.Text,DateTime.Now.ToString("dd-MMM-yyyy"),StuRegRemarks.Value,StreetAddress.Value,HouseAddress.Value);
@@ -259,7 +281,7 @@ namespace WebApplication13
             DataTable dt = UI.GetUserStudentData(AppID.Text);
 
             Name.Value = dt.Rows[0]["FName"].ToString();
-            FName.Value = dt.Rows[0]["LName"].ToString();
+            FName.Text = dt.Rows[0]["LName"].ToString();
     //  dt.Rows[0]["City"]
             dt.Rows[0]["Country"].ToString();
             dt.Rows[0]["Email"].ToString();

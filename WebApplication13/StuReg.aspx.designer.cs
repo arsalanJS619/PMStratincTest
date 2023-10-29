@@ -42,6 +42,15 @@ namespace WebApplication13
         protected global::System.Web.UI.HtmlControls.HtmlAnchor LogoutHeader;
 
         /// <summary>
+        /// AboutPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AboutPage;
+
+        /// <summary>
         /// UsrStuInfo control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace WebApplication13
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl UsrStuInfo;
+
+        /// <summary>
+        /// AdmProgress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdmProgress;
 
         /// <summary>
         /// UsrProgress control.
@@ -60,13 +78,40 @@ namespace WebApplication13
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl UsrProgress;
 
         /// <summary>
-        /// AdmProgress control.
+        /// AdmReports control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdmProgress;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdmReports;
+
+        /// <summary>
+        /// AdmQueries control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdmQueries;
+
+        /// <summary>
+        /// AdminUsrMng control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdminUsrMng;
+
+        /// <summary>
+        /// ContactPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContactPage;
 
         /// <summary>
         /// APPIDLabel control.
@@ -102,16 +147,7 @@ namespace WebApplication13
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText FName;
-
-        /// <summary>
-        /// CountryC control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField CountryC;
+        protected global::System.Web.UI.WebControls.TextBox FName;
 
         /// <summary>
         /// DDLCountry control.
@@ -121,6 +157,15 @@ namespace WebApplication13
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLCountry;
+
+        /// <summary>
+        /// CountryC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField CountryC;
 
         /// <summary>
         /// StreetAddress control.

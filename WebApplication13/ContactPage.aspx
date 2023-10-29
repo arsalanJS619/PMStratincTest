@@ -63,13 +63,20 @@
                             </ul>                    
                         </div>
                         
-                        <div class="login_info">
+                        <%--<div class="login_info">
                              <ul class="d-flex">
                                 <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i>Sign Up</a></li>
                                 <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Lon In</a></li>
                             </ul>
                             <a href="#" title="" class="apply_btn">Apply Now</a>
-                        </div>
+                        </div>--%>
+                         <ul id="UserLogged" visible="false" runat="server" class="d-flex" style="color: black">
+                                        <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i></a></li>
+                                        <%--                                        <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Log In</a></li>--%>
+                                    </ul>
+
+                                    <a href="HomePage.aspx" visible="false" id="LogoutHeader" onserverclick="LogoutUser" runat="server" title="">Logout</a>
+                       
                     </div>
                 </div>
             </div>
@@ -83,17 +90,34 @@
                 <!--<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt="logo"></a>-->
                 <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav nav lavalamp ml-auto menu">
-                        <li class="nav-item">
-                                <a href="Home.aspx" class="nav-link">Home</a>
-                              
-                            </li>
-                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                      
-                        
-                        <li class="nav-item"><a href="student.html" class="nav-link">Student</a></li>
+                              <li id="UsrAbout" runat="server" class="nav-item"><a href="About.aspx" class="nav-link">About</a></li>
 
-                        <li class="nav-item"><a href="immigration.html" class="nav-link">Immigration</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+                                <li id="AdmProgress" visible="false" runat="server" class="nav-item"><a class="nav-link">progress</a>
+                                    <ul>
+                                        <li><a href="Stage1.aspx">Stage 1</a></li>
+                                        <li><a href="Stage2.aspx">Stage 2</a></li>
+                                        <li><a href="Stage3.aspx">Stage 3</a></li>
+                                    </ul>
+                                </li>
+
+                                <li id="AdmReports" visible="false" runat="server" class="nav-item"><a class="nav-link">Reports</a></li>
+
+                                <li id="AdmQueries" visible="false" runat="server" class="nav-item"><a class="nav-link">Queries</a></li>
+
+                                <li id="AdminUsrMng" visible="false" runat="server" class="nav-item"><a class="nav-link">UserManagement</a></li>
+
+
+
+                                <li id="UsrStudent" runat="server" class="nav-item"><a href="StudentReg.aspx" class="nav-link">Academics</a></li>
+
+                                <li id="UsrImmigration" runat="server" class="nav-item"><a href="immigration.html" class="nav-link">Immigration</a></li>
+
+                                <li id="UsrSettlement" runat="server" class="nav-item"><a href="Settlement.aspx" class="nav-link">Settlement</a></li>
+
+                                <%--                                <li id="UsrStudent" id="UserMang" class="nav-item" runat="server" ><a href="UserManagement.aspx" class="nav-link">User Management</a></li>--%>
+
+
+                                <li id="UsrContact" runat="server" class="nav-item"><a href="Contact.aspx" class="nav-link">Contact</a></li>
                     </ul>
                 </div>
                 

@@ -23,7 +23,7 @@ namespace WebApplication13
     public partial class HomePage : System.Web.UI.Page
     {
         const string CryptoKey = "pkn12byheni090eraszx2ea2315a1916";
-       
+        
         //public static List<string> GetCountryList()
         //{
         //    BusinessLogic.UserInfo UI = new UserInfo();
@@ -54,32 +54,37 @@ namespace WebApplication13
         //}
         public class AesOperation
         {
+
             public static string EncryptString(string key, string plainText)
             {
                 byte[] iv = new byte[16];
-                byte[] array;
+                byte[] array=null;
 
-                using (Aes aes = Aes.Create())
+                try
                 {
-                    aes.Key = Encoding.UTF8.GetBytes(key);
-                    aes.IV = iv;
-
-                    ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-
-                    using (MemoryStream memoryStream = new MemoryStream())
+                    using (Aes aes = Aes.Create())
                     {
-                        using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, encryptor, CryptoStreamMode.Write))
-                        {
-                            using (StreamWriter streamWriter = new StreamWriter((Stream)cryptoStream))
-                            {
-                                streamWriter.Write(plainText);
-                            }
+                        aes.Key = Encoding.UTF8.GetBytes(key);
+                        aes.IV = iv;
 
-                            array = memoryStream.ToArray();
+                        ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+
+                        using (MemoryStream memoryStream = new MemoryStream())
+                        {
+                            using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, encryptor, CryptoStreamMode.Write))
+                            {
+                                using (StreamWriter streamWriter = new StreamWriter((Stream)cryptoStream))
+                                {
+                                    streamWriter.Write(plainText);
+                                }
+
+                                array = memoryStream.ToArray();
+                            }
                         }
                     }
                 }
-
+                catch(Exception ex)
+                { }
                 return Convert.ToBase64String(array);
             }
 
@@ -120,115 +125,146 @@ namespace WebApplication13
         //}
 
        protected void RedirectToForgetPaswd(object sender, EventArgs e)
-        {            
-            if(LoginEmail.Value == "")
+        {
+            try
             {
-                labelmsg.InnerText = "Please ENter Email";
+                if (LoginEmail.Value == "")
+                {
+                    labelmsg.InnerText = "Please ENter Email";
+                }
+                Session["Email"] = LoginEmail.Value;
+                Response.Redirect("ForgetPassword.aspx");
             }
-            Session["Email"] = LoginEmail.Value;
-            Response.Redirect("ForgetPassword.aspx");
+            catch(Exception ex)
+            {
+
+            }
         }
         private bool IsValidEmail(string email)
         {
+            bool IsEmail = false;
+            try
+            {
 
-
-            const string pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
-            var regex = new Regex(pattern, RegexOptions.IgnoreCase);
-            return regex.IsMatch(email);
+                const string pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+                var regex = new Regex(pattern, RegexOptions.IgnoreCase);
+                IsEmail = regex.IsMatch(email);
+            }
+            catch(Exception ex)
+            { }
+            
+            return IsEmail;
+            
         }
-        protected void btnBack_Click(object sender, EventArgs e)
-        {
+        //protected void btnBack_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         protected void LogoutUser(object sender, EventArgs e) 
         {
-            Session["User"] = null;
+            try
+            {
 
-            UserLogged.Visible = false;
-            LogoutHeader.Visible = false;
-            LoginHeader.Visible = true;
-            UserLogged.InnerText = "";// DR["Email"].ToString();
+                Session["User"] = null;
 
-//            UsrSettlement.Visible = true;
-            //UsrStudent.Visible = true;
-  //          UsrImmigration.Visible = true;
-            UsrContact.Visible = true;
-            UsrAbout.Visible = true;
-        
-            AdminUsrMng.Visible    = false;
-            AdmProgress.Visible = false;
-            AdmQueries.Visible  = false;
-            AdmReports.Visible  = false;
+                UserLogged.Visible = false;
+                LogoutHeader.Visible = false;
+                LoginHeader.Visible = true;
+                UserLogged.InnerText = "";// DR["Email"].ToString();
 
-            Response.Redirect("HomePage.aspx");
+                //            UsrSettlement.Visible = true;
+                //UsrStudent.Visible = true;
+                //          UsrImmigration.Visible = true;
+                UsrContact.Visible = true;
+                UsrAbout.Visible = true;
+
+                AdminUsrMng.Visible = false;
+                AdmProgress.Visible = false;
+                AdmQueries.Visible = false;
+                AdmReports.Visible = false;
+
+                Response.Redirect("HomePage.aspx");
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         protected void LoginUser(object sender, EventArgs e)
         {
-            if (IsValidEmail(LoginEmail.Value))
+            try
             {
-                BusinessLogic.UserInfo UI = new BusinessLogic.UserInfo();
-
-                string _Paswd = AesOperation.EncryptString(CryptoKey, LoginPassword.Value);
-                DataTable dt = UI.AuthenticateLoginUser(LoginEmail.Value, _Paswd);
-
-                if (dt.Rows.Count == 1)
+                if (IsValidEmail(LoginEmail.Value))
                 {
+                    BusinessLogic.UserInfo UI = new BusinessLogic.UserInfo();
 
-                    DataRow DR = dt.Rows[0];
-                    Session["User"] = DR["Name"].ToString();
-                    Session["IsStudent"] = DR["IsStudent"].ToString();
-                    Session["IsAdmin"] = DR["AdminUser"].ToString();
-                    Session["UserID"] = DR["ID"].ToString();
-                    Session["Father"] = DR["FName"].ToString();
-                    Session["Email"] = DR["Email"].ToString();
+                    string _Paswd = AesOperation.EncryptString(CryptoKey, LoginPassword.Value);
+                    DataTable dt = UI.AuthenticateLoginUser(LoginEmail.Value, _Paswd);
 
-                    if (Session["IsAdmin"].ToString() == "True")
+                    if (dt.Rows.Count == 1)
                     {
-                        AdminUsrMng.Visible = true;
-                        AdmProgress.Visible = true;
-                        AdmQueries.Visible = true;
-                        AdmReports.Visible = true;
-                        UsrStuInfo.Visible = true;
-                        UsrProgress.Visible = false;
-                        //            UsrSettlement.Visible  = false;
-                        //UsrStudent.Visible     = false;
-                        //          UsrImmigration.Visible = false;
-                        UsrContact.Visible = false;
-                        UsrAbout.Visible = false;
+
+                        DataRow DR = dt.Rows[0];
+                        Session["User"] = DR["Name"].ToString();
+                        Session["IsStudent"] = DR["IsStudent"].ToString();
+                        Session["IsAdmin"] = DR["AdminUser"].ToString();
+                        Session["UserID"] = DR["ID"].ToString();
+                        Session["Father"] = DR["FName"].ToString();
+                        Session["Email"] = DR["Email"].ToString();
+
+                        if (Session["IsAdmin"].ToString() == "True")
+                        {
+                            AdminUsrMng.Visible = true;
+                            AdmProgress.Visible = true;
+                            AdmQueries.Visible = true;
+                            AdmReports.Visible = true;
+                            UsrStuInfo.Visible = true;
+                            UsrProgress.Visible = false;
+                            //            UsrSettlement.Visible  = false;
+                            //UsrStudent.Visible     = false;
+                            //          UsrImmigration.Visible = false;
+                            UsrContact.Visible = false;
+                            UsrAbout.Visible = false;
+                        }
+                        else
+                        {
+                            AdminUsrMng.Visible = false;
+                            AdmProgress.Visible = false;
+                            AdmQueries.Visible = false;
+                            AdmReports.Visible = false;
+                            UsrStuInfo.Visible = true;
+
+                            UsrProgress.Visible = true;
+                            //        UsrSettlement.Visible = true;
+                            //UsrStudent.Visible = true;
+                            //      UsrImmigration.Visible = true;
+                            UsrContact.Visible = true;
+                            UsrAbout.Visible = true;
+                        }
+                        UserLogged.Visible = true;
+                        LogoutHeader.Visible = true;
+                        LoginHeader.Visible = false;
+                        UserLogged.InnerText = "Hi " +Session["User"].ToString();
+
+
+
                     }
-                    else
+                    if (dt.Rows.Count == 0)
                     {
-                        AdminUsrMng.Visible = false;
-                        AdmProgress.Visible = false;
-                        AdmQueries.Visible = false;
-                        AdmReports.Visible = false;
-                        UsrStuInfo.Visible = true;
+                        var Url_string = HttpContext.Current.Request.Url.AbsoluteUri.Split('/');
+                        Session["Message"] = "InvalidUser";
+                        Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
 
-                        UsrProgress.Visible = true;
-                        //        UsrSettlement.Visible = true;
-                        //UsrStudent.Visible = true;
-                        //      UsrImmigration.Visible = true;
-                        UsrContact.Visible = true;
-                        UsrAbout.Visible = true;
                     }
-                    UserLogged.Visible = true;
-                    LogoutHeader.Visible = true;
-                    LoginHeader.Visible = false;
-                    UserLogged.InnerText = "Hi " + Session["User"].ToString();
-
-
-
-                }
-                if (dt.Rows.Count == 0)
-                {
-                    var Url_string = HttpContext.Current.Request.Url.AbsoluteUri.Split('/');
-                    Session["Message"] = "InvalidUser";
-                    Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
-
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+
             //else
             //{
             //  //  labelmsg.InnerText = "Email is empty or invalid";
@@ -238,158 +274,166 @@ namespace WebApplication13
         {
             //if (ChkEdu.Checked || ChkImg.Checked || ChkSett.Checked)
             //{
-            if (IsValidEmail(RegEmail.Value))
+            try
             {
-                var Url_string = HttpContext.Current.Request.Url.AbsoluteUri.Split('/');
-
-                BusinessLogic.UserInfo UI = new UserInfo();
-                bool UserExists = UI.CheckForDuplicateEmail(RegEmail.Value);
-
-                if (UserExists == true)
+                if (IsValidEmail(RegEmail.Value))
                 {
-                    // RegLabel.Text = "User Already Exists";
-                    Session["Message"] = "UserExist";
-                    Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
+                    var Url_string = HttpContext.Current.Request.Url.AbsoluteUri.Split('/');
 
+                    BusinessLogic.UserInfo UI = new UserInfo();
+                    bool UserExists = UI.CheckForDuplicateEmail(RegEmail.Value);
 
-                    //    return false;
-                }
-
-                else
-                {
-
-
-                    //   string RedirectRegPage = Url_string + "RegistrationPage?";
-
-                    Random rs = new Random();
-                    string _RegCode = rs.Next().ToString() + rs.Next().ToString();
-
-                    string RedirectRegPage = Url_string[0] + "//" + Url_string[2] + "/RegistrationPage?" + _RegCode;
-
-                    string Password = AesOperation.EncryptString(CryptoKey, RegPassword.Value);
-
-                    //long val = UI.InsertUserData(RegUserName.Value, RegEmail.Value, Password, ChkEdu.Checked ? "1" : "0", ChkImg.Checked ? "1" : "0", ChkSett.Checked ? "1" : "0", _RegCode);
-
-                    long val = UI.InsertUserData(RegUserName.Value, RegEmail.Value, Password, ChkEdu.Checked ? "1" : "0", "0", "0", _RegCode);
-
-
-                    if (val > 0)
+                    if (UserExists == true)
                     {
-                        //  string DEC = AesOperation.DecryptString("GFTSFDGHHSABJAN",ENC);
-                        #region send mail
-                        SmtpMail oMail = new SmtpMail("TryIt");
-
-                        // Set sender email address, please change it to yours
-                        oMail.From = "admin1_user@pmstratinc.com";
-
-                        // Set recipient email address, please change it to yours
-                        oMail.To = RegEmail.Value;// "arsalanjawed619@gmail.com";
-
-                        // Set email subject
-                        oMail.Subject = "Registration Email";// test email from c#, ssl, 465 port";
-
-                        // Set email body
-                        string body = "Hello " + ",";
-                        body += "<br /><br />Please click the following link to register";
-                        body += "<br /><a href = '" + RedirectRegPage + "'>Click here for Sign up</a>.";
-                        body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
-                        oMail.HtmlBody = body;
-
-                        SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
-
-                        oServer.User = "admin1_user@pmstratinc.com";
-                        oServer.Password = "USer@1600";
-                        oServer.Port = 465;
-                        oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
-                        EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
-                        oSmtp.SendMail(oServer, oMail);
-                        Session["Message"] = "MailSent";
-                        //  Response.Redirect("RegistrationPage.aspx", true);
-
-
+                        // RegLabel.Text = "User Already Exists";
+                        Session["Message"] = "UserExist";
                         Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
 
-                        //RegLabel.Text = "Email sent with Registration Link";
 
-                        //   return false;
+                        //    return false;
                     }
+
+                    else
+                    {
+
+
+                        //   string RedirectRegPage = Url_string + "RegistrationPage?";
+
+                        Random rs = new Random();
+                        string _RegCode = rs.Next().ToString() + rs.Next().ToString();
+
+                        string RedirectRegPage = Url_string[0] + "//" + Url_string[2] + "/RegistrationPage?" + _RegCode;
+
+                        string Password = AesOperation.EncryptString(CryptoKey, RegPassword.Value);
+
+                        //long val = UI.InsertUserData(RegUserName.Value, RegEmail.Value, Password, ChkEdu.Checked ? "1" : "0", ChkImg.Checked ? "1" : "0", ChkSett.Checked ? "1" : "0", _RegCode);
+
+                        long val = UI.InsertUserData(RegUserName.Value, RegEmail.Value, Password, ChkEdu.Checked ? "1" : "0", "0", "0", _RegCode);
+
+
+                        if (val > 0)
+                        {
+                            //  string DEC = AesOperation.DecryptString("GFTSFDGHHSABJAN",ENC);
+                            #region send mail
+                            SmtpMail oMail = new SmtpMail("TryIt");
+
+                            // Set sender email address, please change it to yours
+                            oMail.From = "admin1_user@pmstratinc.com";
+
+                            // Set recipient email address, please change it to yours
+                            oMail.To = RegEmail.Value;// "arsalanjawed619@gmail.com";
+
+                            // Set email subject
+                            oMail.Subject = "Registration Email";// test email from c#, ssl, 465 port";
+
+                            // Set email body
+                            string body = "Hello " + ",";
+                            body += "<br /><br />Please click the following link to register";
+                            body += "<br /><a href = '" + RedirectRegPage + "'>Click here for Sign up</a>.";
+                            body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
+                            oMail.HtmlBody = body;
+
+                            SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
+
+                            oServer.User = "admin1_user@pmstratinc.com";
+                            oServer.Password = "USer@1600";
+                            oServer.Port = 465;
+                            oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
+                            EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
+                            oSmtp.SendMail(oServer, oMail);
+                            Session["Message"] = "MailSent";
+                            //  Response.Redirect("RegistrationPage.aspx", true);
+
+
+                            Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
+
+                            //RegLabel.Text = "Email sent with Registration Link";
+
+                            //   return false;
+                        }
+                    }
+                    #endregion
+
                 }
-                #endregion
-
+                else
+                {
+                    RegLabel.Text = "email empty or invalid format";
+                }
             }
-            else
+            catch(Exception ex)
             {
-                RegLabel.Text = "email empty or invalid format";
+
             }
-           
 
         }
 
-        protected void ChkValue(object sender, EventArgs e)
-        {
+        //protected void ChkValue(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         protected void Page_Load(object sender, EventArgs ce)
         {
-            labelmsg.InnerText = "";
-            RegLabel.Text = "";
-         //   GetCountryList();
-            if (Session["User"] == null)
+            try
             {
-                LoginHeader.Visible = true;
-                UserLogged.Visible = false;
-                LogoutHeader.Visible = false;
-                UsrStuInfo.Visible = false;
+                labelmsg.InnerText = "";
+                RegLabel.Text = "";
 
-            }
-            
-            else
-            {
-                UsrStuInfo.Visible = true;
-            }
-
-            if (Session["User"] != null)
-            {
-                if (Session["IsAdmin"].ToString() == "True")
+                if (Session["User"] == null)
                 {
-                    AdminUsrMng.Visible = true;
-                    AdmProgress.Visible = true;
-                    AdmQueries.Visible = true;
-                    AdmReports.Visible = true;
+                    LoginHeader.Visible = true;
+                    UserLogged.Visible = false;
+                    LogoutHeader.Visible = false;
+                    UsrStuInfo.Visible = false;
 
-                    UsrAbout.Visible = false;
-                    UsrProgress.Visible = false;
-                    UsrStuInfo.Visible = true;
-                    //UsrStudent.Visible = false;
-                    // UsrSettlement.Visible = false;
-                    //   UsrImmigration.Visible = false;
-                    UsrContact.Visible = false;
                 }
+
                 else
                 {
-                    AdminUsrMng.Visible = false;
-                    AdmProgress.Visible = false;
-                    AdmQueries.Visible = false;
-                    AdmReports.Visible = false;
-
-                    UsrAbout.Visible = true;
-                    UsrProgress.Visible = true;
                     UsrStuInfo.Visible = true;
-               //     UsrStudent.Visible = true;
-               //     UsrSettlement.Visible = true;
-                 //   UsrImmigration.Visible = true;
-                    UsrContact.Visible = true;
                 }
 
+                if (Session["User"] != null)
+                {
+                    if (Session["IsAdmin"].ToString() == "True")
+                    {
+                        AdminUsrMng.Visible = true;
+                        AdmProgress.Visible = true;
+                        AdmQueries.Visible = true;
+                        AdmReports.Visible = true;
 
-                LoginHeader.Visible = false;
-                UserLogged.Visible = true;
-                UserLogged.InnerText = "Hi "+Session["User"].ToString();
-                LogoutHeader.Visible = true;
-                
+                        UsrAbout.Visible = false;
+                        UsrProgress.Visible = false;
+                        UsrStuInfo.Visible = true;
+
+                        UsrContact.Visible = false;
+                    }
+                    else
+                    {
+                        AdminUsrMng.Visible = false;
+                        AdmProgress.Visible = false;
+                        AdmQueries.Visible = false;
+                        AdmReports.Visible = false;
+
+                        UsrAbout.Visible = true;
+                        UsrProgress.Visible = true;
+                        UsrStuInfo.Visible = true;
+
+                        UsrContact.Visible = true;
+                    }
+
+
+                    LoginHeader.Visible = false;
+                    UserLogged.Visible = true;
+                    UserLogged.InnerText = "Hi " + Session["User"].ToString();
+                    LogoutHeader.Visible = true;
+
+                }
             }
+            catch(Exception ex)
+            {
 
+            }
             if (!IsPostBack)
             {
                 

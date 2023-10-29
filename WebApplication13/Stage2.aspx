@@ -59,7 +59,7 @@
                     <div class="info_wrapper">
                         <div class="contact_info">                   
                             <ul class="list-unstyled">
-                                   <li><i ></i></li>
+                                   <li><i >+1 (647) 232-8196</i></li>
                                         <li><i class="flaticon-mail-black-envelope-symbol"></i>admin1_user@pmstratinc.com</li>
                             </ul>                    
                         </div>
@@ -149,8 +149,8 @@
                  <div class="col-sm-12 col-md-8 col-lg-8">
                     <div class="intro_text">
                         <div class="pages_links">
-                            <a href="#" title="">Home</a>
-                            <a href="#" title="" class="active">Student Details</a>
+                           <h1 style="color:white">Stage 2</h1>
+                            <h1 style="color:white">Applictaion Progress</h1>
                         </div>
                     </div>
                 </div>              
@@ -306,7 +306,7 @@
                         </p>
                         <div class="contact_info">
 <%--                            <span>+000 124 325</span> --%>
-                            
+                              <span>+1 (647) 232-8196</span> 
                         </div>
                         <%--<ul class="social_items d-flex list-unstyled">
                             <li><a href="#"><i class="fab fa-facebook-f fb-icon"></i></a></li>

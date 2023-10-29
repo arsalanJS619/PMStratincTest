@@ -12,8 +12,8 @@
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
     <meta name="author" content="Ecology Theme">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PMStratinc - Shaping Lives</title>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+   <title>PMStrat inc - Shaping Lives</title>
+    <link rel="shortcut icon" href="images/PMStrat_inLogo.ico" type="image/x-icon" />
     <!-- Goole Font -->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"> 
@@ -63,7 +63,7 @@
                     <div class="info_wrapper">
                         <div class="contact_info">                   
                             <ul class="list-unstyled">
-                               <li><i ></i></li>
+<li><i >+1 (647) 232-8196</i></li>
                                         <li><i class="flaticon-mail-black-envelope-symbol"></i>admin1_user@pmstratinc.com</li>
                             </ul>                    
                         </div>
@@ -97,10 +97,14 @@
     <div class="edu_nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light bg-faded">
+                <img src="images/PMStrat_inLogo.png"  alt="" class="f_logo" style="image-resolution:unset;height:50px;width:60px">
+
                     <h1><a href="HomePage.aspx" class="nav-link" style="color:red">PMStratinc</a></h1>
                 <!--<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt="logo"></a>-->
                 <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav nav lavalamp ml-auto menu">
+                                                         <li id="UsrStuInfo" runat="server" class="nav-item"><a href="StuReg.aspx" class="nav-link" >Student Info</a></li>
+
                            <li id="AdmProgress" visible="false" runat="server"><a class="nav-link">Progress</a>
                                      <ul>
 
@@ -144,8 +148,8 @@
                  <div class="col-sm-12 col-md-8 col-lg-8">
                     <div class="intro_text">
                         <div class="pages_links">
-                            <a href="#" title="">Home</a>
-                            <a href="#" title="" class="active">Student Details</a>
+                       <h1 style="color:white">Admin Stage 1</h1>
+                            <h1 style="color:white">Applictaion Progress</h1>
                         </div>
                     </div>
                 </div>              
@@ -305,7 +309,7 @@
 </section> <!-- Contact Info Wrappper-->
 
 
-
+<%--
 <section class="contact_map">
     <div class="container-fluid">  
         <div class="row">                  
@@ -319,7 +323,7 @@
            </div>
         </div>
     </div>
-</section> <!-- Ends: Google Map Area -->  
+</section> <!-- Ends: Google Map Area -->  --%>
 
         <footer class="footer_2">
             <div class="container">
@@ -365,6 +369,8 @@
                             a good position at our Canada's top academic institutions having a reputation that will be great for your upcoming future. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
                         </p>
                         <div class="contact_info">
+                            <span>+1 (647) 232-8196</span>
+
 <%--                            <span>+000 124 325</span> --%>
                             
                         </div>
@@ -420,33 +426,7 @@
          STYLE SWITCHER | ONLY FOR DEMO NOT INCLUDED IN MAIN FILES
     ============================================================== -->
     <script type="text/javascript" src="js/demo.js"></script>
-    <div class="demo-style-switch" id="switch-style">
-        <a id="toggle-switcher" class="switch-button" title="Change Styles"><span class="fa fa-cog fa-spin"></span></a>
-        <div class="switched-options">
-            <div class="config-title">
-                <a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt="logo"></a>
-                <p>Education Template</p>
-                
-            </div>
-            <div class="demos">
-                <div><a href="index-2.html" data-toggle="tooltip" data-placement="top" title="Home Style One"><img class="main-image img-fluid" src="demo/index_1.png" alt=""/></a></div>
-                <div><a href="index-3.html" data-toggle="tooltip" data-placement="top" title="Home Style Two"><img class="main-image img-fluid" src="demo/index_2.png" alt=""/></a></div>
-                <div><a href="index-4.html" data-toggle="tooltip" data-placement="top" title="Home Style Three"><img class="main-image img-fluid" src="demo/index_3.png" alt=""/></a></div>
-                <ul class="list-unstyled clearfix">
-                    <li><a href="about.html" data-toggle="tooltip" data-placement="top" title="About Page"><img src="demo/about.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="blog.html" data-toggle="tooltip" data-placement="top" title="Blog Page"><img src="demo/blog.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="blog-details.html" data-toggle="tooltip" data-placement="top" title="Blog Details Page"><img src="demo/blog_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="event.html" data-toggle="tooltip" data-placement="top" title="Event Page"><img src="demo/event.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="event-details.html" data-toggle="tooltip" data-placement="top" title="Event Deiails"><img src="demo/event_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="teacher-profile.html" data-toggle="tooltip" data-placement="top" title="Teacher Profile"><img src="demo/teacher_pro.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="course.html" data-toggle="tooltip" data-placement="top" title="Courses Page"><img src="demo/course.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="course-details.html" data-toggle="tooltip" data-placement="top" title="Courses Details"><img src="demo/course_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="team.html" data-toggle="tooltip" data-placement="top" title="Team Page"><img src="demo/team.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="contact.html" data-toggle="tooltip" data-placement="top" title="Contact Page"><img src="demo/contact.png" alt="" class="img-fluid"></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>    
+        
     </form>
 </body>
 </html>
