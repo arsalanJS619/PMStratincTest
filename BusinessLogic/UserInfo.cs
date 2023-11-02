@@ -73,14 +73,15 @@ namespace BusinessLogic
             long lrt = 0;
             string pas = string.Empty;
             clsDataAccessLayer DB = new clsDataAccessLayer();
-
+            
             string dates = "2023-09-10";
+            
        //     string _strPassword =  EncodePasswordToBase64(strPassword);
 
 
             string str = "insert into User_Info (Name,Email,DOB,IsStudent,IsMigration,IsSettlement,AdminUser,Passwrd,CreateDate,UpdateDate,UserStatus,RegCode)" +
                 //,DOB,IsMigration,IsStudent,IsSettlement,AdminUser,,CreateDate,UpdateDate,UserStatus)" +
-                " values( "+"'"+UserName+"'"+"'"+ Email +"'"+ ",'2023-09-10'," +IsStu+","+IsImig+","+IsSett+",0,"+"'"+strPassword+"'"+",'2023-09-10','2023-09-10'," + 0+ "," +RegCode+")";
+                " values( "+"'"+UserName+"'"+","+"'"+ Email +"'"+ ","+"'"+ System.DateTime.Now + "'" + "," +IsStu+","+IsImig+","+IsSett+",0,"+"'"+strPassword+"'"+","+"'"+System.DateTime.Now+"'"+"," + "'"+ System.DateTime.Now + "'" +","+ 0+ "," +RegCode+")";
             DB.OpenDataBase();
             lrt = DB.ExecuteNonQuery(str);
             DB.CloseDataBase();
@@ -161,7 +162,7 @@ namespace BusinessLogic
         public DataTable CheckRecordStuStage1(string _ApplicantID)
         {
             clsDataAccessLayer DB = new clsDataAccessLayer();
-            string str = "select CI.CountryName as Country,US.FName as Name,SI.ApplicantID,Cast(SI.SubmissionDate as Date),SI.onlinForm,SI.SupportingDoc,SI.IELTSScore, "+
+            string str = "select CI.CountryName as Country,US.FName as Name,SI.ApplicantID,SubmissionDate,SI.onlinForm,SI.SupportingDoc,SI.IELTSScore, "+
           "SI.ProcessingFee,SI.OurAction,SI.Remarks from StudentStage1 SI INNER JOIN UserStud_Info US on US.SIN_No = SI.ApplicantID inner join "+
           "Country_Info CI on CI.CountryCode = US.Country where SI.ApplicantID = " + "'" + _ApplicantID + "'";
             DB.OpenDataBase();
@@ -484,6 +485,7 @@ namespace BusinessLogic
             DataTable dt = new DataTable();
             string pas = string.Empty;
             clsDataAccessLayer DB = new clsDataAccessLayer();
+            string val = "";
 
             try
             {
@@ -491,6 +493,9 @@ namespace BusinessLogic
                 DB.OpenDataBase();
                 dt = DB.ExecuteDataTable(str);
                 DB.CloseDataBase();
+
+
+                val = dt.Rows[0]["CountryName"].ToString();
                 
             }
             catch (Exception ex)
@@ -501,7 +506,7 @@ namespace BusinessLogic
             {
                 DB.CloseDataBase();
             }
-            return dt.Rows[0]["CountryName"].ToString();
+            return val;
         }
 
         public void insertCountry(int CC,string CN)

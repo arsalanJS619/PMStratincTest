@@ -141,7 +141,7 @@
         </div>
     </div>
 
-            <div class="intro_wrapper">
+            <div class="intro_wrapper" style="background: url('../images/banner/inner_banner_5.jpg') no-repeat center center !important;">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 col-md-8 col-lg-8">
@@ -496,7 +496,7 @@
                                         <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Remarks" runat="server"></asp:Label>
                                         </div>
                                     <div class="col-12 col-sm-12 col-md-6 form-group">
-                                        <input type="text" runat="server"  class="form-control" id="StuRegRemarks" disabled="disabled"  style="width:500px;" />
+                                        <input type="text" runat="server" class="form-control" id="StuRegRemarks" disabled="disabled"  style="width:500px;" />
                                     </div>  
 
 
@@ -632,7 +632,7 @@
                         <p>Our experts are waiting to hear from you . For providing end to end admission workflow through a crystal clear procedure, our consultants will guide you deep down to get
                             a good position at our Canada's top academic institutions having a reputation that will be great for your upcoming future. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
                         </p>
-                        <div class="contact_info">info
+                        <div class="contact_info">
 <%--                            <span>+000 124 325</span> --%>
                               <span>+1 (647) 232-8196</span> 
                         </div>
