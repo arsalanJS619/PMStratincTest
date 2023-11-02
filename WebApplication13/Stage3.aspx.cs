@@ -20,25 +20,30 @@ namespace WebApplication13
     {
         protected void LogoutUser(object sender, EventArgs e)
         {
-            Session["User"] = null;
+            try
+            {
+                Session["User"] = null;
 
-            UserLogged.Visible = false;
-            LogoutHeader.Visible = false;
-            //   LoginHeader.Visible = true;
-            UserLogged.InnerText = "";// DR["Email"].ToString();
+                UserLogged.Visible = false;
+                LogoutHeader.Visible = false;
+                //   LoginHeader.Visible = true;
+                UserLogged.InnerText = "";// DR["Email"].ToString();
 
-            //UsrSettlement.Visible = true;
-            //UsrStudent.Visible = true;
-            //UsrImmigration.Visible = true;
-            //UsrContact.Visible = true;
-            //UsrAbout.Visible = true;
+                //UsrSettlement.Visible = true;
+                //UsrStudent.Visible = true;
+                //UsrImmigration.Visible = true;
+                //UsrContact.Visible = true;
+                //UsrAbout.Visible = true;
 
-            //AdmAdmin.Visible = false;
-            //AdmProgress.Visible = false;
-            //AdmQueries.Visible = false;
-            //AdmReports.Visible = false;
+                //AdmAdmin.Visible = false;
+                //AdmProgress.Visible = false;
+                //AdmQueries.Visible = false;
+                //AdmReports.Visible = false;
 
-            Response.Redirect("HomePage.aspx");
+                Response.Redirect("HomePage.aspx");
+            }
+            catch(Exception ex)
+            { }
         }
 
         protected void SubmitForm(object sender, EventArgs e)
@@ -51,79 +56,86 @@ namespace WebApplication13
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            BusinessLogic.UserInfo UI = new UserInfo();
-
-            if (Session["User"] != null)
+            try
             {
-                if (Session["IsAdmin"].ToString() == "1")
+                BusinessLogic.UserInfo UI = new UserInfo();
+
+                if (Session["User"] != null)
                 {
-               //     AdminUsrMng.Visible = true;
-                    AdmProgress.Visible = true;
-               //     AdmQueries.Visible = true;
-                 //   AdmReports.Visible = true;
+                    if (Session["IsAdmin"].ToString() == "1")
+                    {
+                        //     AdminUsrMng.Visible = true;
+                        AdmProgress.Visible = true;
+                        //     AdmQueries.Visible = true;
+                        //   AdmReports.Visible = true;
 
-                    UsrProgress.Visible = false;
-                    //UsrAbout.Visible = false;
-                    //UsrStudent.Visible = false;
-                    //UsrSettlement.Visible = false;
-                    //UsrImmigration.Visible = false;
-                    //UsrContact.Visible = false;
+                        UsrProgress.Visible = false;
+                        //UsrAbout.Visible = false;
+                        //UsrStudent.Visible = false;
+                        //UsrSettlement.Visible = false;
+                        //UsrImmigration.Visible = false;
+                        //UsrContact.Visible = false;
+                    }
+                    else
+                    {
+                        //       AdminUsrMng.Visible = false;
+                        AdmProgress.Visible = false;
+                        //AdmQueries.Visible = false;
+                        //AdmReports.Visible = false;
+
+                        UsrProgress.Visible = true;
+                        //UsrAbout.Visible = true;
+                        //UsrStudent.Visible = true;
+                        //UsrSettlement.Visible = true;
+                        //UsrImmigration.Visible = true;
+                        //UsrContact.Visible = true;
+                    }
+
+
+                    UserLogged.Visible = true;
+                    UserLogged.InnerText = "Hi " + Session["User"].ToString();
+                    LogoutHeader.Visible = true;
                 }
-                else
+                //  Session["User"] = DR["Name"].ToString();
+                //Session["IsStudent"] = DR["IsStudent"].ToString();
+                if (Session["User"] == null)
                 {
-             //       AdminUsrMng.Visible = false;
-                    AdmProgress.Visible = false;
-                    //AdmQueries.Visible = false;
-                    //AdmReports.Visible = false;
+                    UserLogged.Visible = false;
+                    UserLogged.InnerText = "";// Session["User"].ToString();
+                    LogoutHeader.Visible = false;
 
-                    UsrProgress.Visible = true;
-                    //UsrAbout.Visible = true;
-                    //UsrStudent.Visible = true;
-                    //UsrSettlement.Visible = true;
-                    //UsrImmigration.Visible = true;
-                    //UsrContact.Visible = true;
+                    //     Progress.Visible = false;
+                    //     StuInfo.Visible = false;
                 }
-
 
                 UserLogged.Visible = true;
                 UserLogged.InnerText = "Hi " + Session["User"].ToString();
                 LogoutHeader.Visible = true;
+
+
+                DataTable dt = UI.GetStuInfoByUserID(Session["UserID"].ToString());
+
+                DataTable dt1 = new DataTable();
+
+                if (dt1.Rows.Count > 0)
+                {
+                    UI.CheckRecordStuStage3(dt.Rows[0]["SIN_No"].ToString());
+                }
+                //  CESubmission.StartDate = DateTime.Parse(dt.Rows[0]["InstSubmissionDate"].ToString());
+                Session["Stage3Data"] = dt.Rows.Count;
+                if (dt1.Rows.Count > 0)
+                {
+                    ApplicantID.Value = dt1.Rows[0]["ApplicantID"].ToString();
+                    AcceptanceDate.Value = DateTime.Parse(dt1.Rows[0]["AcceptanceDate"].ToString()).ToString("dd-MMM-yyyy");//DateTime.Parse(dt1.Rows[0]["SubmissionDate"].ToString()).ToString("dd-MMM-yyyy");
+                    LetterIssued.Checked = dt1.Rows[0]["LetterIssued"].ToString().ToLower() == "true" ? true : false;
+                    SemesterStartDate.Value = DateTime.Parse(dt1.Rows[0]["SemesterStartDate"].ToString()).ToString("dd-MMM-yyyy");//.ToLower() == "true" ? true : false;
+                    FeeToBePaidBy.Value = DateTime.Parse(dt1.Rows[0]["FeeToBePaidBy"].ToString()).ToString("dd-MMM-yyyy");//.ToLower() == "true" ? true : false;
+                    Remarks.Value = dt1.Rows[0]["Remarks"].ToString();
+                }
             }
-            //  Session["User"] = DR["Name"].ToString();
-            //Session["IsStudent"] = DR["IsStudent"].ToString();
-            if (Session["User"] == null)
+            catch(Exception ex)
             {
-                UserLogged.Visible = false;
-                UserLogged.InnerText = "";// Session["User"].ToString();
-                LogoutHeader.Visible = false;
 
-                //     Progress.Visible = false;
-                //     StuInfo.Visible = false;
-            }
-
-            UserLogged.Visible = true;
-            UserLogged.InnerText =  "Hi " + Session["User"].ToString();
-            LogoutHeader.Visible = true;
-
-
-            DataTable dt = UI.GetStuInfoByUserID(Session["UserID"].ToString());
-
-            DataTable dt1 = new DataTable();
-
-            if (dt1.Rows.Count > 0)
-            {
-                UI.CheckRecordStuStage3(dt.Rows[0]["SIN_No"].ToString());
-            }
-            //  CESubmission.StartDate = DateTime.Parse(dt.Rows[0]["InstSubmissionDate"].ToString());
-            Session["Stage3Data"] = dt.Rows.Count;
-            if (dt1.Rows.Count > 0)
-            {
-                ApplicantID.Value = dt1.Rows[0]["ApplicantID"].ToString();
-                AcceptanceDate.Value = dt1.Rows[0]["AcceptanceDate"].ToString();
-                LetterIssued.Checked = dt1.Rows[0]["LetterIssued"].ToString().ToLower() == "true" ? true : false;
-                SemesterStartDate.Value = dt1.Rows[0]["SemesterStartDate"].ToString();//.ToLower() == "true" ? true : false;
-                FeeToBePaidBy.Value = dt1.Rows[0]["FeeToBePaidBy"].ToString();//.ToLower() == "true" ? true : false;
-                Remarks.Value = dt1.Rows[0]["Remarks"].ToString();
             }
         }
     }

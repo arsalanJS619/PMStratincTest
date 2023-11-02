@@ -21,25 +21,30 @@ namespace WebApplication13
 
         protected void LogoutUser(object sender, EventArgs e)
         {
-            Session["User"] = null;
+            try
+            {
+                Session["User"] = null;
 
-            UserLogged.Visible = false;
-            LogoutHeader.Visible = false;
-            //   LoginHeader.Visible = true;
-            UserLogged.InnerText = "";// DR["Email"].ToString();
+                UserLogged.Visible = false;
+                LogoutHeader.Visible = false;
+                //   LoginHeader.Visible = true;
+                UserLogged.InnerText = "";// DR["Email"].ToString();
 
-            //UsrSettlement.Visible = true;
-            //UsrStudent.Visible = true;
-            //UsrImmigration.Visible = true;
-            //UsrContact.Visible = true;
-            //UsrAbout.Visible = true;
+                //UsrSettlement.Visible = true;
+                //UsrStudent.Visible = true;
+                //UsrImmigration.Visible = true;
+                //UsrContact.Visible = true;
+                //UsrAbout.Visible = true;
 
-            //AdmAdmin.Visible = false;
-            //AdmProgress.Visible = false;
-            //AdmQueries.Visible = false;
-            //AdmReports.Visible = false;
+                //AdmAdmin.Visible = false;
+                //AdmProgress.Visible = false;
+                //AdmQueries.Visible = false;
+                //AdmReports.Visible = false;
 
-            Response.Redirect("HomePage.aspx");
+                Response.Redirect("HomePage.aspx");
+            }
+            catch(Exception ex)
+            { }
         }
 
 
@@ -54,112 +59,118 @@ namespace WebApplication13
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DataTable dt1 = new DataTable();
-            BusinessLogic.UserInfo UI = new BusinessLogic.UserInfo();
-            DataTable dt = UI.GetStuInfoByUserID(Session["UserID"].ToString());
-            if (dt.Rows.Count > 0)
+            try
             {
-                dt1 = UI.CheckRecordStuStage1(dt.Rows[0]["SIN_No"].ToString());
-            }
-            Session["Stage1Data"] = dt.Rows.Count;
-            if (dt1.Rows.Count > 0)
-            {
-                ApplicantID.Value = dt1.Rows[0]["ApplicantID"].ToString();
-                SubmissionDates.Value = dt1.Rows[0]["SubmissionDate"].ToString();
-                onlinForm.Checked = dt1.Rows[0]["onlinForm"].ToString().ToLower() == "true" ? true : false;
-                SupportingDoc.Checked = dt1.Rows[0]["SupportingDoc"].ToString().ToLower() == "true" ? true : false;
-                IELTSScore.Checked = dt1.Rows[0]["IELTSScore"].ToString().ToLower() == "true" ? true : false;
-                ProcessingFee.Checked = dt1.Rows[0]["ProcessingFee"].ToString().ToLower() == "true" ? true : false;
-                OurAction.SelectedValue = dt1.Rows[0]["OurAction"].ToString();
-                Stage1Remarks.Value = dt1.Rows[0]["Remarks"].ToString();
-            }
-            //            clsDataAccessLayer DB = new clsDataAccessLayer();
-
-            if (Session["User"] != null)
-            {
-                if (Session["IsAdmin"].ToString() == "1")
+                DataTable dt1 = new DataTable();
+                BusinessLogic.UserInfo UI = new BusinessLogic.UserInfo();
+                DataTable dt = UI.GetStuInfoByUserID(Session["UserID"].ToString());
+                if (dt.Rows.Count > 0)
                 {
-                    //AdminUsrMng.Visible = true;
-                    AdmProgress.Visible = true;
-                    //AdmQueries.Visible = true;
-                    //AdmReports.Visible = true;
-
-                    UsrProgress.Visible = false;
-                    //UsrAbout.Visible = false;
-                    //UsrStudent.Visible = false;
-                    //UsrSettlement.Visible = false;
-                    //UsrImmigration.Visible = false;
-                    //UsrContact.Visible = false;
+                    dt1 = UI.CheckRecordStuStage1(dt.Rows[0]["SIN_No"].ToString());
                 }
-                else
+                Session["Stage1Data"] = dt.Rows.Count;
+                if (dt1.Rows.Count > 0)
                 {
-                    //AdminUsrMng.Visible = false;
-                    AdmProgress.Visible = false;
-                    //AdmQueries.Visible = false;
-                    //AdmReports.Visible = false;
+                    ApplicantID.Value = dt1.Rows[0]["ApplicantID"].ToString();
+                    SubmissionDates.Value = DateTime.Parse(dt1.Rows[0]["SubmissionDate"].ToString()).ToString("dd-MMM-yyyy");
+                    onlinForm.Checked = dt1.Rows[0]["onlinForm"].ToString().ToLower() == "true" ? true : false;
+                    SupportingDoc.Checked = dt1.Rows[0]["SupportingDoc"].ToString().ToLower() == "true" ? true : false;
+                    IELTSScore.Checked = dt1.Rows[0]["IELTSScore"].ToString().ToLower() == "true" ? true : false;
+                    ProcessingFee.Checked = dt1.Rows[0]["ProcessingFee"].ToString().ToLower() == "true" ? true : false;
+                    OurAction.SelectedValue = dt1.Rows[0]["OurAction"].ToString();
+                    Stage1Remarks.Value = dt1.Rows[0]["Remarks"].ToString();
+                }
+                //            clsDataAccessLayer DB = new clsDataAccessLayer();
 
-                    UsrProgress.Visible = true;
-                    //UsrAbout.Visible = true;
-                    //UsrStudent.Visible = true;
-                    //UsrSettlement.Visible = true;
-                    //UsrImmigration.Visible = true;
-                    //UsrContact.Visible = true;
+                if (Session["User"] != null)
+                {
+                    if (Session["IsAdmin"].ToString() == "1")
+                    {
+                        //AdminUsrMng.Visible = true;
+                        AdmProgress.Visible = true;
+                        //AdmQueries.Visible = true;
+                        //AdmReports.Visible = true;
+
+                        UsrProgress.Visible = false;
+                        //UsrAbout.Visible = false;
+                        //UsrStudent.Visible = false;
+                        //UsrSettlement.Visible = false;
+                        //UsrImmigration.Visible = false;
+                        //UsrContact.Visible = false;
+                    }
+                    else
+                    {
+                        //AdminUsrMng.Visible = false;
+                        AdmProgress.Visible = false;
+                        //AdmQueries.Visible = false;
+                        //AdmReports.Visible = false;
+
+                        UsrProgress.Visible = true;
+                        //UsrAbout.Visible = true;
+                        //UsrStudent.Visible = true;
+                        //UsrSettlement.Visible = true;
+                        //UsrImmigration.Visible = true;
+                        //UsrContact.Visible = true;
+                    }
+
+
+                    UserLogged.Visible = true;
+                    UserLogged.InnerText = "Hi " + Session["User"].ToString();
+                    LogoutHeader.Visible = true;
+                }
+                //  Session["User"] = DR["Name"].ToString();
+                //Session["IsStudent"] = DR["IsStudent"].ToString();
+                if (Session["User"] == null)
+                {
+                    UserLogged.Visible = false;
+                    UserLogged.InnerText = "";// Session["User"].ToString();
+                    LogoutHeader.Visible = false;
+
+                    //     Progress.Visible = false;
+                    //     StuInfo.Visible = false;
                 }
 
+                //            Select SIN_NO from UserStud_Info where Email = Session["Email"]
+                //if (Session["User"] != null)
+                //{
+                //    if (Session["IsAdmin"].ToString() == "1")
+                //    {
+                //        AdminUsrMng.Visible = true;
+                //        AdmProgress.Visible = true;
+                //        AdmQueries.Visible = true;
+                //        AdmReports.Visible = true;
 
+                //        UsrAbout.Visible = false;
+                //        UsrStudent.Visible = false;
+                //        UsrSettlement.Visible = false;
+                //        UsrImmigration.Visible = false;
+                //        UsrContact.Visible = false;
+                //    }
+                //    else
+                //    {
+                //        AdminUsrMng.Visible = false;
+                //        AdmProgress.Visible = false;
+                //        AdmQueries.Visible = false;
+                //        AdmReports.Visible = false;
+
+                //        UsrAbout.Visible = true;
+                //        UsrStudent.Visible = true;
+                //        UsrSettlement.Visible = true;
+                //        UsrImmigration.Visible = true;
+                //        UsrContact.Visible = true;
+                //    }
+
+
+                //  LoginHeader.Visible = false;
                 UserLogged.Visible = true;
                 UserLogged.InnerText = "Hi " + Session["User"].ToString();
                 LogoutHeader.Visible = true;
-            }
-            //  Session["User"] = DR["Name"].ToString();
-            //Session["IsStudent"] = DR["IsStudent"].ToString();
-            if (Session["User"] == null)
-            {
-                UserLogged.Visible = false;
-                UserLogged.InnerText = "";// Session["User"].ToString();
-                LogoutHeader.Visible = false;
-
-                //     Progress.Visible = false;
-                //     StuInfo.Visible = false;
-            }
-
-            //            Select SIN_NO from UserStud_Info where Email = Session["Email"]
-            //if (Session["User"] != null)
-            //{
-            //    if (Session["IsAdmin"].ToString() == "1")
-            //    {
-            //        AdminUsrMng.Visible = true;
-            //        AdmProgress.Visible = true;
-            //        AdmQueries.Visible = true;
-            //        AdmReports.Visible = true;
-
-            //        UsrAbout.Visible = false;
-            //        UsrStudent.Visible = false;
-            //        UsrSettlement.Visible = false;
-            //        UsrImmigration.Visible = false;
-            //        UsrContact.Visible = false;
-            //    }
-            //    else
-            //    {
-            //        AdminUsrMng.Visible = false;
-            //        AdmProgress.Visible = false;
-            //        AdmQueries.Visible = false;
-            //        AdmReports.Visible = false;
-
-            //        UsrAbout.Visible = true;
-            //        UsrStudent.Visible = true;
-            //        UsrSettlement.Visible = true;
-            //        UsrImmigration.Visible = true;
-            //        UsrContact.Visible = true;
-            //    }
-
-
-            //  LoginHeader.Visible = false;
-            UserLogged.Visible = true;
-                UserLogged.InnerText = "Hi "+ Session["User"].ToString();
-                LogoutHeader.Visible = true;
 
             }
-        
+            catch (Exception ex)
+            { }
+
+
+            }
     }
 }

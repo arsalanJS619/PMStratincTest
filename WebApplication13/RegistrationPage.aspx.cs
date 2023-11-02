@@ -5,6 +5,25 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System;
+using System.Security.Cryptography;
+using System.Data;
+using System.Collections.Generic;
+//using System.Collections;
+//using System.Linq;
+using System.IO;
+using System.Text;
+using System.Web;
+//using System.Web.UI;
+//using System.Web.UI.WebControls;
+using BusinessLogic;
+//using WebApplication13;
+using System.Text.RegularExpressions;
+//using System.Net.Mail;
+using EASendMail;
+//using AuthorizeNet;
+using System.Globalization;
+//using Stripe;
 
 namespace WebApplication13
 {
@@ -57,7 +76,49 @@ namespace WebApplication13
                     long val = UI.ActivateUser(Value[1].ToString());
                     if (val.ToString() == "1")
                     {
-                        RegHeading.InnerText = "Registration Successful. Please Login";
+                        /////////////////////
+                        ///
+                        #region send mail
+                        SmtpMail oMail = new SmtpMail("TryIt");
+
+                        // Set sender email address, please change it to yours
+                        oMail.From = "admin1_user@pmstratinc.com";
+
+                        // Set recipient email address, please change it to yours
+                        oMail.To = "admin1_user@pmstratinc.com"; ;// "arsalanjawed619@gmail.com";
+                                                                  //   oMail.Cc = "admin1_user@pmstratinc.com";
+
+                        // Set email subject
+                        oMail.Subject = "Registration Successful ";// test email from c#, ssl, 465 port";
+
+                        // Set email body
+                        string body = "Hello Registration Successful " + ",";
+                        body += "<br /><br />for " + dt.Rows[0]["Name"].ToString() + " ,Email is " + dt.Rows[0]["Email"].ToString();
+                        //   body += "<br /><a href = '" + RedirectRegPage + "'>Click here for Sign up</a>.";
+                        body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
+                        oMail.HtmlBody = body;
+
+                        SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
+
+                        oServer.User = "admin1_user@pmstratinc.com";
+                        oServer.Password = "USer@1600";
+                        oServer.Port = 465;
+                        oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
+                        EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
+                        oSmtp.SendMail(oServer, oMail);
+                        Session["Message"] = "MailSent";
+                        //  Response.Redirect("RegistrationPage.aspx", true);
+
+
+                        //       Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
+
+                        //RegLabel.Text = "Email sent with Registration Link";
+
+                        //   return false;
+                   
+                #endregion
+                //////////////////////////////
+                RegHeading.InnerText = "Registration Successful. Please Login";
                     }
 
                     else

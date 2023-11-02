@@ -322,6 +322,7 @@ namespace WebApplication13
 
                             // Set recipient email address, please change it to yours
                             oMail.To = RegEmail.Value;// "arsalanjawed619@gmail.com";
+                         //   oMail.Cc = "admin1_user@pmstratinc.com";
 
                             // Set email subject
                             oMail.Subject = "Registration Email";// test email from c#, ssl, 465 port";

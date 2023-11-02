@@ -56,19 +56,24 @@
             <div class="row">
                 <div class="col-12 col-sm-12 col-lg-12">
                     <div class="info_wrapper">
-                        <div class="contact_info">                   
+                        <div class="contact_info">                 
                             <ul class="list-unstyled">
-                                <li><i class="flaticon-phone-receiver"></i>+000-2356-222</li>
-                                <li><i class="flaticon-mail-black-envelope-symbol"></i>contact@yourdomain.com</li>
+                                <li><i></i>+000-2356-222</li>
+                                        <li><i class="flaticon-mail-black-envelope-symbol"></i>admin1_user@pmstratinc.com</li>
                             </ul>                    
                         </div>
                         
                         <div class="login_info">
-                             <ul class="d-flex">
+                            <%-- <ul class="d-flex">
                                 <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i>Sign Up</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Lon In</a></li>
-                            </ul>
-                            <a href="#" title="" class="apply_btn">Apply Now</a>
+                                <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Log In</a></li>
+                            </ul>--%>
+                             <ul id="UserLogged" visible="false" runat="server" class="d-flex" style="color: black">
+                                        <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i></a></li>
+                                        <%--                                        <li class="nav-item"><a href="#" class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Log In</a></li>--%>
+                                    </ul>
+
+                                    <a href="HomePage.aspx" visible="false" id="LogoutHeader" onserverclick="LogoutUser" runat="server" title="">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -92,7 +97,7 @@
                                         <li class="nav-item"><a href="index-5.html" class="nav-link">Home Version 04</a></li>
                                     </ul>
                                 </li>--%>
-                                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+<%--                                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>--%>
                                <%-- <li class="nav-item">
                                     <a href="course.html" class="nav-link">Courses</a>
                                     <ul class="navbar-nav nav mx-auto">
@@ -142,17 +147,43 @@
                                     </ul>
                                 </li>--%>
 
-                                 <li class="nav-item"><a href="student.html" class="nav-link">Student</a></li>
 
+
+                                   <li class="nav-item" id="WhatWeHave"><a href="Contact.aspx" class="nav-link">What We Offer</a></li>
+
+                            <li class="nav-item" runat="server" id="StuInfo"><a href="StuReg.aspx" class="nav-link">StudentInfo</a></li>
+
+         
+                            <li class="nav-item" runat="server" id="Progress"><a class="nav-link">Progress</a>
+                                <ul>
+                                    <li>
+                                       
+                                            
+                                        <a href="Stage1.aspx" class="nav-link" style="font-size:medium">Stage1</a>
+                                        </li>
+
+                                    <li>
+                                       <a href="Stage2.aspx" class="nav-link" style="font-size:medium">Stage2</a>
+                                    </li>
+                                    <li>
+                                        <a href="Stage3.aspx" class="nav-link" style="font-size:medium">Stage3</a>
+
+                                    </li>
+                            </ul>
+                                </li>
+
+
+                             
+                             <%--    <li class="nav-item"><a href="student.html" class="nav-link">Student</a></li>
+                                  <li><a href="Stage1.aspx">Stage 1</a></li>
                                 <li class="nav-item"><a href="immigration.html" class="nav-link">Immigration</a></li>
 
                                 <li class="nav-item"><a href="Settlement.aspx" class="nav-link">Settlement</a></li>
 
-                                <li id="UserMang" class="nav-item" runat="server" ><a href="UserManagement.aspx" class="nav-link">User Management</a></li>
+                                <li id="UserMang" class="nav-item" runat="server" ><a href="UserManagement.aspx" class="nav-link">User Management</a></li>--%>
 
 
-                                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                            </ul>
+<%--                                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>--%>
                         </div>
                         <%--<div class="mr-auto search_area ">
                             <ul class="navbar-nav mx-auto">
@@ -191,6 +222,169 @@
 
 
   <!-- End Login Signup Option -->
+        <section class="login_signup_option">
+            <div class="l-modal is-hidden--off-flow js-modal-shopify">
+                <div class="l-modal__shadow js-modal-hide"></div>
+                <div class="login_popup login_modal_body">
+                    <div class="Popup_title d-flex justify-content-between">
+                        <h2 class="hidden">&nbsp;</h2>
+                        <!-- Nav tabs -->
+                        <div class="row">
+                            <div class="col-12 col-lg-12 col-md-12 col-lg-12 login_option_btn">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#login" role="tab">Login</a></li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#panel2" role="tab">Register</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                <!-- Tab panels -->
+                                <div class="tab-content card">
+                                    <!--Login-->
+                                    <div class="tab-pane fade in show active" id="login" role="tabpanel">
+                                        <%--                                    <form action="#">--%>
+                                        <%--<div class="row">
+                                            <%--<div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                                <div class="form-group">
+                                                    <%--                                                    <label class="control-label">Email</label>--%>
+                                                   <%-- <input id="LoginEmail" runat="server" type="email" class="form-control" placeholder="Username">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                                <div class="form-group">--%>
+                                                    <%--                                                    <label class="control-label">Password</label>--%>
+                                               <%--     <input id="LoginPassword" runat="server" type="password" class="form-control" placeholder="Password">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <a href="forgot-password.html" title="" class="forget_pass">Forget Password ?</a>
+                                                <asp:Button ID="btnLogin" Text="Login" OnClick="LoginUser" runat="server" />
+                                            </div>--%>
+                                            <%--<div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                                <div class="social_login">
+                                                    <div class="social_items">
+                                                        <button class="google_login google">Login Google</button>
+                                                        <button class="google_login facebook">Login Facebook</button>
+                                                        <button class="google_login twitter">Login Twitter</button>
+                                                        <button class="google_login linkdin">Login Linkdin</button>
+                                                    </div>
+                                                </div>
+                                            </div>--%>
+<%--                                        </div>--%>
+                                        <%--                                    </form>--%>
+                                    </div>
+                                    <!--/.Panel 1-->
+                                    <!--Panel 2-->
+                                    <%--<div class="tab-pane fade" id="panel2" role="tabpanel">
+                                        <%--                                    <form action="#" class="register">--%>
+                                        <div class="row">
+                                          <%--  <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                                <div class="form-group">
+                                                    <%--                                                    <label class="control-label">Name</label>--%>
+                                                <%--    <input type="text" id="RegUserName" runat="server" class="form-control" placeholder="Username" />
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                                <div class="form-group">--%>
+                                                    <%--                                                    <label class="control-label">Email</label>--%>
+<%--                                                    <input type="email" id="RegEmail" runat="server" class="form-control" placeholder="Email" />--%>
+                                                    <%--                                                    <asp:RegularExpressionValidator ID="RegExpEmail" runat="server" ControlToValidate="RegEmail" ValidationExpression="^\S+@\S+$" Text="incorrect format" />--%>
+                                               <%-- </div>
+                                            </div>
+                                            <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                                <div class="form-group">--%>
+                                                    <%--                                                    <label class="control-label">Password</label>--%>
+                                                 <%--   <input type="password" id="RegPassword" runat="server" class="form-control" placeholder="Password" />
+                                                </div>
+                                            </div>--%>
+
+                                        <%--    <div class="row">
+                                                <div class="col-lg-12">
+
+                                                    <div>
+
+                                                        <label><span style="font-weight: bold; font-size: medium; color: black">Want Academic Services in Canada ? &nbsp</span></label>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            <input type="checkbox" class="defaultCheckbox" runat="server"
+                                                id="ChkEdu" name="ChkEdu" style="width: 25px; height: 25px; float: right">
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+
+                                                    <div>
+
+                                                        <label><span style="font-weight: bold; font-size: medium; color: black">Want Immigration Services in Canada ? &nbsp</span></label>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>--%>
+
+
+                                          <%--  <input type="checkbox" class="defaultCheckbox" runat="server"
+                                                id="ChkImg" name="ChkImg" style="width: 25px; height: 25px">
+
+
+
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+
+                                                    <div>
+                                                        <label><span style="font-weight: bold; font-size: medium; color: black">Want Settlement Services in Canada ? &nbsp</span></label>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            <input type="checkbox" class="defaultCheckbox" runat="server"
+                                                id="ChkSett" name="ChkSett" style="width: 25px; height: 25px; scroll-padding-right: auto">--%>
+
+
+                                            <%--                                             <input type="checkbox" class="defaultCheckbox"
+            name="checkBox1" style="width: 25px; height: 25px" checked>--%>
+                                        </div>
+
+                                       <%-- <div class="row" runat="server">
+
+                                            <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Back" CssClass="col-md-6 btnLeftMargin btn btn-block btn-success" />
+
+                                        </div>--%>
+
+                                        <%--                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12 d-flex justify-content-between login_option">--%>
+                                       <%-- <div>
+                                            <asp:Button ID="btnRegister" Text="Register" OnClick="RegisterUser" runat="server" />
+
+                                        </div>
+
+                                        <div>
+                                            <asp:Button ID="Button1" Text="RegisterMe" OnClick="RegisterUser" runat="server" />
+
+                                        </div>
+
+                                        <asp:Label ID="RegLabel" runat="server"></asp:Label>--%>
+                                        <%--                                        </div>--%>
+                                        <%--                                    </form>--%>
+                                    </div>--%>
+
+                                    <!--/.Panel 2-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
 
