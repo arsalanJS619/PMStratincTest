@@ -40,7 +40,7 @@ namespace WebApplication13
             //   AdmQueries.Visible = false;
             //   AdmReports.Visible = false;
 
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("~/HomePage.aspx");
         }
         private bool IsValidEmail(string email)
         {
@@ -48,66 +48,175 @@ namespace WebApplication13
             var regex = new Regex(pattern, RegexOptions.IgnoreCase);
             return regex.IsMatch(email);
         }
+
+        //private void Email()
+        //{
+        //    try
+        //    {
+        //        ///////////////////----------------------------Email------------\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+        //        //Email
+        //        System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+        //        System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient();
+
+        //        //string SE_From = System.Configuration.ConfigurationManager.AppSettings["Email_CrAddress"];
+        //        ////string SE_From = "authen@habibmodaraba.com";
+        //        //string SE_TO = "azhar.hussain@habibmodaraba.com";
+        //        //string SE_CC = "fazal@habibmodaraba.com;intisar@habibmodaraba.com;zahid@habibmodaraba.com;m.ayaz@habibmodaraba.com";
+        //        //string SE_BCC = "m.ayaz@habibmodaraba.com";
+        //        //string SE_SUB = "";
+
+        //      //  SE_SUB = "Client Name : " + ddlCompCode.SelectedItem.Text.Trim() + " Risk Category is " + ddlRisk.SelectedItem.Text.Trim();
+
+        //        string ebody = "";
+        //        ebody = "<html>";
+        //        ebody = ebody + "<STYLE TYPE=text/css>";
+        //        ebody = ebody + "<!--";
+        //        ebody = ebody + "BODY";
+        //        ebody = ebody + "   {";
+        //        ebody = ebody + "   font-family:Calibri;font-size: 9pt;";
+        //        ebody = ebody + "   }";
+        //        ebody = ebody + " A:link{color:white}";
+        //        ebody = ebody + " A:visited{color:yellow}";
+        //        ebody = ebody + " TH{font-family: calibri; font-size: 9pt;font-weight: bold;background:#659EC7;color: white;border: 1px solid black;border-collapse:collapse;}";
+        //        ebody = ebody + " TD{font-family: calibri; font-size: 9pt;border: 1px solid black;border-collapse:collapse;}";
+        //        ebody = ebody + " Table{border: 1px double black;border-collapse:collapse;}";
+        //        ebody = ebody + "-->";
+        //        ebody = ebody + "</STYLE>";
+        //        ebody = ebody + "<head>";
+        //        ebody = ebody + "</head>";
+        //        ebody = ebody + "<body>";
+        //        ebody = ebody + "<p>Dear ,</p>";
+        //        ebody = ebody + "<p></p>";
+        //        ebody = ebody;// + "<p> " + Session["LoginID"].ToString() + " changed risk category from <b> to <b> </b></p>";
+        //        //ebody = ebody + "<p>This is to inform you that Rent has been reversed. Kindly note down reversal detail.</p>";
+        //        ebody = ebody + "<p></p>";
+        //        ebody = ebody + "<p></p>";
+
+        //        ebody = ebody + "<p></p>";
+
+        //        ebody = ebody + "<p>Regards</p>";
+        //        ebody = ebody + "<p>System Support Department</p>";
+
+        //        //System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+        //        //mail.To.Add(SE_TO.Replace(';', ','));
+        //        //mail.CC.Add(SE_CC.Replace(';', ','));
+        //        //mail.Bcc.Add(SE_BCC.Replace(';', ','));
+        //        //mail.From = new MailAddress(SE_From, "Client Name : " + ddlCompCode.SelectedItem.Text.Trim() + " Risk Category is " + ddlRisk.SelectedItem.Text.Trim(), System.Text.Encoding.UTF8);
+        //        //mail.Subject = "Client Name : " + ddlCompCode.SelectedItem.Text.Trim() + " Risk Category is " + ddlRisk.SelectedItem.Text.Trim();// SE_SUB;
+        //        //mail.SubjectEncoding = System.Text.Encoding.UTF8;
+        //        //mail.Body = ebody;
+        //        mail.From = new System.Net.Mail.MailAddress("admin1_user@pmstratinc.com");
+        //        mail.To.Add("arsalanjawed619@yahoo.com".Replace(';', ','));
+        //        mail.BodyEncoding = System.Text.Encoding.UTF8;
+        //        mail.IsBodyHtml = true;
+        //        //    mail.Priority = MailPriority.High;admin1_user@pmstratinc.com
+        //     //   USer@1600
+        //        //SmtpClient client = new SmtpClient();
+        //   //     string CrAddress = System.Configuration.ConfigurationManager.AppSettings["Email_CrAddress"];
+        //     //   string CrAddressPassword = System.Configuration.ConfigurationManager.AppSettings["Email_CrAddressPassword"];
+        //      //  int SMTP_Port = 26;// objFunc.toInt(System.Configuration.ConfigurationManager.AppSettings["SMTP_Port"].ToString());
+        //        string SMTP_Server =  "mail.pmstratinc.com";// System.Configuration.ConfigurationManager.AppSettings["SMTP_Server"];
+        //        bool EnableSSL = false;// Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["EnableSSL"]);
+
+        //        client.Credentials = new System.Net.NetworkCredential("admin1_user@pmstratinc.com", "USer@1600");
+        //        client.Port = 465;
+        //        client.Host = SMTP_Server;
+        //        //client.UseDefaultCredentials = true;
+        //        client.EnableSsl = EnableSSL;
+        //        try
+        //        {
+        //            client.Send(mail);
+        //            //Page.RegisterStartupScript("UserMsg", "<script>alert('Successfully Send...');</script>");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Exception ex2 = ex;
+        //            string errorMessage = string.Empty;
+        //            while (ex2 != null)
+        //            {
+        //                errorMessage += ex2.ToString();
+        //                ex2 = ex2.InnerException;
+        //            }
+        //            //Page.RegisterStartupScript("UserMsg", "<script>alert('Sending Failed...');</script>");
+        //        }
+
+        //        ////////////////-------------------Email Code End---------------\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //    }
+        //}
+
         protected void SendUrlPaswdReset(object sender, EventArgs e)
         {
-            if (TxtEmail.Value != "" && IsValidEmail(TxtEmail.Value) == true)
+     //       Email();
+            try
             {
-                Random rs = new Random();
-                string PaswdResetCode = rs.Next().ToString() + rs.Next().ToString();
-                var Url_string = HttpContext.Current.Request.Url.AbsoluteUri.Split('/');
-
-                string RedirectRegPage = Url_string[0] + "//" + Url_string[2] + "/PasswordReset?" + PaswdResetCode;
-
-                BusinessLogic.UserInfo UI = new UserInfo();
-
-                long value = UI.UpdateUserDataPasswordReset(TxtEmail.Value, PaswdResetCode);
-
-                if (value > 0)
+                if (TxtEmail.Value != "" && IsValidEmail(TxtEmail.Value) == true)
                 {
+                    Random rs = new Random();
+                    string PaswdResetCode = rs.Next().ToString() + rs.Next().ToString();
+                    var Url_string = HttpContext.Current.Request.Url.AbsoluteUri.Split('/');
 
-                    #region send mail
-                    SmtpMail oMail = new SmtpMail("TryIt");
+                    string RedirectRegPage = Url_string[0] + "//" + Url_string[2] + "/PasswordReset?" + PaswdResetCode;
 
-                    // Set sender email address, please change it to yours
-                    oMail.From = "admin1_user@pmstratinc.com";
+                    BusinessLogic.UserInfo UI = new UserInfo();
 
-                    // Set recipient email address, please change it to yours
-                    oMail.To = TxtEmail.Value;// RegEmail.Value;// "arsalanjawed619@gmail.com";
+                    long value = UI.UpdateUserDataPasswordReset(TxtEmail.Value, PaswdResetCode);
 
-                    // Set email subject
-                    oMail.Subject = "Password Reset";// test email from c#, ssl, 465 port";
+                    if (value > 0)
+                    {
 
-                    // Set email body
-                    string body = "Hello " + ",";
-                    body += "<br /><br />Please click the following link to reset password";
-                    body += "<br /><a href = '" + RedirectRegPage + "'>Click here</a>.";
-                    body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
-                    oMail.HtmlBody = body;
+                        #region send mail
+                        SmtpMail oMail = new SmtpMail("TryIt");
 
-                    SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
+                        // Set sender email address, please change it to yours
+                        oMail.From = "admin1_user@pmstratinc.com";
 
-                    oServer.User = "admin1_user@pmstratinc.com";
-                    oServer.Password = "USer@1600";
-                    oServer.Port = 465;
-                    oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
-                    EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
-                    oSmtp.SendMail(oServer, oMail);
-                    Session["Message"] = "MailSent";
-                    //  Response.Redirect("RegistrationPage.aspx", true);
+                        // Set recipient email address, please change it to yours
+                        oMail.To = TxtEmail.Value;// RegEmail.Value;// "arsalanjawed619@gmail.com";
+
+                        // Set email subject
+                        oMail.Subject = "Password Reset";// test email from c#, ssl, 465 port";
+
+                        // Set email body
+                        string body = "Hello " + ",";
+                        body += "<br /><br />Please click the following link to reset password";
+                        body += "<br /><a href = '" + RedirectRegPage + "'>Click here</a>.";
+                        body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
+                        oMail.HtmlBody = body;
+
+                        SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
+
+                        oServer.User = "admin1_user@pmstratinc.com";
+                        oServer.Password = "USer@1600";
+                        oServer.Port = 465;
+                        oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
+                        EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
+                        oSmtp.SendMail(oServer, oMail);
+                        Session["Message"] = "MailSent";
+                        //  Response.Redirect("RegistrationPage.aspx", true);
 
 
-                    //Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/PasswordReset.aspx");
+                        //Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/PasswordReset.aspx");
+                    }
+                    Label1.InnerText = "Password Reset Link has been sent to your mail.";
                 }
-                Label1.InnerText = "Password Reset Link has been sent to your mail.";
+                else
+                {
+                    Label1.InnerText = "Email is either empty or not in correct format";
+                }
+                //RegLabel.Text = "Email sent with Registration Link";
             }
-            else
-            {
-                Label1.InnerText = "Email is either empty or not in correct format";
-            }
-            //RegLabel.Text = "Email sent with Registration Link";
+            catch(Exception ex)
+            { }
 
-            //   return false;
-        }
+
+                //   return false;
+            }
 
         #endregion
 

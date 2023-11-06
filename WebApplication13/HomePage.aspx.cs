@@ -16,14 +16,19 @@ using System.Text.RegularExpressions;
 using EASendMail;
 //using AuthorizeNet;
 using System.Globalization;
+using System.Web.UI;
 //using Stripe;
 
 namespace WebApplication13
 {
     public partial class HomePage : System.Web.UI.Page
     {
+        GeneralFunctions.clsGeneralFunctions cGF = new GeneralFunctions.clsGeneralFunctions();
         const string CryptoKey = "pkn12byheni090eraszx2ea2315a1916";
-        
+
+        public Int64 UserID = 0;
+
+
         //public static List<string> GetCountryList()
         //{
         //    BusinessLogic.UserInfo UI = new UserInfo();
@@ -35,7 +40,7 @@ namespace WebApplication13
 
         //    foreach (CultureInfo culture in cultures)
         //    {
-                
+
         //        RegionInfo region = new RegionInfo(culture.LCID);
 
         //        if (!(cultureList.Contains(region.EnglishName)))
@@ -133,7 +138,7 @@ namespace WebApplication13
                     labelmsg.InnerText = "Please ENter Email";
                 }
                 Session["Email"] = LoginEmail.Value;
-                Response.Redirect("ForgetPassword.aspx");
+                Response.Redirect("~/ForgetPassword.aspx");
             }
             catch(Exception ex)
             {
@@ -184,7 +189,7 @@ namespace WebApplication13
                 AdmQueries.Visible = false;
                 AdmReports.Visible = false;
 
-                Response.Redirect("HomePage.aspx");
+                Response.Redirect("~/HomePage.aspx");
             }
             catch(Exception ex)
             {
@@ -222,9 +227,6 @@ namespace WebApplication13
                             AdmReports.Visible = true;
                             UsrStuInfo.Visible = true;
                             UsrProgress.Visible = false;
-                            //            UsrSettlement.Visible  = false;
-                            //UsrStudent.Visible     = false;
-                            //          UsrImmigration.Visible = false;
                             UsrContact.Visible = false;
                             UsrAbout.Visible = false;
                         }
@@ -237,9 +239,6 @@ namespace WebApplication13
                             UsrStuInfo.Visible = true;
 
                             UsrProgress.Visible = true;
-                            //        UsrSettlement.Visible = true;
-                            //UsrStudent.Visible = true;
-                            //      UsrImmigration.Visible = true;
                             UsrContact.Visible = true;
                             UsrAbout.Visible = true;
                         }
@@ -247,31 +246,26 @@ namespace WebApplication13
                         LogoutHeader.Visible = true;
                         LoginHeader.Visible = false;
                         UserLogged.InnerText = "Hi " +Session["User"].ToString();
-
-
-
                     }
                     if (dt.Rows.Count == 0)
                     {
                         var Url_string = HttpContext.Current.Request.Url.AbsoluteUri.Split('/');
                         Session["Message"] = "InvalidUser";
-                        Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
-
+                        //Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
+                        Response.Redirect("~/RegistrationPage.aspx");
                     }
                 }
             }
             catch(Exception ex)
             {
-
+                //ClientScript.RegisterStartupScript(this.GetType(), "alert", ex.InnerException.Message, true) ;
+                cGF.MessageBox(ex.Message, this);
             }
-
-            //else
-            //{
-            //  //  labelmsg.InnerText = "Email is empty or invalid";
-            //}
         }
         protected void RegisterUser(object sender, EventArgs e)
         {
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
             //if (ChkEdu.Checked || ChkImg.Checked || ChkSett.Checked)
             //{
             try
@@ -287,7 +281,8 @@ namespace WebApplication13
                     {
                         // RegLabel.Text = "User Already Exists";
                         Session["Message"] = "UserExist";
-                        Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
+                        //Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx",false);
+                        Response.Redirect("~/RegistrationPage.aspx");
 
 
                         //    return false;
@@ -333,7 +328,7 @@ namespace WebApplication13
                             body += "<br /><a href = '" + RedirectRegPage + "'>Click here for Sign up</a>.";
                             body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
                             oMail.HtmlBody = body;
-
+                            
                             SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
 
                             oServer.User = "admin1_user@pmstratinc.com";
@@ -341,12 +336,14 @@ namespace WebApplication13
                             oServer.Port = 465;
                             oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
                             EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
+                            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
                             oSmtp.SendMail(oServer, oMail);
                             Session["Message"] = "MailSent";
                             //  Response.Redirect("RegistrationPage.aspx", true);
 
 
-                            Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx");
+                            Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/RegistrationPage.aspx",false);
 
                             //RegLabel.Text = "Email sent with Registration Link";
 
@@ -377,79 +374,59 @@ namespace WebApplication13
         {
             try
             {
-                labelmsg.InnerText = "";
-                RegLabel.Text = "";
+                if (Session["User"]!=null)
+                {
+                    UserID = Convert.ToInt64(Session["User"].ToString());
+                    if (!IsPostBack)
+                    {
+                        labelmsg.InnerText = "";
+                        RegLabel.Text = "";
 
-                if (Session["User"] == null)
+                        if (Session["IsAdmin"].ToString() == "True")
+                        {
+                            AdminUsrMng.Visible = true;
+                            AdmProgress.Visible = true;
+                            AdmQueries.Visible = true;
+                            AdmReports.Visible = true;
+
+                            UsrAbout.Visible = false;
+                            UsrProgress.Visible = false;
+                            UsrStuInfo.Visible = true;
+
+                            UsrContact.Visible = false;
+                        }
+                        else
+                        {
+                            AdminUsrMng.Visible = false;
+                            AdmProgress.Visible = false;
+                            AdmQueries.Visible = false;
+                            AdmReports.Visible = false;
+
+                            UsrAbout.Visible = true;
+                            UsrProgress.Visible = true;
+                            UsrStuInfo.Visible = true;
+
+                            UsrContact.Visible = true;
+                        }
+
+
+                        LoginHeader.Visible = false;
+                        UserLogged.Visible = true;
+                        UserLogged.InnerText = "Hi " + Session["User"].ToString();
+                        LogoutHeader.Visible = true;
+                    }
+                }
+                else
                 {
                     LoginHeader.Visible = true;
                     UserLogged.Visible = false;
                     LogoutHeader.Visible = false;
                     UsrStuInfo.Visible = false;
-
-                }
-
-                else
-                {
-                    UsrStuInfo.Visible = true;
-                }
-
-                if (Session["User"] != null)
-                {
-                    if (Session["IsAdmin"].ToString() == "True")
-                    {
-                        AdminUsrMng.Visible = true;
-                        AdmProgress.Visible = true;
-                        AdmQueries.Visible = true;
-                        AdmReports.Visible = true;
-
-                        UsrAbout.Visible = false;
-                        UsrProgress.Visible = false;
-                        UsrStuInfo.Visible = true;
-
-                        UsrContact.Visible = false;
-                    }
-                    else
-                    {
-                        AdminUsrMng.Visible = false;
-                        AdmProgress.Visible = false;
-                        AdmQueries.Visible = false;
-                        AdmReports.Visible = false;
-
-                        UsrAbout.Visible = true;
-                        UsrProgress.Visible = true;
-                        UsrStuInfo.Visible = true;
-
-                        UsrContact.Visible = true;
-                    }
-
-
-                    LoginHeader.Visible = false;
-                    UserLogged.Visible = true;
-                    UserLogged.InnerText = "Hi " + Session["User"].ToString();
-                    LogoutHeader.Visible = true;
-
-                }
+                }              
             }
             catch(Exception ex)
             {
-
-            }
-            if (!IsPostBack)
-            {
-                
-                    //  AboutMenu.Visible = false;
-          //          string host = HttpContext.Current.Request.Url.Host;
-
-                //   string AbsPath = HttpContext.Current.Request.Url.AbsolutePath;
-
-                //     string AbsUri = HttpContext.Current.Request.Url.AbsoluteUri;
-
-
-                //   List<string> countries = GetCountryList();
-                //     countries.Sort();
-                //    ClientScript.GetPostBackEventReference(this, "");
-                //     string Password = AesOperation.EncryptString("0c6da1977tc590eraszx2ea2315a1916", RegPassword.Value);
+                cGF.MessageBox(ex.Message, this);
             }
 
 

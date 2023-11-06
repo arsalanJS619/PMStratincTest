@@ -5,44 +5,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head runat="server">
-    
-    <!-- Required meta tags -->
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    <meta name="author" content="Ecology Theme">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMStrat inc - Shaping Lives</title>
-    <link rel="shortcut icon" href="images/PMStrat_inLogo.ico" type="image/x-icon" />
-    <!-- Goole Font -->
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet"> 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/assets/bootstrap.min.css">
-    <!-- Font awsome CSS -->
-    <link rel="stylesheet" href="css/assets/font-awesome.min.css">    
-    <link rel="stylesheet" href="css/assets/flaticon.css">
-    <link rel="stylesheet" href="css/assets/magnific-popup.css">    
-    <!-- owl carousel -->
-    <link rel="stylesheet" href="css/assets/owl.carousel.css">
-    <link rel="stylesheet" href="css/assets/owl.theme.css">     
-    <link rel="stylesheet" href="css/assets/animate.css"> 
-    <!-- Slick Carousel -->
-    <link rel="stylesheet" href="css/assets/slick.css">  
+    
+    <meta charset="UTF-8"  />
+    <meta name="description" content="" />
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript" />
+    <meta name="author" content="Ecology Theme" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/PMStrat_inLogo.ico" type="image/x-icon"  />
    
-    <!-- Mean Menu-->
-    <link rel="stylesheet" href="css/assets/meanmenu.css">
-    <!-- main style-->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/demo.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" /> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet" /> 
+    
+    <link rel="stylesheet" href="css/assets/bootstrap.min.css" />
+   
+    <link rel="stylesheet" href="css/assets/font-awesome.min.css" />    
+    <link rel="stylesheet" href="css/assets/flaticon.css" />
+    <link rel="stylesheet" href="css/assets/magnific-popup.css" />    
+   
+    <link rel="stylesheet" href="css/assets/owl.carousel.css" />
+    <link rel="stylesheet" href="css/assets/owl.theme.css" />     
+    <link rel="stylesheet" href="css/assets/animate.css" /> 
+    
+    <link rel="stylesheet" href="css/assets/slick.css" />  
+   
+   
+    <link rel="stylesheet" href="css/assets/meanmenu.css" />
+   
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/demo.css" />
+ 
 </head>
 <body>
     <form id="form1" runat="server">

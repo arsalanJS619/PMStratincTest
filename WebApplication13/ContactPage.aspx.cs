@@ -29,7 +29,7 @@ namespace WebApplication13
             //AdmQueries.Visible = false;
             //AdmReports.Visible = false;
 
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("~/HomePage.aspx");
         }
 
         protected void Page_Load(object sender, EventArgs e)

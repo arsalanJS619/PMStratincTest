@@ -89,7 +89,9 @@ namespace DataAccess
 
             //       if (ConfigurationSettings.AppSettings["ConnectionString"] != null)
             //     {
-            msConnectionString = @"Server = DESKTOP-OB15B6M\MSSQLSERVERTEST; Database = dbo; Integrated Security = True;";
+
+            msConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            //msConnectionString = @"Server = DESKTOP-OB15B6M\MSSQLSERVERTEST; Database = dbo; Integrated Security = True;";
             
             
             

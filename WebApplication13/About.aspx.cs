@@ -95,7 +95,7 @@ namespace WebApplication13
          //   AdmQueries.Visible = false;
          //   AdmReports.Visible = false;
 
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("~/HomePage.aspx");
         }
     }
 }

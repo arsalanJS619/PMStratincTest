@@ -174,7 +174,7 @@ namespace WebApplication13
                     }
                     else
                     {
-                        Response.Redirect("HomePage.aspx");
+                        Response.Redirect("~/HomePage.aspx");
                     }
                 }
             }
@@ -205,7 +205,7 @@ namespace WebApplication13
                 //AdmQueries.Visible = false;
                 //AdmReports.Visible = false;
 
-                Response.Redirect("HomePage.aspx");
+                Response.Redirect("~/HomePage.aspx");
             }
             catch(Exception ex)
             { }
