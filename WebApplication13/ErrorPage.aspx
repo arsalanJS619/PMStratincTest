@@ -249,8 +249,7 @@ Number of children under 4-years:	Range 1-10--%>
                         <div class="col-12 col-md-12 col-lg-6">
                             <div class="footer_single_col contact">
                         <h3>Contact Us</h3>
-                        <p>Our experts are waiting to hear from you . For providing end to end admission workflow through a crystal clear procedure, our consultants will guide you deep down to get
-                            a good position at our Canada's top academic institutions having a reputation that will be great for your upcoming future. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
+                        <p>Our experts are waiting to hear from you .<span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
                         </p>
                         <div class="contact_info">
 <%--                            <span>+000 124 325</span> --%>

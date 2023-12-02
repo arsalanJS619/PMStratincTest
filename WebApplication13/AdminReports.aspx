@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminReports.aspx.cs" Inherits="WebApplication13.AdminReports" %>
 
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45,6 +47,10 @@
     <![endif]-->
 </head>
 <body>
+    <asp:ScriptManager runat="server" ID="ScriptManager1">
+        
+    </asp:ScriptManager>
+    <rsweb:ReportViewer ID="ReportViewer1" runat="server"></rsweb:ReportViewer>
     <form id="form1" runat="server">
        
 <header class="header_inner contact_page">

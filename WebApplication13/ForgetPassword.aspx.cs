@@ -15,6 +15,9 @@ using System.Text.RegularExpressions;
 using EASendMail;
 //using AuthorizeNet;
 using System.Globalization;
+using Outlook = Microsoft.Office.Interop.Outlook;
+
+//using Microsoft.Office.Interop.Outlook;
 
 namespace WebApplication13
 {
@@ -48,6 +51,14 @@ namespace WebApplication13
             var regex = new Regex(pattern, RegexOptions.IgnoreCase);
             return regex.IsMatch(email);
         }
+
+        private const string SMTP_SERVER = "http://schemas.microsoft.com/cdo/configuration/smtpserver";
+        private const string SMTP_SERVER_PORT = "http://schemas.microsoft.com/cdo/configuration/smtpserverport";
+        private const string SEND_USING = "http://schemas.microsoft.com/cdo/configuration/sendusing";
+        private const string SMTP_USE_SSL = "http://schemas.microsoft.com/cdo/configuration/smtpusessl";
+        private const string SMTP_AUTHENTICATE = "http://schemas.microsoft.com/cdo/configuration/smtpauthenticate";
+        private const string SEND_USERNAME = "http://schemas.microsoft.com/cdo/configuration/sendusername";
+        private const string SEND_PASSWORD = "http://schemas.microsoft.com/cdo/configuration/sendpassword";
 
         //private void Email()
         //{
@@ -152,7 +163,33 @@ namespace WebApplication13
 
         protected void SendUrlPaswdReset(object sender, EventArgs e)
         {
-     //       Email();
+          
+            //  Outlook.Accounts accounts = new Outlook.Accounts();
+
+            //OutlookBarGroupsClass aa = new OutlookBarGroupsClass();
+
+            //     SmtpMail omail1 = new SmtpMail("TryIt");
+            //   omail1.HtmlBody = "test";
+        //    System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage("admin1_user@pmstratinc.com", "arsalanjawed619@yahoo.com");// System.Net.Mail.MailMessage("EmailMessage.msg");
+        //    msg.Subject = "test";
+        //    msg.Body = "test body";
+        //    System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("mail.pmstratinc.com",465);
+        ////    client.EnableSsl = true;           
+        //    client.Credentials = new System.Net.NetworkCredential("admin2_user@pmstratinc.com", "USer2@1600");  // Username = "username";
+        //  //  client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+        //    client.Timeout = 14400000;
+          //  client.DeliveryMethod = System.Net.Mail.SmtpPermissionAttribute;//.SpecifiedPickupDirectory;
+           // try
+           // {
+           //     // Send this email
+           //     System.Net.ServicePointManager.Expect100Continue = true;
+           //     client.Send(msg);//.HtmlBody.ToString());
+           // }
+           // catch (Exception ex)
+           // {
+           ////     Trace.WriteLine(ex.ToString());
+           // }
+            //       Email();
             try
             {
                 if (TxtEmail.Value != "" && IsValidEmail(TxtEmail.Value) == true)
@@ -169,41 +206,56 @@ namespace WebApplication13
 
                     if (value > 0)
                     {
+                        System.Web.Mail.MailMessage mail = new System.Web.Mail.MailMessage();
 
-                        #region send mail
-                        SmtpMail oMail = new SmtpMail("TryIt");
+                     //   mail.IsBodyHtml = true;
+                        mail.Fields[SMTP_SERVER] = "mail.pmstratinc.com";
+                        mail.Fields[SMTP_SERVER_PORT] = 465;
+                        mail.Fields[SEND_USING] = 2;
+                        mail.Fields[SMTP_USE_SSL] = true;
+                        mail.Fields[SMTP_AUTHENTICATE] = 1;
+                        mail.Fields[SEND_USERNAME] = "admin2_user@pmstratinc.com";
+                        mail.Fields[SEND_PASSWORD] = "USer2@1600";
 
-                        // Set sender email address, please change it to yours
-                        oMail.From = "admin1_user@pmstratinc.com";
 
-                        // Set recipient email address, please change it to yours
-                        oMail.To = TxtEmail.Value;// RegEmail.Value;// "arsalanjawed619@gmail.com";
+                        string body = "Please click the link to reset password : '" + RedirectRegPage + "'";
+                     //   body += "<br /><a href = '" + RedirectRegPage + "'>Click here</a>.";
+                    //    body += "<br /><br />Thanks";
+                        // oMail.HtmlBody = body;
+                        
 
-                        // Set email subject
-                        oMail.Subject = "Password Reset";// test email from c#, ssl, 465 port";
+                        mail.Body = body;
+                        mail.To = TxtEmail.Value;// "arsalanjawed619@yahoo.com";// user.Email;
+                        mail.From = "admin2_user@pmstratinc.com";
+                        mail.Subject = "Reset Password";// Registration Email Test";
 
-                        // Set email body
-                        string body = "Hello " + ",";
-                        body += "<br /><br />Please click the following link to reset password";
-                        body += "<br /><a href = '" + RedirectRegPage + "'>Click here</a>.";
-                        body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
-                        oMail.HtmlBody = body;
 
-                        SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
 
-                        oServer.User = "admin1_user@pmstratinc.com";
-                        oServer.Password = "USer@1600";
-                        oServer.Port = 465;
-                        oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
-                        EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
-                        oSmtp.SendMail(oServer, oMail);
+                        System.Web.Mail.SmtpMail.Send(mail);
                         Session["Message"] = "MailSent";
-                        //  Response.Redirect("RegistrationPage.aspx", true);
 
+                        //#region send mail
+                        //SmtpMail oMail = new SmtpMail("TryIt");
 
-                        //Response.Redirect(Url_string[0] + "//" + Url_string[2] + "/PasswordReset.aspx");
+                        //oMail.From = "admin1_user@pmstratinc.com";
+                        //oMail.To = TxtEmail.Value;
+                        //oMail.Subject = "Password Reset";
+
+                        //SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
+                        //oServer.User = "admin1_user@pmstratinc.com"; oServer.Password = "USer@1600";
+                        //oServer.ConnectType = SmtpConnectType.ConnectDirectSSL;// SmtpConnectType.ConnectSSLAuto;
+
+                        //oServer.Port = 465;
+                        //EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
+                        //oSmtp.SendMail(oServer, oMail);
+                        Label1.InnerText = "Password Reset Link has been sent to your mail.";
                     }
-                    Label1.InnerText = "Password Reset Link has been sent to your mail.";
+                    else
+                    {
+                        Label1.InnerText = "Unable to send Password as user doesnot exist.";
+
+                    }
+
                 }
                 else
                 {
@@ -218,7 +270,7 @@ namespace WebApplication13
                 //   return false;
             }
 
-        #endregion
+       // #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {

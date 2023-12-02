@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentProgressRep.aspx.cs" Inherits="WebApplication13.StudentProgressRep" %>
 
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 
 <!DOCTYPE html>
@@ -49,8 +51,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-               <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+              
 <header class="header_inner contact_page">
 <!-- Preloader -->
 <div id="preloader">
@@ -79,8 +81,10 @@
 
                                     <a href="HomePage.aspx" id="LogoutHeader" onserverclick="LogoutUser" runat="server" title="">Logout</a>
                        </div>
-                        
-                        
+                      <%--   <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        
+            --%>
+                       
                         <%--<div class="login_info">
                              <ul class="d-flex">
                                 <li class="nav-item"><a href="#" class="nav-link sign-in js-modal-show"><i class="flaticon-user-male-black-shape-with-plus-sign"></i>Sign Up</a></li>
@@ -303,7 +307,7 @@
     </div>
 </section> <!-- Contact Info Wrappper-->
 
-
+ <rsweb:ReportViewer ID="ReportViewer1" runat="server" AsyncRendering="false" ProcessingMode="Remote" SizeToReportContent="true"></rsweb:ReportViewer>
 
  <!-- Ends: Google Map Area -->  
 
@@ -352,8 +356,7 @@
                         <div class="col-12 col-md-12 col-lg-6">
                             <div class="footer_single_col contact">
                         <h3>Contact Us</h3>
-                        <p>Our experts are waiting to hear from you . For providing end to end admission workflow through a crystal clear procedure, our consultants will guide you deep down to get
-                            a good position at our Canada's top academic institutions having a reputation that will be great for your upcoming future. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
+                        <p>Our experts are waiting to hear from you. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
                         </p>
                         <div class="contact_info">
 <span>+1 (647) 232-8196</span>
@@ -408,32 +411,6 @@
          STYLE SWITCHER | ONLY FOR DEMO NOT INCLUDED IN MAIN FILES
     ============================================================== -->
     <script type="text/javascript" src="js/demo.js"></script>
-    <div class="demo-style-switch" id="switch-style">
-        <a id="toggle-switcher" class="switch-button" title="Change Styles"><span class="fa fa-cog fa-spin"></span></a>
-        <div class="switched-options">
-            <div class="config-title">
-                <a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt="logo"></a>
-                <p>Education Template</p>
-                
-            </div>
-            <div class="demos">
-                <div><a href="index-2.html" data-toggle="tooltip" data-placement="top" title="Home Style One"><img class="main-image img-fluid" src="demo/index_1.png" alt=""/></a></div>
-                <div><a href="index-3.html" data-toggle="tooltip" data-placement="top" title="Home Style Two"><img class="main-image img-fluid" src="demo/index_2.png" alt=""/></a></div>
-                <div><a href="index-4.html" data-toggle="tooltip" data-placement="top" title="Home Style Three"><img class="main-image img-fluid" src="demo/index_3.png" alt=""/></a></div>
-                <ul class="list-unstyled clearfix">
-                    <li><a href="about.html" data-toggle="tooltip" data-placement="top" title="About Page"><img src="demo/about.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="blog.html" data-toggle="tooltip" data-placement="top" title="Blog Page"><img src="demo/blog.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="blog-details.html" data-toggle="tooltip" data-placement="top" title="Blog Details Page"><img src="demo/blog_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="event.html" data-toggle="tooltip" data-placement="top" title="Event Page"><img src="demo/event.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="event-details.html" data-toggle="tooltip" data-placement="top" title="Event Deiails"><img src="demo/event_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="teacher-profile.html" data-toggle="tooltip" data-placement="top" title="Teacher Profile"><img src="demo/teacher_pro.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="course.html" data-toggle="tooltip" data-placement="top" title="Courses Page"><img src="demo/course.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="course-details.html" data-toggle="tooltip" data-placement="top" title="Courses Details"><img src="demo/course_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="team.html" data-toggle="tooltip" data-placement="top" title="Team Page"><img src="demo/team.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="contact.html" data-toggle="tooltip" data-placement="top" title="Contact Page"><img src="demo/contact.png" alt="" class="img-fluid"></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>    
+      
     </form>
 </body>

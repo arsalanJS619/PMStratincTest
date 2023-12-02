@@ -81,7 +81,7 @@
         function validateRegister() {
 
             var email = document.getElementById("<%=RegEmail.ClientID%>");
-            if (email.value == "") {
+            if (email.value. == "") {
                 alert("Email Field cannot be Empty");
                 return false;
             }
@@ -181,7 +181,8 @@
                                 <div class="contact_info">
                                     <ul class="list-unstyled">
                                         <li><i >+1 (647) 232-8196</i></li>
-                                        <li><i class="flaticon-mail-black-envelope-symbol"></i>admin1_user@pmstratinc.com</li>
+                                        <li><i class="flaticon-mail-black-envelope-symbol"></i><a style="color:white" href="mailto:admin1_user@pmstratinc.com">admin1_user@pmstratinc.com</a></li>
+                                        
                                     </ul>
                                 </div>
                                 <div class="login_info">
@@ -1546,8 +1547,7 @@ PM Strat answers all your Questions...
                         <div class="col-12 col-md-12 col-lg-6">
                             <div class="footer_single_col contact">
                         <h3>Contact Us</h3>
-                        <p>Our experts are waiting to hear from you . For providing end to end admission workflow through a crystal clear procedure, our consultants will guide you deep down to get
-                            a good position at our Canada's top academic institutions having a reputation that will be great for your upcoming future. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
+                        <p>Our experts are waiting to hear from you. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
                         </p>
                         <div class="contact_info">
 <%--                            <span>+000 124 325</span> --%>

@@ -17,6 +17,11 @@ using EASendMail;
 //using AuthorizeNet;
 using System.Globalization;
 using System.Web.UI;
+using System.Net.Mail;
+//using MailKit.Net.Smtp;
+//using MimeKit;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 //using Stripe;
 
 namespace WebApplication13
@@ -330,7 +335,7 @@ namespace WebApplication13
                             oMail.HtmlBody = body;
                             
                             SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
-
+                           
                             oServer.User = "admin1_user@pmstratinc.com";
                             oServer.Password = "USer@1600";
                             oServer.Port = 465;
@@ -369,11 +374,178 @@ namespace WebApplication13
         //{
 
         //}
+        private const string SMTP_SERVER = "http://schemas.microsoft.com/cdo/configuration/smtpserver";
+        private const string SMTP_SERVER_PORT = "http://schemas.microsoft.com/cdo/configuration/smtpserverport";
+        private const string SEND_USING = "http://schemas.microsoft.com/cdo/configuration/sendusing";
+        private const string SMTP_USE_SSL = "http://schemas.microsoft.com/cdo/configuration/smtpusessl";
+        private const string SMTP_AUTHENTICATE = "http://schemas.microsoft.com/cdo/configuration/smtpauthenticate";
+        private const string SEND_USERNAME = "http://schemas.microsoft.com/cdo/configuration/sendusername";
+        private const string SEND_PASSWORD = "http://schemas.microsoft.com/cdo/configuration/sendpassword";
+
 
         protected void Page_Load(object sender, EventArgs ce)
         {
             try
+            
             {
+                ///////////////////////////////////////////////////////////
+              
+
+                //System.Web.Mail.MailMessage mail = new System.Web.Mail.MailMessage();
+
+                //mail.Fields[SMTP_SERVER] = "mail.pmstratinc.com";
+                //mail.Fields[SMTP_SERVER_PORT] = 465;
+                //mail.Fields[SEND_USING] = 2;
+                //mail.Fields[SMTP_USE_SSL] = true;
+                //mail.Fields[SMTP_AUTHENTICATE] = 1;
+                //mail.Fields[SEND_USERNAME] = "admin2_user@pmstratinc.com";
+                //mail.Fields[SEND_PASSWORD] = "USer2@1600";
+
+                //mail.To = "arsalanjawed619@yahoo.com";// user.Email;
+                //mail.From = "admin2_user@pmstratinc.com";
+                //mail.Subject = "Registration Email Test";
+
+                //System.Web.Mail.SmtpMail.Send(mail);
+                //////////////////////////////////////////////////////////////
+                //SmtpMail oMail = new SmtpMail("TryIt");
+
+                //// Set sender email address, please change it to yours
+                //oMail.From = "admin2_user@pmstratinc.com";
+                //// Set recipient email address, please change it to yours
+                //oMail.To = "arsalanjawed619@gmail.com";
+
+                //// Set email subject
+                //oMail.Subject = "test email from c# project";
+                //// Set email body
+                //oMail.TextBody = "this is a test email sent from c# project, do not reply";
+
+                //// SMTP server address
+                //SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
+                //oServer.ConnectType = SmtpConnectType.ConnectDirectSSL;
+                //// User and password for ESMTP authentication
+                //oServer.User = "admin2_user@pmstratinc.com";
+                //oServer.Password =  "USer2@1600";
+
+                //// Most mordern SMTP servers require SSL/TLS connection now.
+                //// ConnectTryTLS means if server supports SSL/TLS, SSL/TLS will be used automatically.
+                
+                //oServer.HeloDomain = "mail.pmstratinc.com";
+                //oServer.UseDefaultCredentials = false;
+            //    oServer.HeloDomain = "mail.pmstratinc.com";
+                // If your SMTP server uses 587 port
+                // oServer.Port = 587;
+
+                // If your SMTP server requires SSL/TLS connection on 25/587/465 port
+//                oServer.Port = 465; // 25 or 587 or 465
+//                // oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
+
+//                Console.WriteLine("start to send email ...");
+//                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Ssl3 | System.Net.SecurityProtocolType.Tls | System.Net.SecurityProtocolType.Tls11 | System.Net.SecurityProtocolType.Tls12;
+
+//                EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
+//                oSmtp.DnsServerIP = "148.72.158.229";
+//                System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate,
+//X509Chain chain, SslPolicyErrors sslPolicyErrors)
+//{ return true; };
+//                oSmtp.SendMail(oServer, oMail);
+                //    var mailMessage = new MimeMessage();// MimeMailMessage();
+                //    mailMessage.From.Add(new InternetAddress EASendMail.MailAddress("test@tes.com"));
+                ////    var address = new InternetAddress;
+                //    mailMessage.From.Add(new InternetAddress("test@test.com"));//"new MimeMailAddress(mailAddress);
+
+                //    mailMessage.From = new MimeMailAddress(mailAddress);
+
+                //    mailMessage.To.Add(userTo);
+
+                //    mailMessage.Subject = subject;
+
+                //    mailMessage.Body = message;
+
+                //    //Create Smtp Client
+
+                //    var mailer = new mim MimeKitMimeMailer(host, 465);
+
+                //    mailer.User = userName;
+
+                //    mailer.Password = password;
+
+                //    mailer.SslType = SslMode.Ssl;
+
+                //    mailer.AuthenticationMode = AuthenticationType.Base64;
+
+                //    //Set a delegate function for call back
+
+                //    mailer.SendCompleted += compEvent;
+
+                //    mailer.SendMailAsync(mailMessage);
+
+                //   var client = new MailKit.Net.Smtp.SmtpClient();
+                //   client.Connect("mail.pmstratinc.com", 465, true);
+
+                //   // Note: since we don't have an OAuth2 token, disable the XOAUTH2 authentication mechanism.
+                //   client.AuthenticationMechanisms.Remove("XOAUTH2");
+
+                // //  if (needsUserAndPwd)
+                ////   {
+                //       // Note: only needed if the SMTP server requires authentication
+                //       client.Authenticate("admin1_user@pmstratinc.com", "USer@1600");
+                //   // }
+                //   MailboxAddress To = new MailboxAddress();
+                //   var msg = new MimeMessage();
+                //   msg.From.Add(new m = "";//.Add(new MailboxAddress());
+                //   msg.To.Add(new MailboxAddress("target@ema.il"));
+                //   msg.Subject = "This is a test subject";
+
+                //   msg.Body = new TextPart("plain")
+                //   {
+                //       Text = "This is a sample message body"
+                //   };
+
+                //   client.Send(msg);
+                //   client.Disconnect(true);
+                //////////////////////////////////////////////////////////////////////////////////////
+                //System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage("admin1_user@pmstratinc.com", "arsalanjawed619@yahoo.com");// System.Net.Mail.MailMessage("EmailMessage.msg");
+                //msg.Subject = "test";
+                //msg.Body = "test body";
+                //System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("mail.pmstratinc.com", 465);
+                //client.EnableSsl = false;           
+                //client.UseDefaultCredentials = false;
+               
+                //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                //client.Credentials = new System.Net.NetworkCredential("admin1_user@pmstratinc.com", "USer@1600");  // Username = "username";
+                
+                ////  client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                //client.Timeout = 14400;
+                ////  client.DeliveryMethod = System.Net.Mail.SmtpPermissionAttribute;//.SpecifiedPickupDirectory;
+                //try
+                //{
+                //    // Send this email
+                //    System.Net.ServicePointManager.Expect100Continue = true;
+                //    client.Send(msg);//.HtmlBody.ToString());
+                //}
+                //catch (Exception ex)
+                //{
+                //    //     Trace.WriteLine(ex.ToString());
+                //}
+
+                //        System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+                //        System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
+                //        message.From = new System.Net.Mail.MailAddress("admin1_user@pmstratinc.com");
+                //        message.To.Add(new System.Net.Mail.MailAddress("arsalanjawed619@yahoo.com"));
+                //        message.Subject = "Test";
+                //        message.IsBodyHtml = true; //to make message body as html
+                //        message.Body = "Hello ";
+                //        smtp.Port = 465;
+                //        smtp.Host = "148.72.158.229"; //for gmail host mail.pmstratinc.com
+                //                                           // = true;
+                //smtp.Timeout = 100000;
+                //        smtp.UseDefaultCredentials = false;
+                //        smtp.Credentials = new System.Net.NetworkCredential("admin1_user@pmstratinc.com", "USer@1600");
+                //        smtp.DeliveryMethod = SmtpDeliveryMethod.Network; 22
+                //        smtp.Send(message);
+
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                 if (Session["User"]!=null)
                 {
                     UserID = Convert.ToInt64(Session["User"].ToString());

@@ -17,6 +17,14 @@ namespace WebApplication13
             //     DDLCountry.Visible = false;
             //   countrySpan.Visible = false;
         }
+
+        protected void RunQuery(object sender, EventArgs e)
+        {
+            long lrt = 0;
+            BusinessLogic.UserInfo UI = new BusinessLogic.UserInfo();
+            UI.ExecuteQuery(TextQuery.Value);
+
+        }
         protected void LogoutUser(object sender, EventArgs e)
         {
             Session["User"] = null;

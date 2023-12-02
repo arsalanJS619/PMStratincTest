@@ -170,8 +170,18 @@
                                 <div class="row">
                                     <span style="font-weight:bold" class="title">APPLICATION SUBMISSION</span>
                                    <div class="col-12"></div>
-
                                     <div class="col-12 col-sm-12 col-md-6 form-group">
+                                        <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Query" runat="server"></asp:Label>
+                                        </div>
+
+                                     <div class="col-12 col-sm-12 col-md-6 form-group">
+                                        <input runat="server" class="form-control" id="TextQuery" style="width:500px;font-size:large"/>
+                                    </div>  
+
+                                     <div class="col-12 col-sm-12 col-md-12 submit-btn">
+                                              <asp:Button runat="server" CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" Font-Size="X-Large" Text="Run" onclick="RunQuery"></asp:Button>
+                                            </div>
+                               <%--     <div class="col-12 col-sm-12 col-md-6 form-group">
                                         <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Applicant ID" runat="server"></asp:Label>
                                         </div>
                                     <div class="col-12 col-sm-12 col-md-6 form-group">
@@ -183,7 +193,7 @@
                                         </div>
                                     <div class="col-12 col-sm-12 col-md-6 form-group">
                                         <input runat="server" class="form-control" id="SubmissionDate" style="width:500px" />
-                                    </div>  
+                                    </div>  --%>
 
                                 
 
@@ -199,20 +209,7 @@
 
 
 
-<section class="contact_map">
-    <div class="container-fluid">  
-        <div class="row">                  
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mr-auto p-0">
-                <h2 class="disabled">Google Map</h2>
-                <div class="google_map">
-                    <div class="gmap">
-                        <div id="map"></div>
-                    </div><!-- Ends: .gmap -->                    
-                </div>
-           </div>
-        </div>
-    </div>
-</section> <!-- Ends: Google Map Area -->  
+ <!-- Ends: Google Map Area -->  
 
 
 
@@ -310,30 +307,7 @@
     <script type="text/javascript" src="js/demo.js"></script>
     <div class="demo-style-switch" id="switch-style">
         <a id="toggle-switcher" class="switch-button" title="Change Styles"><span class="fa fa-cog fa-spin"></span></a>
-        <div class="switched-options">
-            <div class="config-title">
-                <a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt="logo"></a>
-                <p>Education Template</p>
-                
-            </div>
-            <div class="demos">
-                <div><a href="index-2.html" data-toggle="tooltip" data-placement="top" title="Home Style One"><img class="main-image img-fluid" src="demo/index_1.png" alt=""/></a></div>
-                <div><a href="index-3.html" data-toggle="tooltip" data-placement="top" title="Home Style Two"><img class="main-image img-fluid" src="demo/index_2.png" alt=""/></a></div>
-                <div><a href="index-4.html" data-toggle="tooltip" data-placement="top" title="Home Style Three"><img class="main-image img-fluid" src="demo/index_3.png" alt=""/></a></div>
-                <ul class="list-unstyled clearfix">
-                    <li><a href="about.html" data-toggle="tooltip" data-placement="top" title="About Page"><img src="demo/about.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="blog.html" data-toggle="tooltip" data-placement="top" title="Blog Page"><img src="demo/blog.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="blog-details.html" data-toggle="tooltip" data-placement="top" title="Blog Details Page"><img src="demo/blog_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="event.html" data-toggle="tooltip" data-placement="top" title="Event Page"><img src="demo/event.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="event-details.html" data-toggle="tooltip" data-placement="top" title="Event Deiails"><img src="demo/event_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="teacher-profile.html" data-toggle="tooltip" data-placement="top" title="Teacher Profile"><img src="demo/teacher_pro.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="course.html" data-toggle="tooltip" data-placement="top" title="Courses Page"><img src="demo/course.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="course-details.html" data-toggle="tooltip" data-placement="top" title="Courses Details"><img src="demo/course_details.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="team.html" data-toggle="tooltip" data-placement="top" title="Team Page"><img src="demo/team.png" alt="" class="img-fluid"></a></li>
-                    <li><a href="contact.html" data-toggle="tooltip" data-placement="top" title="Contact Page"><img src="demo/contact.png" alt="" class="img-fluid"></a></li>
-                </ul>
-            </div>
-        </div>
+       
     </div>    
     </form>
 </body>

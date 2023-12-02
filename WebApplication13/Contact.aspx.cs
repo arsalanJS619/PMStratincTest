@@ -105,6 +105,14 @@ namespace WebApplication13
             { }
         }
 
+        private const string SMTP_SERVER = "http://schemas.microsoft.com/cdo/configuration/smtpserver";
+        private const string SMTP_SERVER_PORT = "http://schemas.microsoft.com/cdo/configuration/smtpserverport";
+        private const string SEND_USING = "http://schemas.microsoft.com/cdo/configuration/sendusing";
+        private const string SMTP_USE_SSL = "http://schemas.microsoft.com/cdo/configuration/smtpusessl";
+        private const string SMTP_AUTHENTICATE = "http://schemas.microsoft.com/cdo/configuration/smtpauthenticate";
+        private const string SEND_USERNAME = "http://schemas.microsoft.com/cdo/configuration/sendusername";
+        private const string SEND_PASSWORD = "http://schemas.microsoft.com/cdo/configuration/sendpassword";
+
         protected void SubmitForm(object sender, EventArgs e)
         {
 
@@ -118,28 +126,60 @@ namespace WebApplication13
 
                 // Set recipient email address, please change it to yours
                 oMail.To = "admin2_user@pmstratinc.com";// email.Value;// dt1.Rows[0]["Email"].ToString();// RegEmail.Value;// "arsalanjawed619@gmail.com";
+                oMail.Cc = "admin1_user@pmstratinc.com";
 
                 // Set email subject
-                oMail.Subject = subject.Value;// "Your Academic Progress";// test email from c#, ssl, 465 port";
+                oMail.Subject = "New Student Lead";// subject.Value;// "Your Academic Progress";// test email from c#, ssl, 465 port";
 
                 // Set email body
                 string body = "User Name : " + name.Value + ", " + " Email : " + email.Value + " ,subject : " + subject.Value + " , comments : " + comment.Value;// "Hello " + dt1.Rows[0]["FName"].ToString() + ",";
                                                                                                                                                                  //      body += "<br /><br />";
-                                                                                                                                                                 //     body += "<br /><a href = '" + RedirectRegPage + "'>Click here for Sign up</a>.";
-                                                                                                                                                                 //   body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
-                oMail.HtmlBody = body;
+                //                                                                                                                                                 //     body += "<br /><a href = '" + RedirectRegPage + "'>Click here for Sign up</a>.";
+                //                                                                                                                                                 //   body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
+                //oMail.HtmlBody = body;
 
-                SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
+                //SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
 
-                oServer.User = "admin1_user@pmstratinc.com";
-                oServer.Password = "USer@1600";
-                oServer.Port = 465;
-                oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
-                EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
-                oSmtp.SendMail(oServer, oMail);
-                Session["Message"] = "MailSent";
+                //oServer.User = "admin1_user@pmstratinc.com";
+                //oServer.Password = "USer@1600";
+                //oServer.Port = 465;
+                //oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
+                //EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
+                //oSmtp.SendMail(oServer, oMail);
+                //Session["Message"] = "MailSent";
                 //   DataTable dt1 = UI.GetUserStudentData(ApplicantID.Text);
+                System.Web.Mail.MailMessage mail = new System.Web.Mail.MailMessage();
 
+                //   mail.IsBodyHtml = true;
+                mail.Fields[SMTP_SERVER] = "mail.pmstratinc.com";
+                mail.Fields[SMTP_SERVER_PORT] = 465;
+                mail.Fields[SEND_USING] = 2;
+                mail.Fields[SMTP_USE_SSL] = true;
+                mail.Fields[SMTP_AUTHENTICATE] = 1;
+                mail.Fields[SEND_USERNAME] = "admin2_user@pmstratinc.com";
+                mail.Fields[SEND_PASSWORD] = "USer2@1600";
+
+
+           //     string body = "Please click the link to reset password : '" + RedirectRegPage + "'";
+                //   body += "<br /><a href = '" + RedirectRegPage + "'>Click here</a>.";
+                //    body += "<br /><br />Thanks";
+                // oMail.HtmlBody = body;
+
+
+                mail.Body = body;
+                mail.To = "admin1_user@pmstratinc.com";//  TxtEmail.Value;// "arsalanjawed619@yahoo.com";// user.Email;
+                mail.Cc = "admin2_user@pmstratinc.com";
+                mail.From = "admin2_user@pmstratinc.com";
+                mail.Subject = "New Query";// Registration Email Test";
+
+
+
+                System.Web.Mail.SmtpMail.Send(mail);
+                Session["Message"] = "MailSent";
+
+
+
+                name.Value = email.Value = subject.Value = comment.Value = "";
                 //     SmtpMail oMail = new SmtpMail("TryIt");
 
                 //     // Set sender email address, please change it to yours

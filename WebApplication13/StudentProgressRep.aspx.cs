@@ -6,8 +6,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.Data.Sql;
 using CrystalDecisions.CrystalReports.Engine;
 using System.IO;
+using Microsoft.Reporting.WebForms;
 
 namespace WebApplication13
 {
@@ -43,135 +45,160 @@ namespace WebApplication13
 
         protected void SubmitForm(object sender, EventArgs e)
         {
-            try
-            {
+            GeneralFunctions.clsGeneralFunctions cGF = new GeneralFunctions.clsGeneralFunctions();
+            SqlConnection con1 = new SqlConnection(@"Data Source=DESKTOP-OB15B6M\MSSQLSERVERTEST;Initial Catalog=dbo;Integrated Security=True;");
+            //if (!IsPostBack)
+            //{.
+                string strQuery = "SELECT * FROM UserStud_Info US inner join Country_Info CI on CI.CountryCode = US.Country";
+                SqlDataAdapter da = new SqlDataAdapter(strQuery, con1);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                //CrystalDecisions.CrystalReports.Engine.ReportDocument rph = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-                //string strRptPath = System.Web.HttpContext.Current.Server.MapPath("~/Reports/Stud2.rpt");
+                DataSet1 ds = new DataSet1();
+                ds.Tables["UserStud_Info"].Merge(dt);
+                ReportViewer1.ProcessingMode = ProcessingMode.Local;
+                ReportViewer1.LocalReport.ReportPath = Server.MapPath("Report1.rdlc");
+                ReportDataSource datasource = new ReportDataSource("DataSet1", ds.Tables["UserStud_Info"]);
+                ReportViewer1.LocalReport.DataSources.Clear();
+                ReportViewer1.LocalReport.SetParameters(new ReportParameter("FromDate", FromDate.Text));
 
-                //string Num = "17-1117";// "test";
-                ////string _Status = "";
-                ////string _FromDates = "";
-                ////string _ToDates = "";
+                ReportViewer1.LocalReport.DataSources.Add(datasource);
+            //}
+    //        try
+    //        {
 
-                string msConnectionString = @"Server = DESKTOP-OB15B6M\MSSQLSERVERTEST; Database = dbo; Integrated Security = True;";
+    //            //CrystalDecisions.CrystalReports.Engine.ReportDocument rph = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+    //            //string strRptPath = System.Web.HttpContext.Current.Server.MapPath("~/Reports/Stud2.rpt");
 
+    //            //string Num = "17-1117";// "test";
+    //            ////string _Status = "";
+    //            ////string _FromDates = "";
+    //            ////string _ToDates = "";
 
-                string _FromDates = FromDate.Text != "" ? " and CreateDate >= " + "'" + FromDate.Text + "'" : "";
+    //            //string msConnectionString = @"Server = DESKTOP-OB15B6M\MSSQLSERVERTEST; Database = dbo; Integrated Security = True;";
+    //            string msConnectionString = "Data Source=SQL5073.site4now.net;Initial Catalog=db_a7d988_pmstratinc;User Id=db_a7d988_pmstratinc_admin;Password=Allah@786@";
 
-                string _ToDates = ToDates.Text != "" ? " and CreateDate <= " + "'" + ToDates.Text + "'" : "";
+    //            string _FromDates = FromDate.Text != "" ? " and CreateDate >= " + "'" + FromDate.Text + "'" : "";
 
+    //            string _ToDates = ToDates.Text != "" ? " and CreateDate <= " + "'" + ToDates.Text + "'" : "";
 
-                string _Status = OurAction.SelectedValue.ToString() != "All" ? " and Progress = " + "'" + OurAction.SelectedValue + "'" : "";
+    //            string _Status = OurAction.SelectedValue.ToString() != "All" ? " and Progress = " + "'" + OurAction.SelectedValue + "'" : "";
 
-                SqlConnection Con = new SqlConnection(msConnectionString);
-                //    SqlCommand command = new SqlCommand("Select * from UserStud_Info where FName = " + "'" + ApplicantName.Text + "'", Con);
-                SqlCommand command = new SqlCommand(("Select ROW_NUMBER() OVER(order by CreateDate desc) AS SrNo,US.SIN_No,US.Progress,CC.CountryName,US.HQual_Acqrd,US.FieldOfStudy,US.LastAcadInsAttended,US.GPA,US.QualifToAcquire,US.StartSemester+' '+US.StartSemesterYr as Semester from UserStud_Info US " +
-    "inner join Country_Info CC on CC.CountryCode = US.Country " +
-     "where 1 = 1 " + _FromDates + _ToDates + _Status), Con);
+    //            SqlConnection Con = new SqlConnection(msConnectionString);
+    //            //    SqlCommand command = new SqlCommand("Select * from UserStud_Info where FName = " + "'" + ApplicantName.Text + "'", Con);
+    //            SqlCommand command = new SqlCommand(("Select ROW_NUMBER() OVER(order by CreateDate desc) AS SrNo,US.SIN_No,US.Progress,CC.CountryName,US.HQual_Acqrd,US.FieldOfStudy,US.LastAcadInsAttended,US.GPA,US.QualifToAcquire,US.StartSemester+' '+US.StartSemesterYr as Semester from UserStud_Info US " +
+    //"inner join Country_Info CC on CC.CountryCode = US.Country " +
+    // "where 1 = 1 " + _FromDates + _ToDates + _Status), Con);
 
-                //
-                //           Select ROW_NUMBER() OVER(order by CreateDate desc) AS SrNo, UserStud_Info.SIN_No,UserStud_Info.Progress,CC.CountryName,UserStud_Info.HQual_Acqrd,UserStud_Info.FieldOfStudy,UserStud_Info.LastAcadInsAttended,UserStud_Info.GPA,UserStud_Info.QualifToAcquire,UserStud_Info.CreateDate from  UserStud_Info
-                //            inner join Country_Info CC on CC.CountryCode = UserStud_Info.Country
-                //where 1 = 1 and UserStud_Info.CreateDate > {?FromDate}
-                //           and UserStud_Info.CreateDate < {?ToDate}
-                //           and UserStud_Info.Progress = {?Status}
+    //            //
+    //            //           Select ROW_NUMBER() OVER(order by CreateDate desc) AS SrNo, UserStud_Info.SIN_No,UserStud_Info.Progress,CC.CountryName,UserStud_Info.HQual_Acqrd,UserStud_Info.FieldOfStudy,UserStud_Info.LastAcadInsAttended,UserStud_Info.GPA,UserStud_Info.QualifToAcquire,UserStud_Info.CreateDate from  UserStud_Info
+    //            //            inner join Country_Info CC on CC.CountryCode = UserStud_Info.Country
+    //            //where 1 = 1 and UserStud_Info.CreateDate > {?FromDate}
+    //            //           and UserStud_Info.CreateDate < {?ToDate}
+    //            //           and UserStud_Info.Progress = {?Status}
 
-                SqlDataAdapter sd = new SqlDataAdapter(command);
-                DataSet s = new DataSet();
-                sd.Fill(s);
+    //            SqlDataAdapter sd = new SqlDataAdapter(command);
+    //            DataSet s = new DataSet();
+    //            sd.Fill(s);
 
-                ReportDocument crp = new ReportDocument();
-                crp.Load(Server.MapPath("~/Reports/StudentsReports.rpt"));
-                // crp.SetDataSource(s.Tables["table"]);  // if its a same one table
-                crp.SetDataSource(s.Tables["Table"]);
-                crp.SetParameterValue("FromDate", FromDate.Text == "" ? "NIL" : DateTime.Parse(FromDate.Text).ToString("dd-MMM-yyyy"));
-                crp.SetParameterValue("FDate", FromDate.Text == "" ? "NIL" : DateTime.Parse(FromDate.Text).ToString("dd-MMM-yyyy"));
-                crp.SetParameterValue("ToDate", ToDates.Text == "" ? "NIL" : DateTime.Parse(ToDates.Text).ToString("dd-MMM-yyyy"));
-                crp.SetParameterValue("TDate", FromDate.Text == "" ? "NIL" : DateTime.Parse(ToDates.Text).ToString("dd-MMM-yyyy"));
-                //  crp.SetParameterValue("CreateDate", FromDate.Text == "" ? "NIL" : DateTime.Parse(CreateDate.Text).ToString("dd-MMM-yyyy"));
+    //            ReportDocument crp = new ReportDocument();
+    //            crp.Load(Server.MapPath("~/Reports/StudentsReports.rpt"));
+    //            // crp.SetDataSource(s.Tables["table"]);  // if its a same one table
+    //            crp.SetDataSource(s.Tables["Table"]);
+    //            crp.SetParameterValue("FromDate", FromDate.Text == "" ? "NIL" : DateTime.Parse(FromDate.Text).ToString("dd-MMM-yyyy"));
+    //            crp.SetParameterValue("FDate", FromDate.Text == "" ? "NIL" : DateTime.Parse(FromDate.Text).ToString("dd-MMM-yyyy"));
+    //            crp.SetParameterValue("ToDate", ToDates.Text == "" ? "NIL" : DateTime.Parse(ToDates.Text).ToString("dd-MMM-yyyy"));
+    //            crp.SetParameterValue("TDate", FromDate.Text == "" ? "NIL" : DateTime.Parse(ToDates.Text).ToString("dd-MMM-yyyy"));
+    //            //  crp.SetParameterValue("CreateDate", FromDate.Text == "" ? "NIL" : DateTime.Parse(CreateDate.Text).ToString("dd-MMM-yyyy"));
 
-                crp.SetParameterValue("TStatus", OurAction.SelectedValue);
+    //            crp.SetParameterValue("TStatus", OurAction.SelectedValue);
 
-                crp.SetParameterValue("Status", OurAction.SelectedValue);
-
-
-                //   Response.Redirect("ErrorPage.aspx");
-
-                // CR1.ReportSource = crp;
-                //  crp.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Server.MapPath("aa.pdf"));
-
-                crp.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "Student");
-                //    ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('aa.pdf');popup.focus();", true);
-
-                Response.End();
-
-                //rph.Load(strRptPath);
-                //rph.SetDataSource(s);
-                //rph.SetParameterValue("FName", "");
-
-                //     rph.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-
-                //    rph.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Landscape;
-                //  rph.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
-                //rph.PrintToPrinter(1, false, 0, 0);
+    //            crp.SetParameterValue("Status", OurAction.SelectedValue);
 
 
-                //  string strRptPath = System.Web.HttpContext.Current.Server.MapPath("~/Reports/Stud2.rpt");
+    //            //   Response.Redirect("ErrorPage.aspx");
+
+    //            // CR1.ReportSource = crp;
+    //            //  crp.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Server.MapPath("aa.pdf"));
+
+    //            crp.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "Student");
+    //            //    ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('aa.pdf');popup.focus();", true);
+
+               
+
+    //            //rph.Load(strRptPath);
+    //            //rph.SetDataSource(s);
+    //            //rph.SetParameterValue("FName", "");
+
+    //            //     rph.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+
+    //            //    rph.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Landscape;
+    //            //  rph.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+    //            //rph.PrintToPrinter(1, false, 0, 0);
+
+
+    //            //  string strRptPath = System.Web.HttpContext.Current.Server.MapPath("~/Reports/Stud2.rpt");
 
 
 
 
-                //      rph.SetParameterValue("FName", name);
-                //     rph.RecordSelectionFormula();
+    //            //      rph.SetParameterValue("FName", name);
+    //            //     rph.RecordSelectionFormula();
 
-                //Response.Write("<script>");
-                //Response.Write("window.open('page.html','_blank')");
-                //Response.Write("</script>");
-
-
-                //    string name = "tahir";
-                //    string msConnectionString = @"Server = DESKTOP-OB15B6M\MSSQLSERVERTEST; Database = dbo; Integrated Security = True;";
-                //   // CrystalReport2 CR = new CrystalReport2();
-                //    SqlConnection Con = new SqlConnection(msConnectionString);
-                //    SqlCommand command = new SqlCommand("Select * from UserStud_Info where FName = "+ "'"+name+"'", Con);
-                //    SqlDataAdapter sd = new SqlDataAdapter(command);
-                //    DataSet s = new DataSet();
-                //    sd.Fill(s);
-
-                //   CrystalDecisions.CrystalReports.Engine.ReportDocument rph = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-                //   string strRptPath = System.Web.HttpContext.Current.Server.MapPath("~/Reports/Stud1.rpt");
-                //  //  rph.SetParameterValue("FName", name);
-                //    rph.Load(strRptPath);
-
-                //    rph.SetDataSource(s);
-                //    rph.SetParameterValue("FName", name);
+    //            //Response.Write("<script>");
+    //            //Response.Write("window.open('page.html','_blank')");
+    //            //Response.Write("</script>");
 
 
-                ////  Response.Redirect("~/Reports/Stud1.rpt");
-                //    rph.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "aaa");
-                //    Response.End();
-                //      rph.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Server.MapPath("Reports"));
-                //    ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('Reports/StudentReport.rpt');popup.focus();", true);
+    //            //    string name = "tahir";
+    //            //    string msConnectionString = @"Server = DESKTOP-OB15B6M\MSSQLSERVERTEST; Database = dbo; Integrated Security = True;";
+    //            //   // CrystalReport2 CR = new CrystalReport2();
+    //            //    SqlConnection Con = new SqlConnection(msConnectionString);
+    //            //    SqlCommand command = new SqlCommand("Select * from UserStud_Info where FName = "+ "'"+name+"'", Con);
+    //            //    SqlDataAdapter sd = new SqlDataAdapter(command);
+    //            //    DataSet s = new DataSet();
+    //            //    sd.Fill(s);
 
-                //  rph.v
-                //    rph.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Crystal");
-                //     Response.End();
+    //            //   CrystalDecisions.CrystalReports.Engine.ReportDocument rph = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+    //            //   string strRptPath = System.Web.HttpContext.Current.Server.MapPath("~/Reports/Stud1.rpt");
+    //            //  //  rph.SetParameterValue("FName", name);
+    //            //    rph.Load(strRptPath);
+
+    //            //    rph.SetDataSource(s);
+    //            //    rph.SetParameterValue("FName", name);
 
 
-                //  Stream ss = rph.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-                //   ss.Flush();
-                //     rph.Close();
-                //   rph.Dispose();
-                //  Response.Redirect("message.aspx");
-                //  return File(ss, System.Net.Mime.MediaTypeNames.Application.Pdf);
+    //            ////  Response.Redirect("~/Reports/Stud1.rpt");
+    //            //    rph.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, false, "aaa");
+    //            //    Response.End();
+    //            //      rph.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Server.MapPath("Reports"));
+    //            //    ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('Reports/StudentReport.rpt');popup.focus();", true);
 
-                //CrystalReport2 CR2 = new CrystalReport2();
-                //CR2.SetDataSource(s.Tables["table"]);
-                //CrystalReportViewer1.ReportSource = CR2;
-            }
-            catch(Exception ex)
-            { }
+    //            //  rph.v
+    //            //    rph.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Crystal");
+    //            //     Response.End();
+
+
+    //            //  Stream ss = rph.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+    //            //   ss.Flush();
+    //            //     rph.Close();
+    //            //   rph.Dispose();
+    //            //  Response.Redirect("message.aspx");
+    //            //  return File(ss, System.Net.Mime.MediaTypeNames.Application.Pdf);
+
+    //            //CrystalReport2 CR2 = new CrystalReport2();
+    //            //CR2.SetDataSource(s.Tables["table"]);
+    //            //CrystalReportViewer1.ReportSource = CR2;
+    //        }
+    //        catch(Exception ex)
+    //        {
+    //            cGF.MessageBox(ex.Message, this);
+    //        }
+
+    //        finally
+    //        {
+    //            Response.End();
+    //        }
         }
 
         protected void Set_ToDate(object sender, EventArgs e)

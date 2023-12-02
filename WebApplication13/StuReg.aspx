@@ -45,6 +45,87 @@
     <![endif]-->
 </head>
 <body>
+    <script>
+     function ValidateForm() {
+
+         if (document.getElementById("<%=TotalYrStudy.ClientID%>").value >= 20 || document.getElementById("<%=TotalYrStudy.ClientID%>").value <=16) {
+                alert("Total Year Studied cannot be more than 20 or less than 16");
+                document.getElementById("<%=TotalYrStudy.ClientID%>").value.value = "";
+                return false;
+         }
+
+         if (document.getElementById("<%=TotalYrStudy.ClientID%>").value == "") {
+             alert("Total Year Studied cannot be empty");
+             return false;
+         }
+
+         if (document.getElementById("<%=Name.ClientID%>").value == "") {
+             alert("Name cannot be empty");
+             return false;
+         }
+
+         if (document.getElementById("<%=FName.ClientID%>").value == "") {
+             alert("Faher Name cannot be empty");
+             return false;
+         }
+
+         if (document.getElementById("<%=HouseAddress.ClientID%>").value == "") {
+             alert("House Address cannot be empty");
+             return false;
+         }
+
+         if (document.getElementById("<%=StreetAddress.ClientID%>").value == "") {
+             alert("Street Address cannot be empty");
+             return false;
+         }
+       
+         if (document.getElementById("<%=email3.ClientID%>").value == "") {
+             alert("Email cannot be empty");
+             return false;
+         }
+         
+         if (document.getElementById("<%=LastInstAttend.ClientID%>").value == "") {
+             alert("Last Institute cannot be empty");
+             return false;
+         }
+
+         if (document.getElementById("<%=GPA.ClientID%>").value == "") {
+             alert("GPA cannot be empty");
+             return false;
+         }
+
+         if (document.getElementById("<%=GPA.ClientID%>").value > 3.8) {           
+             alert("GPA cannot be more than 3.8");
+             document.getElementById("<%=GPA.ClientID%>").value = "";
+             return false;
+         }
+
+         if (document.getElementById("<%=Eng_yrs_studied.ClientID%>").value > 20) {
+             alert("Years Studied English cannot be more than 20");
+             document.getElementById("<%=Eng_yrs_studied.ClientID%>").value = "";
+             return false;
+         }
+
+         if (document.getElementById("<%=Eng_yrs_studied.ClientID%>").value == "") {
+             alert("Years Studied English cannot be Empty");
+             return false;
+         }
+
+         if (document.getElementById("<%=French_yrs_studied.ClientID%>").value > 10) {
+             alert("Years Studied French cannot be more than 10");
+             document.getElementById("<%=French_yrs_studied.ClientID%>").value = "";
+             return false;
+         }
+
+         if (document.getElementById("<%=French_yrs_studied.ClientID%>").value == "") {
+             alert("Years Studied French cannot be Empty");
+             return false;
+         }
+
+         
+         }
+    </script>
+
     <form id="form1" runat="server">
 
         <header class="header_inner contact_page">
@@ -60,7 +141,7 @@
                                 <div class="contact_info">
                                     <ul class="list-unstyled">
                                         <li><i >+1 (647) 232-8196</i></li>
-                                        <li><i class="flaticon-mail-black-envelope-symbol"></i>admin1_user@pmstratinc.com</li>
+<%--                                        <li><i class="flaticon-mail-black-envelope-symbol"></i>admin1_user@pmstratinc.com</li>--%>
                                     </ul>
                                 </div>
                                 <div class="login_info">
@@ -196,7 +277,7 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Name" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input runat="server" class="form-control" type="text" id="Name" style="width: 400px;font-size:large" />
+                                                <input runat="server" class="form-control" required="required" type="text" id="Name" style="width: 400px;font-size:large" />
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
@@ -309,7 +390,7 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="GPA" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:TextBox runat="server" CssClass="form-control" ID="GPA" Width="150px" Font-Size="Large" MaxLength="1" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
+                                                <asp:TextBox runat="server" CssClass="form-control" onchange="return ValidateForm()" ID="GPA" Width="150px" Font-Size="Large" MaxLength="1" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
 <%--                                                <input runat="server" type="number" class="form-control" id="GPA1" style="width: 500px" />--%>
                                                 
                                             </div>
@@ -318,14 +399,14 @@
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Total Year Studied" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input runat="server" class="form-control" id="TotalYrStudy" style="width: 150px;font-size:large"  maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
+                                                <input runat="server" class="form-control" id="TotalYrStudy" required="required" onchange="return ValidateForm()" style="width: 150px;font-size:large"  maxlength="2" onkeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Last Institue Attended" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input runat="server" class="form-control" id="LastInstAttend" style="width: 500px;font-size:large" />
+                                                <input runat="server" class="form-control" id="LastInstAttend" onchange="return ValidateForm()"  style="width: 500px;font-size:large"/>
                                             </div>
 
                                             <div class="col-12"></div>
@@ -345,7 +426,7 @@
                                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label Font-Size="X-Large" Font-Bold="true" Text="Years Studied" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input runat="server" class="form-control" id="Eng_yrs_studied" style="width: 150px;font-size:large;height:45px" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
+                                                <input runat="server" class="form-control" id="Eng_yrs_studied" onchange="ValidateForm()" style="width: 150px;font-size:large;height:45px" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                             </div>
 
                                             
@@ -396,7 +477,7 @@
                                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label Font-Size="X-Large" Font-Bold="true" Text="Years Studied" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <input runat="server" class="form-control" id="French_yrs_studied" style="width: 150px;font-size:large" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
+                                                <input runat="server" class="form-control" id="French_yrs_studied" onchange="ValidateForm()" style="width: 150px;font-size:large" maxlength="2" onkeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
@@ -539,11 +620,11 @@
                                     <asp:Button ID="btnStuReg" ForeColor="White" BackColor="Red" Width="200px" Height="50px" runat="server" OnClick="CallMe" Text="Call two" />
                                     </div>--%>
                                             <div class="col-12 col-sm-12 col-md-12 submit-btn">
-                                              <asp:Button  runat="server"  CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" ID="BtnSubmit" Font-Size="Large" Height="45px" Width="250px" Text="Submit" class="text-center" onclick="SubmitForm"></asp:Button>
+                                              <asp:Button  runat="server"  CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" ID="BtnSubmit" OnClientClick="return ValidateForm()" Font-Size="Large" Height="45px" Width="250px" Text="Submit" class="text-center" onclick="SubmitForm"></asp:Button>
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-12 submit-btn">
-                                              <asp:Button  runat="server"  CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" ID="BtnUpdate" Text="Update" Font-Size="Large" Width="250px" Height="45px" class="text-center" onclick="UpdateForm"></asp:Button>
+                                              <asp:Button  runat="server"  CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" ID="BtnUpdate" OnClientClick="return ValidateForm()" Text="Update" Font-Size="Large" Width="250px" Height="45px" class="text-center" onclick="UpdateForm"></asp:Button>
                                             </div>
 
                                           <%--     <div class="col-12 col-sm-12 col-md-12 submit-btn">
@@ -629,8 +710,7 @@
                         <div class="col-12 col-md-12 col-lg-6">
                             <div class="footer_single_col contact">
                         <h3>Contact Us</h3>
-                        <p>Our experts are waiting to hear from you . For providing end to end admission workflow through a crystal clear procedure, our consultants will guide you deep down to get
-                            a good position at our Canada's top academic institutions having a reputation that will be great for your upcoming future. <span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
+                        <p>Our experts are waiting to hear from you .<span class="email" style="color:blue">admin1_user@pmstratinc.com</span>
                         </p>
                         <div class="contact_info">
 <%--                            <span>+000 124 325</span> --%>
@@ -686,47 +766,7 @@
          STYLE SWITCHER | ONLY FOR DEMO NOT INCLUDED IN MAIN FILES
     ============================================================== -->
         <script type="text/javascript" src="js/demo.js"></script>
-        <div class="demo-style-switch" id="switch-style">
-<%--            <a id="toggle-switcher" class="switch-button" title="Change Styles"><span class="fa fa-cog fa-spin"></span></a>--%>
-            <div class="switched-options">
-                <div class="config-title">
-                    <a class="navbar-brand" href="index-2.html">
-                        <img src="images/pmstratinc.png" alt="logo"></a>
-                    <p>Education Template</p>
-
-                </div>
-                <div class="demos">
-                    <div><a href="index-2.html" data-toggle="tooltip" data-placement="top" title="Home Style One">
-                        <img class="main-image img-fluid" src="demo/index_1.png" alt="" /></a></div>
-                    <div><a href="index-3.html" data-toggle="tooltip" data-placement="top" title="Home Style Two">
-                        <img class="main-image img-fluid" src="demo/index_2.png" alt="" /></a></div>
-                    <div><a href="index-4.html" data-toggle="tooltip" data-placement="top" title="Home Style Three">
-                        <img class="main-image img-fluid" src="demo/index_3.png" alt="" /></a></div>
-                    <ul class="list-unstyled clearfix">
-                        <li><a href="about.html" data-toggle="tooltip" data-placement="top" title="About Page">
-                            <img src="demo/about.png" alt="" class="img-fluid"></a></li>
-                        <li><a href="blog.html" data-toggle="tooltip" data-placement="top" title="Blog Page">
-                            <img src="demo/blog.png" alt="" class="img-fluid"></a></li>
-                        <li><a href="blog-details.html" data-toggle="tooltip" data-placement="top" title="Blog Details Page">
-                            <img src="demo/blog_details.png" alt="" class="img-fluid"></a></li>
-                        <li><a href="event.html" data-toggle="tooltip" data-placement="top" title="Event Page">
-                            <img src="demo/event.png" alt="" class="img-fluid"></a></li>
-                        <li><a href="event-details.html" data-toggle="tooltip" data-placement="top" title="Event Deiails">
-                            <img src="demo/event_details.png" alt="" class="img-fluid"></a></li>
-                        <li><a href="teacher-profile.html" data-toggle="tooltip" data-placement="top" title="Teacher Profile">
-                            <img src="demo/teacher_pro.png" alt="" class="img-fluid"></a></li>
-                        <li><a href="course.html" data-toggle="tooltip" data-placement="top" title="Courses Page">
-                            <img src="demo/course.png" alt="" class="img-fluid"></a></li>
-                        <li><a href="course-details.html" data-toggle="tooltip" data-placement="top" title="Courses Details">
-                            <img src="demo/course_details.png" alt="" class="img-fluid"></a></li>
-                        <li><a href="team.html" data-toggle="tooltip" data-placement="top" title="Team Page">
-                            <img src="demo/team.png" alt="" class="img-fluid"></a></li>
-                        <li><a href="contact.html" data-toggle="tooltip" data-placement="top" title="Contact Page">
-                            <img src="demo/contact.png" alt="" class="img-fluid"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        
     </form>
 </body>
 </html>

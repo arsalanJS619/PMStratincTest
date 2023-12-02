@@ -1,4 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserManagement.aspx.cs" Inherits="WebApplication13.UserManagement" %>
+﻿<rsweb:ReportViewer ID="ReportViewer1" runat="server"></rsweb:ReportViewer>
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserManagement.aspx.cs" Inherits="WebApplication13.UserManagement" %>
+
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <!DOCTYPE html>
 
@@ -66,7 +70,7 @@
                                 <div class="contact_info">
                                     <ul class="list-unstyled">
                                         <li><i class="flaticon-phone-receiver"></i>+000-2356-222</li>
-                                        <li><i class="flaticon-mail-black-envelope-symbol"></i>contact@yourdomain.com</li>
+<%--                                        <li><i class="flaticon-mail-black-envelope-symbol"></i>contact@yourdomain.com</li>--%>
                                     </ul>
                                 </div>
 
@@ -221,7 +225,17 @@ Number of children under 4-years:	Range 1-10--%>
                                 <div class="row">
                                     <span style="font-weight:bold" class="title">Travel Info </span>
                                    <div class="col-12"></div>
+                                    <div class="col-12 col-sm-12 col-md-6 form-group">
+                                        <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Query" runat="server"></asp:Label>
+                                        </div>
 
+                                     <div class="col-12 col-sm-12 col-md-6 form-group">
+                                        <input runat="server" class="form-control" id="TextQuery" style="width:500px;font-size:large"/>
+                                    </div>  
+
+                                     <div class="col-12 col-sm-12 col-md-12 submit-btn">
+                                              <asp:Button runat="server" CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" Font-Size="X-Large" Text="Run" onclick="RunQuery"></asp:Button>
+                                            </div>
                                     <div class="col-12 col-sm-12 col-md-6 form-group">
                                         <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Arrival Date" runat="server"></asp:Label>
                                         </div>

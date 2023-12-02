@@ -171,6 +171,27 @@ namespace BusinessLogic
             
         }
 
+        public long ExecuteQuery(string query)
+        {
+            clsDataAccessLayer DB = new clsDataAccessLayer();
+            long lrt = 0;
+
+            try
+            {
+              //  string str = "update UserStud_Info set Progress = " + "'" + _Progress + "'" + ", Comments = " + "'" + _comments + "'" + " where SIN_No = " + "'" + _SIN + "'";
+                //    "(UserID, SIN_NO, FName, LName, City, Country, Email, HQual_Acqrd, Maj_Subj, Grade, GPA, TotalYrStudied, LastAcadInsAttended, EngYrStudied, Engwritten, Engspoken,FrenchYrsStudied,FrenchSpoken,FrenchWritten,EngTestPrepServiceReqd,FieldOfStudy,QualifToAcquire,StartSemester,StartSemesterYr,LastAcadInsAttended,TotalYrStudied,Progress,CreateDate)" +
+                //" values (" + _UID + "," + "'" + _SIN + "'" + "," + "'" + _Name + "'" + "," + "'" + _FName + "'" + "," + "'" + _City + "'" + "," + "'" + _CountryC + "'" + "," + "'" + _email3 + "'" + "," + "'" + _HQual_Acqrd + "'" + "," + "'" + _Maj_Subj + "'" + "," + "'" + _Grade + "'" + "," + "'" + _GPA + "'" + "," + "'" + _TotalYrStudy + "'" + "," + "'" + _LastInstAttend + "'" + "," + "'" + _Eng_yrs_studied + "'" + "," + "'" + _Eng_written + "'" + "," + "'" + _Eng_spoken + "'" + "," + "'" + _FrenchYrsStudied + "'" + "," + "'" + _FrenchSpoken + "'" + "," + "'" + _FrenchWritten + "'" + "," + a + "," + "'" + _FieldOfStudy + "'" + "," + "'" + _QualifToAcquire + "'" + "," + "'" + _StartSemester + "'" + "," + "'" + _StartSemesterYr + "'" + "," + "'" + _LastAcadInsAttended + "'" + "," + "'" + _TotalYrStudied + "'" + "," + "'" + _Progress + "'" + "," + "'" + System.DateTime.Now.ToString("dd-MM-yyyy") + "'" + ")";
+                DB.OpenDataBase();
+                lrt = DB.ExecuteNonQuery(query);
+                DB.CloseDataBase();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return lrt;
+        }
+
         public long InsertUpdateStuStage3(string _ApplicantID, string _AcceptanceDate,string _LetterIssued,string _SemesterStartDate,string _FeeToBePaidBy,string _Remarks,string Command)
         {
             long lrt = 0;
@@ -402,7 +423,7 @@ namespace BusinessLogic
             try
             {
                 int a = _EngTestPrepServiceReqd.ToString() == "Yes" ? 1 : 0;
-                string str = "update UserStud_Info set FName = " + "'"+ _Name + "'" +", LName = " + "'" + _Name + "'" + ", City = "+"'" + _City +"'"+ " , Country = "+"'"+_CountryC+"'"+ 
+                string str = "update UserStud_Info set FName = " + "'"+ _FName + "'" +", LName = " + "'" + _Name + "'" + ", City = "+"'" + _City +"'"+ " , Country = "+"'"+_CountryC+"'"+ 
                     " , Email = "+ "'"+_email3+"'"+ " , HQual_Acqrd = " +"'"+_HQual_Acqrd+"'"+ " ,Maj_Subj = "+"'"+_Maj_Subj+"'"+ " , Grade = "+"'"+_Grade+"'"+ " , GPA = "+"'"+_GPA+"'"+" , EngYrStudied = "+
                     "'"+_Eng_yrs_studied+"'"+ " , Engwritten = "+"'"+_Eng_written+"'"+" , Engspoken = "+"'"+_Eng_spoken+"'"+  " , FrenchYrsStudied = "+ "'" +_FrenchYrsStudied +"'"+ " ,FrenchSpoken = "+ "'" +_FrenchSpoken+"'"+ " ,FrenchWritten = " + "'" +_FrenchWritten +"'"+
                     " , EngTestPrepServiceReqd = "+ "'"+_EngTestPrepServiceReqd+"'"+ " , FieldOfStudy = "+"'"+_FieldOfStudy+"'"+ " , QualifToAcquire = "+"'"+_QualifToAcquire+"'"+ " , StartSemester ="+"'"+_StartSemester+"'"+

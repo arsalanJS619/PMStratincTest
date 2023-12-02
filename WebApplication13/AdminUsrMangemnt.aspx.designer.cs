@@ -87,21 +87,12 @@ namespace WebApplication13
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdminUsrMng;
 
         /// <summary>
-        /// ApplicantID control.
+        /// TextQuery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText ApplicantID;
-
-        /// <summary>
-        /// SubmissionDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText SubmissionDate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TextQuery;
     }
 }
