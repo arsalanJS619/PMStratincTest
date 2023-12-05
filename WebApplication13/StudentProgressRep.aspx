@@ -296,7 +296,9 @@
                                               <asp:Button runat="server" CssClass="col-md-3 btnLeftMargin btn btn-block btn-success" Font-Size="Large" Text="Submit" onclick="SubmitForm"></asp:Button>
                                             </div>
 
-                            
+                             <rsweb:ReportViewer ID="ReportViewer1" runat="server" AsyncRendering="false" ProcessingMode="Remote" SizeToReportContent="true"></rsweb:ReportViewer>
+                                                                 <rsweb:ReportViewer ID="ReportViewer2" runat="server" AsyncRendering="false" ProcessingMode="Remote" SizeToReportContent="true"></rsweb:ReportViewer>
+
                                                                     </div>
                             </form>   
                         </div>
@@ -307,7 +309,6 @@
     </div>
 </section> <!-- Contact Info Wrappper-->
 
- <rsweb:ReportViewer ID="ReportViewer1" runat="server" AsyncRendering="false" ProcessingMode="Remote" SizeToReportContent="true"></rsweb:ReportViewer>
 
  <!-- Ends: Google Map Area -->  
 

@@ -11,6 +11,19 @@ namespace BusinessLogic
 {
     public class UserInfo
     {
+        public long RunDirectQuery()
+        {
+            clsDataAccessLayer DB = new clsDataAccessLayer();
+        //    string msConnectionString_Live = "Data Source=SQL5073.site4now.net;Initial Catalog=db_a7d988_pmstratinc;User Id=db_a7d988_pmstratinc_admin;Password=Allah@786@";
+            string str = "create View StudDetailsView as select UI.*,CI.CountryName from UserStud_Info UI inner join Country_Info CI on CI.CountryCode = UI.Country ";// insert into User_Info (Name,Email,DOB,IsStudent,IsMigration,IsSettlement,AdminUser,Passwrd,CreateDate,UpdateDate,UserStatus,RegCode)" +
+                                                                                                                                                                      //,DOB,IsMigration,IsStudent,IsSettlement,AdminUser,,CreateDate,UpdateDate,UserStatus)" +
+                                                                                                                                                                      //    " values( " + "'" + UserName + "'" + "," + "'" + Email + "'" + "," + "'" + System.DateTime.Now + "'" + "," + IsStu + "," + IsImig + "," + IsSett + ",0," + "'" + strPassword + "'" + "," + "'" + System.DateTime.Now + "'" + "," + "'" + System.DateTime.Now + "'" + "," + 0 + "," + RegCode + ")";
+            DB.OpenDataBase();
+            long lrt = DB.ExecuteNonQuery(str);
+            DB.CloseDataBase();
+            return lrt;
+
+        }
         public string GetData()
         {
             clsDataAccessLayer DB = new clsDataAccessLayer();

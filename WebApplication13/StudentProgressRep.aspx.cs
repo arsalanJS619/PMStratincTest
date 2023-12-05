@@ -45,24 +45,46 @@ namespace WebApplication13
 
         protected void SubmitForm(object sender, EventArgs e)
         {
+            BusinessLogic.UserInfo BI = new BusinessLogic.UserInfo();
+
+        //    BI.RunDirectQuery();
+
+
             GeneralFunctions.clsGeneralFunctions cGF = new GeneralFunctions.clsGeneralFunctions();
-            SqlConnection con1 = new SqlConnection(@"Data Source=DESKTOP-OB15B6M\MSSQLSERVERTEST;Initial Catalog=dbo;Integrated Security=True;");
+            string msConnectionString = "Data Source=SQL5073.site4now.net;Initial Catalog=db_a7d988_pmstratinc;User Id=db_a7d988_pmstratinc_admin;Password=Allah@786@";
+            SqlConnection con1 = new SqlConnection(msConnectionString);
+           //      SqlConnection con1 = new SqlConnection(@"Data Source=DESKTOP-OB15B6M\MSSQLSERVERTEST;Initial Catalog=dbo;Integrated Security=True;");
             //if (!IsPostBack)
-            //{.
-                string strQuery = "SELECT * FROM UserStud_Info US inner join Country_Info CI on CI.CountryCode = US.Country";
-                SqlDataAdapter da = new SqlDataAdapter(strQuery, con1);
+            //{. 
+            //        string strQry = "select SIN_NO,CountryName from StudDetailsView";
+            //     string strQry = "select *  from UserStud_Info";
+            //  string strQry = "select *,CI.CountryName from UserStud_Info UI inner join  Country_Info CI on CI.CountryCode = UI.Country";
+            string strQry = "select SIN_No,CountryName,StartSemesterYr,GPA,HQual_Acqrd,LastAcadInsAttended,QualifToAcquire,FieldOfStudy from StudDetailsView where CreateDate > '" + DateTime.Parse(FromDate.Text).ToString("dd-MMM-yyyy") + "' and CreateDate < '"+ DateTime.Parse(ToDates.Text).ToString("dd-MMM-yyyy") + "'";
+            //   string strQuery = "SELECT * FROM UserStud_Info US inner join Country_Info CI on CI.CountryCode = US.Country";
+            SqlDataAdapter da = new SqlDataAdapter(strQry, con1);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+            //   DataSet1 ds = new DataSet1();
+            //   DataSet1
+            //  dboDataSet ds  = new dboDataSet();
 
-                DataSet1 ds = new DataSet1();
-                ds.Tables["UserStud_Info"].Merge(dt);
-                ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportViewer1.LocalReport.ReportPath = Server.MapPath("Report1.rdlc");
-                ReportDataSource datasource = new ReportDataSource("DataSet1", ds.Tables["UserStud_Info"]);
-                ReportViewer1.LocalReport.DataSources.Clear();
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("FromDate", FromDate.Text));
+            //  
+            DataSetTest ds = new DataSetTest();
+       //     DataSet1 ds1 = new DataSet1();
+           // dboDataSet4 ds = new dboDataSet4();
+            ds.EnforceConstraints = false;
+            ds.Tables["StudDetailsView"].Merge(dt);
+              //  ds.Tables["StudDetailsView"].Merge(dt);
+            ReportViewer1.ProcessingMode = ProcessingMode.Local;
+            ReportViewer1.LocalReport.ReportPath = Server.MapPath("Report1.rdlc");
+            ReportDataSource datasource = new ReportDataSource("DataSet1", ds.Tables["StudDetailsView"]);
+            ReportViewer1.LocalReport.DataSources.Clear();
+            
+            ReportViewer1.LocalReport.SetParameters(new ReportParameter("FromDate", FromDate.Text));
+            ReportViewer1.LocalReport.SetParameters(new ReportParameter("ToDate", ToDates.Text));
+            ReportViewer1.LocalReport.SetParameters(new ReportParameter("Status", OurAction.SelectedItem.Text));
 
-                ReportViewer1.LocalReport.DataSources.Add(datasource);
+            ReportViewer1.LocalReport.DataSources.Add(datasource);
             //}
     //        try
     //        {
@@ -199,7 +221,8 @@ namespace WebApplication13
     //        {
     //            Response.End();
     //        }
-        }
+        
+                 }
 
         protected void Set_ToDate(object sender, EventArgs e)
         {
