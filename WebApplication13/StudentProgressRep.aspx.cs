@@ -51,15 +51,26 @@ namespace WebApplication13
 
 
             GeneralFunctions.clsGeneralFunctions cGF = new GeneralFunctions.clsGeneralFunctions();
+         //   string msConnectionString = "Data Source = DESKTOP - OB15B6M\MSSQLSERVERTEST; Initial Catalog = dbo; Integrated Security = True";
             string msConnectionString = "Data Source=SQL5073.site4now.net;Initial Catalog=db_a7d988_pmstratinc;User Id=db_a7d988_pmstratinc_admin;Password=Allah@786@";
-            SqlConnection con1 = new SqlConnection(msConnectionString);
-           //      SqlConnection con1 = new SqlConnection(@"Data Source=DESKTOP-OB15B6M\MSSQLSERVERTEST;Initial Catalog=dbo;Integrated Security=True;");
+           SqlConnection con1 = new SqlConnection(msConnectionString);
+        //          SqlConnection con1 = new SqlConnection(@"Data Source=DESKTOP-OB15B6M\MSSQLSERVERTEST;Initial Catalog=dbo;Integrated Security=True;");
             //if (!IsPostBack)
             //{. 
             //        string strQry = "select SIN_NO,CountryName from StudDetailsView";
-            //     string strQry = "select *  from UserStud_Info";
+            //     string strQry = "select *  anfrom UserStud_Info";
             //  string strQry = "select *,CI.CountryName from UserStud_Info UI inner join  Country_Info CI on CI.CountryCode = UI.Country";
-            string strQry = "select SIN_No,CountryName,StartSemesterYr,GPA,HQual_Acqrd,LastAcadInsAttended,QualifToAcquire,FieldOfStudy from StudDetailsView where CreateDate > '" + DateTime.Parse(FromDate.Text).ToString("dd-MMM-yyyy") + "' and CreateDate < '"+ DateTime.Parse(ToDates.Text).ToString("dd-MMM-yyyy") + "'";
+            string strQry = "";
+            if (OurAction.SelectedValue == "All")
+            {
+                strQry = "select SIN_No,CountryName,StartSemesterYr,GPA,HQual_Acqrd,LastAcadInsAttended,QualifToAcquire,FieldOfStudy from StudDetailsView where CreateDate >= '" + DateTime.Parse(FromDate.Text).ToString("dd-MMM-yyyy") + "' and CreateDate <= '" + DateTime.Parse(ToDates.Text).ToString("dd-MMM-yyyy") + "'";
+
+            }
+            else
+            {
+                strQry = "select SIN_No,CountryName,StartSemesterYr,GPA,HQual_Acqrd,LastAcadInsAttended,QualifToAcquire,FieldOfStudy from StudDetailsView where Progress = " + OurAction.SelectedValue+" CreateDate >= '" + DateTime.Parse(FromDate.Text).ToString("dd-MMM-yyyy") + "' and CreateDate <= '" + DateTime.Parse(ToDates.Text).ToString("dd-MMM-yyyy") + "'";
+
+            }
             //   string strQuery = "SELECT * FROM UserStud_Info US inner join Country_Info CI on CI.CountryCode = US.Country";
             SqlDataAdapter da = new SqlDataAdapter(strQry, con1);
                 DataTable dt = new DataTable();

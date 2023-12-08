@@ -102,9 +102,11 @@
                          <li id="AdmProgress" visible="false" runat="server"><a href="AdminProgress.aspx" class="nav-link">progress</a>
                                      <ul>
 
-                                        <li class="dropdown-item"><a href="AdminStage1.aspx" style="padding:unset">Stage 1</a></li>
-                                        <li class="dropdown-item"><a href="AdminStage2.aspx">Stage 2</a></li>
-                                        <li class="dropdown-item"><a href="AdminStage3.aspx">Stage 3</a></li>
+                                     <li class="dropdown-item" style="display:contents"><a href="AdminStage1.aspx" > Stage 1</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a>&nbsp&nbsp</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a href="AdminStage2.aspx" > Stage 2</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a>&nbsp&nbsp</a></li>
+                                        <li class="dropdown-item" style="display:contents"><a href="AdminStage3.aspx" > Stage 3</a></li>
                                     </ul>
                                 </li>
 
@@ -134,14 +136,18 @@
         </div> 
     </div>
 
-    <div class="intro_wrapper">
+            <div class="intro_wrapper" style="background: url('../images/banner/adminU3.jpg') no-repeat center center !important;">
         <div class="container">  
             <div class="row">        
                  <div class="col-sm-12 col-md-8 col-lg-8">
                     <div class="intro_text">
                         <div class="pages_links">
-                            <a href="#" title="">Home</a>
-                            <a href="#" title="" class="active">Student Details</a>
+                            <h1 style="color:white">Admin User</h1>
+                            <h1 style="color:white">Management</h1>
+                                                        <h1 style="color:transparent">.</h1>
+                                                                                    <h1 style="color:transparent">.</h1>
+                              <h1 style="color:transparent">.</h1>
+                                                                                    <h1 style="color:transparent">.</h1>
                         </div>
                     </div>
                 </div>              
@@ -168,7 +174,7 @@
                         <div class="contact_form">
                             <form action="#">
                                 <div class="row">
-                                    <span style="font-weight:bold" class="title">APPLICATION SUBMISSION</span>
+                                    <span style="font-weight:bold" class="title">USER MANGEMENT</span>
                                    <div class="col-12"></div>
                                     <div class="col-12 col-sm-12 col-md-6 form-group">
                                         <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Query" runat="server"></asp:Label>
@@ -305,10 +311,10 @@
          STYLE SWITCHER | ONLY FOR DEMO NOT INCLUDED IN MAIN FILES
     ============================================================== -->
     <script type="text/javascript" src="js/demo.js"></script>
-    <div class="demo-style-switch" id="switch-style">
+    <%--<div class="demo-style-switch" id="switch-style">
         <a id="toggle-switcher" class="switch-button" title="Change Styles"><span class="fa fa-cog fa-spin"></span></a>
        
-    </div>    
+    </div>--%>    
     </form>
 </body>
 </html>

@@ -141,21 +141,28 @@
             </nav><!-- END NAVBAR -->
         </div> 
     </div>
-
-    <div class="intro_wrapper">
-        <div class="container">  
-            <div class="row">        
-                 <div class="col-sm-12 col-md-8 col-lg-8">
-                    <div class="intro_text">
-                        <div class="pages_links">
-                       <h1 style="color:white">Admin Stage 1</h1>
-                            <h1 style="color:white">Applictaion Progress</h1>
+            <div class="intro_wrapper" style="background: url('../images/banner/stage1.jpg') no-repeat center center !important;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-8 col-lg-8">
+                            <div class="intro_text">
+                                <div class="pages_links">
+                                    <h1 style="color:white">
+                                   Application Stage 1</h1>
+                                     <h1 style="color:transparent">
+                                   .</h1>
+                                     <h1 style="color:transparent">
+                                   .</h1>
+                                      
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>              
+                </div>
             </div>
-        </div> 
-    </div> 
+    
+
+   
 </header> <!-- End Header -->
 
 

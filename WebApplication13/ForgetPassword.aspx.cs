@@ -217,8 +217,8 @@ namespace WebApplication13
                         mail.Fields[SEND_USERNAME] = "admin2_user@pmstratinc.com";
                         mail.Fields[SEND_PASSWORD] = "USer2@1600";
 
-
-                        string body = "Please click the link to reset password : '" + RedirectRegPage + "'";
+               //         string body = "Hello, Click the link to register " + RedirectRegPage;
+                        string body = "Please click the link to reset password : " + RedirectRegPage ;
                      //   body += "<br /><a href = '" + RedirectRegPage + "'>Click here</a>.";
                     //    body += "<br /><br />Thanks";
                         // oMail.HtmlBody = body;

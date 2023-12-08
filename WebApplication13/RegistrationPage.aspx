@@ -113,7 +113,7 @@
                                 </li>--%>
                                  <li id="UsrAbout" runat="server" class="nav-item"><a href="About.aspx" class="nav-link">About</a></li>
 
-                                                         <li id="UsrStuInfo" runat="server" class="nav-item"><a href="StuReg.aspx" class="nav-link" >Student Info</a></li>
+<%--                                                         <li id="UsrStuInfo" runat="server" class="nav-item"><a href="StuReg.aspx" class="nav-link" >Student Info</a></li>--%>
 
                                          <li id="UsrProgress" visible="false" runat="server"><a class="nav-link">Progress</a>
                                      <ul style="background-color:white">

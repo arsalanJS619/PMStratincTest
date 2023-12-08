@@ -122,7 +122,6 @@ namespace WebApplication13
                 }
             }
         }
-
         //protected void CheckEmptyValue(object sender, EventArgs e)
         //{
         //    if(RegUserName.Value == "" || RegPassword.Value == "" && RegEmail.Value == "")
@@ -134,7 +133,7 @@ namespace WebApplication13
            
         //}
 
-       protected void RedirectToForgetPaswd(object sender, EventArgs e)
+        protected void RedirectToForgetPaswd(object sender, EventArgs e)
         {
             try
             {
@@ -170,7 +169,6 @@ namespace WebApplication13
         //{
 
         //}
-
         protected void LogoutUser(object sender, EventArgs e) 
         {
             try
@@ -267,6 +265,15 @@ namespace WebApplication13
                 cGF.MessageBox(ex.Message, this);
             }
         }
+
+        //private const string SMTP_SERVER = "http://schemas.microsoft.com/cdo/configuration/smtpserver";
+        //private const string SMTP_SERVER_PORT = "http://schemas.microsoft.com/cdo/configuration/smtpserverport";
+        //private const string SEND_USING = "http://schemas.microsoft.com/cdo/configuration/sendusing";
+        //private const string SMTP_USE_SSL = "http://schemas.microsoft.com/cdo/configuration/smtpusessl";
+        //private const string SMTP_AUTHENTICATE = "http://schemas.microsoft.com/cdo/configuration/smtpauthenticate";
+        //private const string SEND_USERNAME = "http://schemas.microsoft.com/cdo/configuration/sendusername";
+        //private const string SEND_PASSWORD = "http://schemas.microsoft.com/cdo/configuration/sendpassword";
+
         protected void RegisterUser(object sender, EventArgs e)
         {
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
@@ -295,6 +302,7 @@ namespace WebApplication13
 
                     else
                     {
+                       
 
 
                         //   string RedirectRegPage = Url_string + "RegistrationPage?";
@@ -313,38 +321,69 @@ namespace WebApplication13
 
                         if (val > 0)
                         {
+                            System.Web.Mail.MailMessage mail = new System.Web.Mail.MailMessage();
+
+                            //   mail.IsBodyHtml = true;
+                            mail.Fields[SMTP_SERVER] = "mail.pmstratinc.com";
+                            mail.Fields[SMTP_SERVER_PORT] = 465;
+                            mail.Fields[SEND_USING] = 2;
+                            mail.Fields[SMTP_USE_SSL] = true;
+                            mail.Fields[SMTP_AUTHENTICATE] = 1;
+                            mail.Fields[SEND_USERNAME] = "admin2_user@pmstratinc.com";
+                            mail.Fields[SEND_PASSWORD] = "USer2@1600";
+
+
+                      //      string body = "Please click the link to reset password : '" + RedirectRegPage + "'";
+                            //   body += "<br /><a href = '" + RedirectRegPage + "'>Click here</a>.";
+                            //    body += "<br /><br />Thanks";
+                            // oMail.HtmlBody = body;
+
+
+                            string body = "Hello, Click the link to register " + RedirectRegPage;
+                            mail.Body = body;
+           //                 body += "<br /><br />Please click the following link to register";
+             //               body += "<br /><a href = '" + RedirectRegPage + "'>Click here for Sign up</a>.";
+               //             body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";                            mail.To = RegEmail.Value;// "arsalanjawed619@yahoo.com";// user.Email;
+                            mail.To = RegEmail.Value;
+                            mail.From = "admin2_user@pmstratinc.com";
+                            mail.Subject = "User Registration";// Registration Email Test";
+
+
+
+                            System.Web.Mail.SmtpMail.Send(mail);
+                            Session["Message"] = "MailSent";
                             //  string DEC = AesOperation.DecryptString("GFTSFDGHHSABJAN",ENC);
-                            #region send mail
-                            SmtpMail oMail = new SmtpMail("TryIt");
+                  //          #region send mail
+                    //        SmtpMail oMail = new SmtpMail("TryIt");
 
                             // Set sender email address, please change it to yours
-                            oMail.From = "admin1_user@pmstratinc.com";
+                      //      oMail.From = "admin1_user@pmstratinc.com";
 
                             // Set recipient email address, please change it to yours
-                            oMail.To = RegEmail.Value;// "arsalanjawed619@gmail.com";
+                        //    oMail.To = RegEmail.Value;// "arsalanjawed619@gmail.com";
                          //   oMail.Cc = "admin1_user@pmstratinc.com";
 
                             // Set email subject
-                            oMail.Subject = "Registration Email";// test email from c#, ssl, 465 port";
+                          //  oMail.Subject = "Registration Email";// test email from c#, ssl, 465 port";
 
                             // Set email body
-                            string body = "Hello " + ",";
-                            body += "<br /><br />Please click the following link to register";
-                            body += "<br /><a href = '" + RedirectRegPage + "'>Click here for Sign up</a>.";
-                            body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
-                            oMail.HtmlBody = body;
+                     //       string body = "Hello " + ",";
+                     //       body += "<br /><br />Please click the following link to register";
+                     //       body += "<br /><a href = '" + RedirectRegPage + "'>Click here for Sign up</a>.";
+                     //       body += "<br /><br />Thanks";// "blah blah <a href='http://www.example.com'>blah</a>";
+                     ////       oMail.HtmlBody = body;
                             
-                            SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
+                     //       SmtpServer oServer = new SmtpServer("mail.pmstratinc.com");
                            
-                            oServer.User = "admin1_user@pmstratinc.com";
-                            oServer.Password = "USer@1600";
-                            oServer.Port = 465;
-                            oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
-                            EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
-                            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+                     //       oServer.User = "admin1_user@pmstratinc.com";
+                     //       oServer.Password = "USer@1600";
+                     //       oServer.Port = 465;
+                     //       oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
+                     //       EASendMail.SmtpClient oSmtp = new EASendMail.SmtpClient();
+                     //       System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
 
-                            oSmtp.SendMail(oServer, oMail);
-                            Session["Message"] = "MailSent";
+                     //       oSmtp.SendMail(oServer, oMail);
+                     //       Session["Message"] = "MailSent";
                             //  Response.Redirect("RegistrationPage.aspx", true);
 
 
@@ -355,7 +394,7 @@ namespace WebApplication13
                             //   return false;
                         }
                     }
-                    #endregion
+              //      #endregion
 
                 }
                 else
@@ -548,7 +587,7 @@ namespace WebApplication13
 
                 if (Session["User"]!=null)
                 {
-                    UserID = Convert.ToInt64(Session["User"].ToString());
+                    UserID = Convert.ToInt64(Session["UserID"].ToString());
                     if (!IsPostBack)
                     {
                         labelmsg.InnerText = "";

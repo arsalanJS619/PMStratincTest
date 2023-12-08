@@ -139,14 +139,16 @@
         </div> 
     </div>
 
-    <div class="intro_wrapper">
+            <div class="intro_wrapper" style="background: url('../images/banner/stage2.jpeg') no-repeat center center !important;">
         <div class="container">  
             <div class="row">        
                  <div class="col-sm-12 col-md-8 col-lg-8">
                     <div class="intro_text">
                         <div class="pages_links">
                              <h1 style="color:white">Admin Stage 2</h1>
-                            <h1 style="color:white">Applictaion Progress</h1>
+                            <h1 style="color:white">Application Progress</h1>
+                              <h1 style="color:transparent">.</h1>
+                                                                                    <h1 style="color:transparent">.</h1>
                         </div>
                     </div>
                 </div>              

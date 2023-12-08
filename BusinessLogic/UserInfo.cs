@@ -184,6 +184,20 @@ namespace BusinessLogic
             
         }
 
+
+
+        public DataTable CheckAllRecords(string Query)
+        {
+            clsDataAccessLayer DB = new clsDataAccessLayer();
+            string str = "select  * from UserStud_Info";
+          //  CI.CountryName as Country,US.FName as Name,SI.ApplicantID,SubmissionDate,SI.onlinForm,SI.SupportingDoc,SI.IELTSScore, " +
+          //"SI.ProcessingFee,SI.OurAction,SI.Remarks from StudentStage1 SI INNER JOIN UserStud_Info US on US.SIN_No = SI.ApplicantID inner join " +
+          //"Country_Info CI on CI.CountryCode = US.Country where SI.ApplicantID = " + "'" + _ApplicantID + "'";
+            DB.OpenDataBase();
+            DataTable dt = DB.ExecuteDataTable(str);
+            return dt;
+        }
+
         public long ExecuteQuery(string query)
         {
             clsDataAccessLayer DB = new clsDataAccessLayer();

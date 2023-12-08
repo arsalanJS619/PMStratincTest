@@ -48,26 +48,18 @@
     <script>
      function ValidateForm() {
 
-         if (document.getElementById("<%=TotalYrStudy.ClientID%>").value >= 20 || document.getElementById("<%=TotalYrStudy.ClientID%>").value <=16) {
-                alert("Total Year Studied cannot be more than 20 or less than 16");
-                document.getElementById("<%=TotalYrStudy.ClientID%>").value.value = "";
-                return false;
-         }
+        
 
-         if (document.getElementById("<%=TotalYrStudy.ClientID%>").value == "") {
-             alert("Total Year Studied cannot be empty");
-             return false;
-         }
-
+       
          if (document.getElementById("<%=Name.ClientID%>").value == "") {
              alert("Name cannot be empty");
              return false;
          }
 
-         if (document.getElementById("<%=FName.ClientID%>").value == "") {
+     <%--    if (document.getElementById("<%=FName.ClientID%>").value == "") {
              alert("Faher Name cannot be empty");
              return false;
-         }
+         }--%>
 
          if (document.getElementById("<%=HouseAddress.ClientID%>").value == "") {
              alert("House Address cannot be empty");
@@ -83,11 +75,6 @@
              alert("Email cannot be empty");
              return false;
          }
-         
-         if (document.getElementById("<%=LastInstAttend.ClientID%>").value == "") {
-             alert("Last Institute cannot be empty");
-             return false;
-         }
 
          if (document.getElementById("<%=GPA.ClientID%>").value == "") {
              alert("GPA cannot be empty");
@@ -99,6 +86,25 @@
              document.getElementById("<%=GPA.ClientID%>").value = "";
              return false;
          }
+
+         if (document.getElementById("<%=TotalYrStudy.ClientID%>").value == "") {
+             alert("Total Year Studied cannot be empty");
+             return false;
+         }
+
+
+         if (document.getElementById("<%=TotalYrStudy.ClientID%>").value >= 20 || document.getElementById("<%=TotalYrStudy.ClientID%>").value <=16) {
+                alert("Total Year Studied cannot be more than 20 or less than 16");
+             document.getElementById("<%=TotalYrStudy.ClientID%>").value = "";
+             return false;
+         }
+         
+         if (document.getElementById("<%=LastInstAttend.ClientID%>").value == "") {
+             alert("Last Institute cannot be empty");
+             return false;
+         }
+
+        
 
          if (document.getElementById("<%=Eng_yrs_studied.ClientID%>").value > 20) {
              alert("Years Studied English cannot be more than 20");
@@ -122,8 +128,13 @@
              return false;
          }
 
+       
+     }
+
+
+
          
-         }
+         
     </script>
 
     <form id="form1" runat="server">
@@ -222,7 +233,7 @@
         </div>
     </div>
 
-            <div class="intro_wrapper" style="background: url('../images/banner/inner_banner_5.jpg') no-repeat center center !important;">
+            <div class="intro_wrapper" style="background: url('../images/banner/banner_4.jpg') no-repeat center center !important;">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 col-md-8 col-lg-8">
@@ -272,7 +283,7 @@
                                                <asp:TextBox runat="server" CssClass="form-control" Font-Size="Large"  visible="false" AutoPostBack="true" type="text" OnTextChanged="GetApplicationData" id="AppID" style="width: 400px" />
                                             </div>
 
-
+                                            
                                             <div class="col-12 col-sm-12 col-md-6 form-group">
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Name" runat="server"></asp:Label>
                                             </div>
@@ -280,13 +291,13 @@
                                                 <input runat="server" class="form-control" required="required" type="text" id="Name" style="width: 400px;font-size:large" />
                                             </div>
 
-                                            <div class="col-12 col-sm-12 col-md-6 form-group">
+                                     <%--       <div class="col-12 col-sm-12 col-md-6 form-group">
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="Father Name" runat="server"></asp:Label>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-md-6 form-group">
-                                                <asp:TextBox runat="server" CssClass="form-control" Width="400px" ID="FName" Font-Size="Large" /> 
+                                            </div>--%>
+                                          <%--  <div class="col-12 col-sm-12 col-md-6 form-group">
+                                                <asp:TextBox runat="server" CssClass="form-control" Width="400px" ID="FName" Font-Size="Large" /> --%>
 <%--                                                <input runat="server" class="form-control" type="text" id="FName" style="width: 200px" />--%>
-                                            </div>
+                                       <%--     </div>--%>
 
                                            <%-- <div class="col-12 col-sm-12 col-md-6 form-group">
                                                 <asp:Label Font-Size="X-Large" Font-Bold="true" Text="City" runat="server"></asp:Label>
@@ -611,7 +622,7 @@
                                     <div class="col-12 col-sm-12 col-md-6 form-group">
                                         <input type="email" runat="server" class="form-control" id="email1" placeholder="Your E-mail"/>
                                     </div>  
-
+                                                country
                                             --%>
 
 

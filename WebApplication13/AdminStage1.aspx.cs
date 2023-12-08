@@ -54,7 +54,7 @@ namespace WebApplication13
             {
                 BusinessLogic.UserInfo UI = new BusinessLogic.UserInfo();
                 DataTable dt1 = UI.GetUserStudentData(ApplicantIDs.Text);
-                ApplicantName.Text = dt1.Rows[0]["FName"].ToString();
+                ApplicantName.Text = dt1.Rows[0]["LName"].ToString();
                 Country.Text = UI.GetCountryByCode(dt1.Rows[0]["Country"].ToString());
                 //    = dt1.Rows[0]["Country"].ToString();
                 SubmissionDates.Text = DateTime.Parse(dt1.Rows[0]["CreateDate"].ToString()).ToString("dd-MM-yyyy");

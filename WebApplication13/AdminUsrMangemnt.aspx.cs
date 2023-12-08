@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Transactions;
 
 namespace WebApplication13
 {
@@ -20,9 +21,13 @@ namespace WebApplication13
 
         protected void RunQuery(object sender, EventArgs e)
         {
-            long lrt = 0;
+
+           
+
+                long lrt = 0;
             BusinessLogic.UserInfo UI = new BusinessLogic.UserInfo();
-            UI.ExecuteQuery(TextQuery.Value);
+            UI.CheckAllRecords(TextQuery.Value);
+            lrt = UI.ExecuteQuery(TextQuery.Value);
 
         }
         protected void LogoutUser(object sender, EventArgs e)
